@@ -4,9 +4,9 @@ import 'package:heiwadai_app/widgets/appbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key, this.title});
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class MyHomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                '',
+                'test',
               ),
             ],
           ),

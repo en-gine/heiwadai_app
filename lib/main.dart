@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:heiwadai_app/home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:heiwadai_app/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-       minTextAdapt: true,
-      builder: (context, child) => MaterialApp(
+      minTextAdapt: true,
+      builder: (context, child) => MaterialApp.router(
         title: 'heiwadai hotel',
         theme: ThemeData().copyWith(
           colorScheme: colorScheme,
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             foregroundColor: Colors.black,
           ),
         ),
-        home: const MyHomePage(title: '平和台ホテル天神'),
+        routerConfig: goRouter,
       ),
     );
   }
