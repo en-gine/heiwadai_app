@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:heiwadai_app/widgets/appbar.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key, this.title});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key, this.title});
   final String? title;
 
   @override
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'test',
+                'login',
               ),
             ],
           ),

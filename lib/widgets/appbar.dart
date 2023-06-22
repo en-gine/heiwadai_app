@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:simple_shadow/simple_shadow.dart';
 
 enum AppBarStyle { logo, basic, none }
+
 enum LeadingButtonStyle { cancel, back, none }
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -22,12 +24,16 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               fontWeight: FontWeight.bold,
             ))
       else if (style == AppBarStyle.logo)
-        SvgPicture.asset(
-          'assets/icons/logo.svg',
-          semanticsLabel: 'heiwadai hotel',
-          width: 229.89.w,
-          height: 35.w,
-          alignment: Alignment.bottomCenter,
+        SimpleShadow(
+          opacity: 0.25,
+          offset: const Offset(0, 4),
+          sigma: 3,
+          child: SvgPicture.asset(
+            'assets/icons/logo.svg',
+            semanticsLabel: 'heiwadai hotel',
+            width: 229.89.w,
+            alignment: Alignment.bottomCenter,
+          ),
         ),
     ],
   );
@@ -44,8 +50,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: SvgPicture.asset(
             'assets/icons/notifications.svg',
             semanticsLabel: 'notifications',
-            width: 25.w,
-            height: 20.97.w,
+            height: 25.w,
           ),
           onPressed: () {},
         ),
@@ -55,7 +60,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             'assets/icons/menu.svg',
             semanticsLabel: 'main menu',
             width: 25.w,
-            height: 16.w,
           ),
           onPressed: () {},
         ),
