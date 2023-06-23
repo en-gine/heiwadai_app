@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:heiwadai_app/router.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class MyApp extends ConsumerWidget {
       minTextAdapt: true,
       builder: (context, child) => MaterialApp.router(
         title: 'heiwadai hotel',
-        theme: ThemeData().copyWith(
+        theme: ThemeData(fontFamily: "Noto Sans JP").copyWith(
           colorScheme: colorScheme,
           useMaterial3: true,
           appBarTheme: const AppBarTheme().copyWith(
@@ -30,6 +30,14 @@ class MyApp extends ConsumerWidget {
             foregroundColor: Colors.black,
           ),
         ),
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale("ja", "JP"),
+        ],
         routerConfig: router,
       ),
     );
