@@ -31,7 +31,8 @@ class PlanCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
       ),
       margin: EdgeInsets.symmetric(vertical: 10.w, horizontal: 15.w),
-      elevation: double.infinity,
+      elevation: 8,
+      shadowColor: Colors.black.withOpacity(0.5),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

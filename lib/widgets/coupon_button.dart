@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum CouponStyle { basic, large }
 
-class CouponButton extends StatelessWidget implements PreferredSizeWidget {
+class CouponButton extends StatelessWidget {
   const CouponButton({super.key, required this.title, required this.dateText, this.style});
   final String title;
   final String dateText;
@@ -59,7 +59,4 @@ class CouponButton extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
