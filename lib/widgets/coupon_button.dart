@@ -62,7 +62,7 @@ class CouponButton extends StatelessWidget {
                             ),
                     ),
                     Text(
-                      "割引クーポン",
+                      (type == CouponType.standard) ? "割引クーポン" : "クーポン",
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,

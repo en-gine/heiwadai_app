@@ -5,7 +5,7 @@ import 'package:heiwadai_app/screens/home_screen.dart';
 import 'package:heiwadai_app/screens/login_screen.dart';
 
 final authProvider = Provider((ref) => (
-      isAuth: false,
+      isAuth: true,
       isLoading: false,
       hasError: false,
     ));
