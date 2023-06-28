@@ -28,7 +28,7 @@ List<CouponItem> coupons = [
     name: "¥500",
     couponType: CouponType.standard,
     discount: 500,
-    expire: DateTime(2023, 10, 20),
+    expire: DateTime(2023, 11, 30),
     isCombinationable: true,
     overView: "",
     usedAt: null,

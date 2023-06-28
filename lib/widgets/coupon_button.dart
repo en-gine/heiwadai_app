@@ -80,7 +80,7 @@ class CouponButton extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            SvgPicture.asset('assets/icons/next_arrow.svg', width: 12.w),
+            SvgPicture.asset('assets/icons/next_arrow.svg', height: 12.w),
           ],
         ),
       ),
