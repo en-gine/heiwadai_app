@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:heiwadai_app/widgets/appbar.dart';
+import 'package:heiwadai_app/widgets/menu/appbar.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key, this.title});

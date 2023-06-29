@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:heiwadai_app/widgets/appbar.dart';
-import 'package:heiwadai_app/widgets/appbar_bottom.dart';
+import 'package:heiwadai_app/widgets/menu/appbar.dart';
+import 'package:heiwadai_app/widgets/menu/appbar_bottom.dart';
 import 'package:heiwadai_app/widgets/coupon_button.dart';
 import 'package:heiwadai_app/widgets/plan_card.dart';
 import 'package:heiwadai_app/widgets/contents_area.dart';
@@ -109,6 +109,7 @@ class HomeScreen extends StatelessWidget {
                   text: TextSpan(
                       style: TextStyle(
                         fontSize: 16.sp,
+                        letterSpacing: 1.4,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
