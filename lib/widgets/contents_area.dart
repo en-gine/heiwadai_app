@@ -9,7 +9,7 @@ class ContentsArea extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.only(top: 20.w),
+        margin: EdgeInsets.only(top: 15.w),
         padding: EdgeInsets.only(top: 5.w),
         decoration: BoxDecoration(
           color: Colors.white,

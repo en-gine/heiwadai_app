@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
       couponList = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Heading( "使えるクーポン"),
+          const Heading("使えるクーポン"),
           for (final coupon in coupons)
             CouponButton(
               name: coupon.name,
@@ -33,30 +33,39 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               const Spacer(),
-              TextButton(
-                onPressed: () {},
-                child: Center(
-                  child: Row(
-                    children: [
-                      Text(
-                        "SEE MORE",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          height: 0.8,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+              SizedBox(
+                height: 50.w,
+                child: TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.all(0),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.zero),
+                    ),
+                  ),
+                  child: Center(
+                    child: Row(
+                      children: [
+                        Text(
+                          "SEE MORE",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            height: 1.1,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 10.w),
-                      SvgPicture.asset(
-                        'assets/icons/next_arrow.svg',
-                        height: 12.w,
-                        colorFilter: const ColorFilter.mode(
-                          Colors.black,
-                          BlendMode.srcIn,
+                        SizedBox(width: 10.w),
+                        SvgPicture.asset(
+                          'assets/icons/next_arrow.svg',
+                          height: 12.w,
+                          colorFilter: const ColorFilter.mode(
+                            Colors.black,
+                            BlendMode.srcIn,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -92,6 +101,26 @@ class HomeScreen extends StatelessWidget {
                   summary: "朝食なし夕食あり／禁煙／セミダブル",
                   // priceText: "¥1000",
                   imageUrl: "https://placehold.jp/150x150.png",
+                ),
+                SizedBox(height: 5.w),
+                RichText(
+                  text: TextSpan(
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      children: [
+                        const TextSpan(text: "クーポン獲得まであと"),
+                        TextSpan(
+                          text: '3',
+                          style: TextStyle(
+                            fontSize: 30.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const TextSpan(text: "回スタンプ"),
+                      ]),
                 ),
                 ContentsArea(
                   widgets: [
