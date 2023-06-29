@@ -8,7 +8,8 @@ class CouponItem {
     required this.discount,
     required this.expire,
     required this.isCombinationable,
-    required this.overView,
+    // required this.overView,
+    required this.notices,
     required this.usedAt,
     // required this.user,
     required this.targetStore,
@@ -20,7 +21,8 @@ class CouponItem {
   final int discount;
   final DateTime expire;
   final bool isCombinationable;
-  final String overView;
+  // final String overView;
+  final List<String> notices;
   final DateTime? usedAt;
   // final User user;
   final List<String> targetStore;
