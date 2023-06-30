@@ -31,6 +31,7 @@ class MyApp extends ConsumerWidget {
           ),
           drawerTheme: const DrawerThemeData().copyWith(
             backgroundColor: const Color.fromRGBO(242, 242, 242, 1),
+            surfaceTintColor: const Color.fromRGBO(242, 242, 242, 1),
             endShape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.zero),
             ),
