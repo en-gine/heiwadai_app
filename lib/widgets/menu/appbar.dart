@@ -61,7 +61,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             semanticsLabel: 'main menu',
             width: 25.w,
           ),
-          onPressed: () {},
+          onPressed: () => Scaffold.of(context).openEndDrawer(),
         ),
         SizedBox(width: 10.w),
       ],

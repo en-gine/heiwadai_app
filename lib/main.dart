@@ -29,6 +29,12 @@ class MyApp extends ConsumerWidget {
             backgroundColor: Colors.transparent,
             foregroundColor: Colors.black,
           ),
+          drawerTheme: const DrawerThemeData().copyWith(
+            backgroundColor: const Color.fromRGBO(242, 242, 242, 1),
+            endShape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.zero),
+            ),
+          ),
         ),
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,

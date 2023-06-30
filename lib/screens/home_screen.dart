@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
+import 'package:heiwadai_app/widgets/menu/drawer.dart';
 import 'package:heiwadai_app/widgets/menu/appbar_bottom.dart';
 import 'package:heiwadai_app/widgets/coupon_button.dart';
 import 'package:heiwadai_app/widgets/plan_card.dart';
@@ -10,6 +11,7 @@ import 'package:heiwadai_app/widgets/contents_area.dart';
 import 'package:heiwadai_app/widgets/replica/heading.dart';
 
 import 'package:heiwadai_app/data/coupons.dart';
+import 'package:heiwadai_app/data/stores.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, this.title});
@@ -80,6 +82,7 @@ class HomeScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: MyAppBar(style: AppBarStyle.logo),
+      endDrawer: MyDrawer(stores),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(

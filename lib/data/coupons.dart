@@ -1,4 +1,5 @@
 import 'package:heiwadai_app/models/coupon_item.dart';
+import 'package:heiwadai_app/data/stores.dart';
 
 List<CouponItem> coupons = [
   CouponItem(
@@ -10,7 +11,7 @@ List<CouponItem> coupons = [
     isCombinationable: true,
     notices: [],
     usedAt: null,
-    targetStore: ["平和台ホテル天神"],
+    targetStore: stores,
   ),
   CouponItem(
     id: "2",
@@ -21,7 +22,7 @@ List<CouponItem> coupons = [
     isCombinationable: true,
     notices: [],
     usedAt: null,
-    targetStore: ["平和台ホテル天神"],
+    targetStore: [stores[0]],
   ),
   CouponItem(
     id: "3",
@@ -32,6 +33,6 @@ List<CouponItem> coupons = [
     isCombinationable: true,
     notices: [],
     usedAt: null,
-    targetStore: ["平和台ホテル天神"],
+    targetStore: [stores[0], stores[1]],
   ),
 ];

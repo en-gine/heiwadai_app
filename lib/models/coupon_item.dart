@@ -1,3 +1,5 @@
+import 'package:heiwadai_app/models/store.dart';
+
 enum CouponType { standard, birthday, custom }
 
 class CouponItem {
@@ -25,7 +27,7 @@ class CouponItem {
   final List<String> notices;
   final DateTime? usedAt;
   // final User user;
-  final List<String> targetStore;
+  final List<Store> targetStore;
 }
 
 
