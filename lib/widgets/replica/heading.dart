@@ -7,7 +7,7 @@ enum HeadingType {
 }
 
 class Heading extends StatelessWidget {
-  const Heading( this.text, {super.key, this.type});
+  const Heading(this.text, {super.key, this.type});
   final String text;
   final HeadingType? type;
 
@@ -20,6 +20,10 @@ class Heading extends StatelessWidget {
         fontSize: (type == HeadingType.h2) ? 24.sp : 20.sp,
         height: (type == HeadingType.h2) ? 1.85 : 1.8,
         fontWeight: FontWeight.bold,
+      ),
+      textHeightBehavior: const TextHeightBehavior(
+        applyHeightToFirstAscent: false,
+        applyHeightToLastDescent: false,
       ),
     );
   }
