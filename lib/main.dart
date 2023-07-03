@@ -27,6 +27,7 @@ class MyApp extends ConsumerWidget {
           appBarTheme: const AppBarTheme().copyWith(
             elevation: 0,
             backgroundColor: Colors.transparent,
+            surfaceTintColor: Colors.transparent,
             foregroundColor: Colors.black,
           ),
           drawerTheme: const DrawerThemeData().copyWith(
