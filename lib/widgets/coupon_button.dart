@@ -22,7 +22,7 @@ class CouponButton extends StatelessWidget {
     DateFormat dateFormat = DateFormat('yyyy年MM月dd日', "ja_JP");
 
     return Padding(
-      padding: const EdgeInsets.only(top: 5),
+      padding: EdgeInsets.only(top: 5.w),
       child: ElevatedButton(
         style: ButtonStyle(
           textStyle:

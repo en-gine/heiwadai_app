@@ -33,7 +33,10 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Heading("使えるクーポン"),
+            Padding(
+              padding: EdgeInsets.only(bottom: 5.w),
+              child: const Heading("使えるクーポン"),
+            ),
             for (final coupon in coupons)
               CouponButton(
                 name: coupon.name,
@@ -91,7 +94,10 @@ class HomeScreen extends StatelessWidget {
       postList = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Heading("お知らせ"),
+          Padding(
+            padding: EdgeInsets.only(left: 20.w, bottom: 10.w),
+            child: const Heading("お知らせ"),
+          ),
           for (final post in posts)
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -114,7 +120,6 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ]),
                 ),
-                // const SizedBox(height: 6),
               ],
             ),
         ],
