@@ -6,13 +6,17 @@ import 'package:simple_shadow/simple_shadow.dart';
 
 enum AppBarStyle { logo, basic, none }
 
-enum LeadingButtonStyle { cancel, back, none }
+enum MenuMode { close, basic, none }
+
+// enum LeadingButtonStyle { cancel, back, none }
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  MyAppBar({super.key, this.title, required this.style, this.topMargin});
+  MyAppBar(
+      {super.key, this.title, required this.style, this.menu, this.topMargin});
   final String? title;
   final double? topMargin;
   final AppBarStyle style;
+  final MenuMode? menu;
 
   late final Widget styledTitle = Column(
     children: [
@@ -45,24 +49,26 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       elevation: 0,
       actions: [
-        IconButton(
-          color: Colors.black,
-          icon: SvgPicture.asset(
-            'assets/icons/notifications.svg',
-            semanticsLabel: 'notifications',
-            height: 25.w,
+        if (menu == null || menu == MenuMode.basic)
+          IconButton(
+            color: Colors.black,
+            icon: SvgPicture.asset(
+              'assets/icons/notifications.svg',
+              semanticsLabel: 'notifications',
+              height: 25.w,
+            ),
+            onPressed: () {},
           ),
-          onPressed: () {},
-        ),
-        IconButton(
-          color: Colors.black,
-          icon: SvgPicture.asset(
-            'assets/icons/menu.svg',
-            semanticsLabel: 'main menu',
-            width: 25.w,
+        if (menu == null || menu == MenuMode.basic)
+          IconButton(
+            color: Colors.black,
+            icon: SvgPicture.asset(
+              'assets/icons/menu.svg',
+              semanticsLabel: 'main menu',
+              width: 25.w,
+            ),
+            onPressed: () => Scaffold.of(context).openEndDrawer(),
           ),
-          onPressed: () => Scaffold.of(context).openEndDrawer(),
-        ),
         SizedBox(width: 10.w),
       ],
     );
