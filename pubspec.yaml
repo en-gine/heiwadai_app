@@ -101,6 +101,8 @@ flutter:
         - asset: assets/fonts/NotoSansJP-Regular.ttf
         - asset: assets/fonts/NotoSansJP-Medium.ttf
           weight: 500
+        - asset: assets/fonts/NotoSansJP-SemiBold.ttf
+          weight: 600
         - asset: assets/fonts/NotoSansJP-Bold.ttf
           weight: 700
 
