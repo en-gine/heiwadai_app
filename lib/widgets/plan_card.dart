@@ -26,6 +26,7 @@ class PlanCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       clipBehavior: Clip.antiAlias,
+      color: Colors.white,
       surfaceTintColor: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
