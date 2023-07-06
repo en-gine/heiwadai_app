@@ -44,7 +44,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: styledTitle,
-      automaticallyImplyLeading: (style != AppBarStyle.logo) ? true : false,
+      automaticallyImplyLeading:
+          (style != AppBarStyle.logo && menu != MenuMode.close) ? true : false,
       centerTitle: true,
       elevation: 0,
       actions: [
@@ -67,6 +68,16 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               width: 25.w,
             ),
             onPressed: () => Scaffold.of(context).openEndDrawer(),
+          )
+        else if (menu == MenuMode.close)
+          IconButton(
+            color: Colors.black,
+            icon: SvgPicture.asset(
+              'assets/icons/close.svg',
+              semanticsLabel: 'close',
+              width: 25.w,
+            ),
+            onPressed: () => Navigator.pop(context),
           ),
         SizedBox(width: 10.w),
       ],

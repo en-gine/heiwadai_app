@@ -18,7 +18,7 @@ class Heading extends StatelessWidget {
       textAlign: TextAlign.center,
       style: TextStyle(
         fontSize: (type == HeadingType.h2) ? 24.sp : 20.sp,
-        height: (type == HeadingType.h2) ? 1.85 : 1.8,
+        height: (type == HeadingType.h2) ? 44.sp / 24.sp : 36.sp / 20.sp,
         fontWeight: FontWeight.bold,
       ),
       textHeightBehavior: const TextHeightBehavior(

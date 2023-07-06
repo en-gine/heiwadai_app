@@ -121,16 +121,15 @@ class LoginScreen extends HookWidget {
                           errorText: mailError.value,
                           labelStyle: const TextStyle(color: Color(0xFFB3B3B3)),
                           enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFB3B3B3)),
+                            borderSide: BorderSide(color: Color(0xFFDADADA)),
                           ),
                           focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFB3B3B3)),
+                            borderSide: BorderSide(color: Color(0xFFDADADA)),
                           ),
                           filled: true,
                           fillColor: Colors.white,
                           isDense: true,
                         ),
-                        autofocus: true,
                         onChanged: (value) {
                           isMail.value = value.isNotEmpty;
                         },
@@ -152,10 +151,10 @@ class LoginScreen extends HookWidget {
                           errorText: passError.value,
                           labelStyle: const TextStyle(color: Color(0xFFB3B3B3)),
                           enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFB3B3B3)),
+                            borderSide: BorderSide(color: Color(0xFFDADADA)),
                           ),
                           focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFB3B3B3)),
+                            borderSide: BorderSide(color: Color(0xFFDADADA)),
                           ),
                           filled: true,
                           fillColor: Colors.white,
