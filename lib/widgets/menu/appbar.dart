@@ -8,8 +8,6 @@ enum AppBarStyle { logo, basic, none }
 
 enum MenuMode { close, basic, none }
 
-// enum LeadingButtonStyle { cancel, back, none }
-
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   MyAppBar(
       {super.key, this.title, required this.style, this.menu, this.topMargin});
@@ -46,6 +44,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: styledTitle,
+      automaticallyImplyLeading: (style != AppBarStyle.logo) ? true : false,
       centerTitle: true,
       elevation: 0,
       actions: [
