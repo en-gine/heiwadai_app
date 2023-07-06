@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_shadow/simple_shadow.dart';
@@ -28,7 +29,7 @@ class MyBottomNavi extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 SizedBox(width: 10.w),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => context.push('/'),
                   padding: EdgeInsets.zero,
                   icon: SvgPicture.asset(
                     'assets/icons/bottom_menu_1.svg',
@@ -36,7 +37,7 @@ class MyBottomNavi extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => context.push('/'),
                   padding: EdgeInsets.zero,
                   icon: SvgPicture.asset(
                     'assets/icons/bottom_menu_2.svg',
@@ -44,7 +45,7 @@ class MyBottomNavi extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => context.push('/'),
                   padding: EdgeInsets.zero,
                   icon: SvgPicture.asset(
                     'assets/icons/bottom_menu_3.svg',
@@ -52,7 +53,7 @@ class MyBottomNavi extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => context.push('/voucher_list'),
                   padding: EdgeInsets.zero,
                   icon: SvgPicture.asset(
                     'assets/icons/bottom_menu_4.svg',
@@ -69,7 +70,7 @@ class MyBottomNavi extends StatelessWidget implements PreferredSizeWidget {
             children: [
               const Spacer(),
               IconButton(
-                onPressed: () {},
+                onPressed: () => context.push('/'),
                 padding: EdgeInsets.zero,
                 icon: SvgPicture.asset(
                   'assets/icons/bottom_menu_5.svg',

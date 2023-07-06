@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:go_router/go_router.dart';
 import "package:intl/intl.dart";
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
@@ -50,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 50.w,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => context.push('/voucher_list'),
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.all(0),
                       shape: const RoundedRectangleBorder(
