@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -45,12 +46,58 @@ class LoginScreen extends HookWidget {
                 decoration: const BoxDecoration(
                   color: Colors.white,
                 ),
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    SizedBox(height: 25.w),
+                    RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 40.sp,
+                          height: 50.sp / 40.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        children: [
+                          const TextSpan(text: 'ホテル予約'),
+                          TextSpan(
+                            text: 'も',
+                            style: TextStyle(fontSize: 30.sp),
+                          ),
+                        ],
+                      ),
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 40.sp,
+                          height: 50.sp / 40.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        children: [
+                          const TextSpan(text: 'クーポン'),
+                          TextSpan(
+                            text: 'も',
+                            style: TextStyle(fontSize: 30.sp),
+                          ),
+                          const TextSpan(text: '!'),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 10.w),
                     Text(
-                      'login screen',
+                      'QRコードでスタンプを押して',
+                      style: TextStyle(height: 28.sp / 16.sp),
+                    ),
+                    Text(
+                      'おトクなクーポンを手に入れよう！',
+                      style: TextStyle(height: 28.sp / 16.sp),
+                    ),
+                    SizedBox(height: 14.w),
+                    SvgPicture.asset(
+                      'assets/icons/login_head.svg',
+                      height: 60.w,
                     ),
                   ],
                 ),
@@ -162,7 +209,10 @@ class LoginScreen extends HookWidget {
                               : () => formKey.currentState!.save(),
                           child: Text(
                             'ログイン',
-                            style: TextStyle(fontSize: 18.sp),
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -173,7 +223,7 @@ class LoginScreen extends HookWidget {
               Container(
                 margin: EdgeInsets.only(top: 5.w, bottom: 30.w),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () => context.push('/forget_pass'),
                   child: Text(
                     'パスワードを忘れた方',
                     style: TextStyle(
@@ -203,6 +253,7 @@ class LoginScreen extends HookWidget {
                     style: TextStyle(
                       fontSize: 16.sp,
                       color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
