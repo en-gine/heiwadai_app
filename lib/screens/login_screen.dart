@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
+import 'package:heiwadai_app/widgets/components/form/text_input_field.dart';
 
 class LoginScreen extends HookWidget {
   const LoginScreen({super.key, this.title});
@@ -109,27 +110,10 @@ class LoginScreen extends HookWidget {
                       EdgeInsets.symmetric(vertical: 10.w, horizontal: 20.w),
                   child: Column(
                     children: [
-                      TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                            RegExp(r'[a-zA-Z0-9@._+-]+'),
-                          ),
-                        ],
-                        decoration: InputDecoration(
-                          labelText: "メールアドレス",
-                          errorText: mailError.value,
-                          labelStyle: const TextStyle(color: Color(0xFFB3B3B3)),
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFDADADA)),
-                          ),
-                          focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFDADADA)),
-                          ),
-                          filled: true,
-                          fillColor: Colors.white,
-                          isDense: true,
-                        ),
+                      TextInputField(
+                        'メールアドレス',
+                        errorText: mailError.value,
+                        type: FormType.email,
                         onChanged: (value) {
                           isMail.value = value.isNotEmpty;
                         },
@@ -138,37 +122,20 @@ class LoginScreen extends HookWidget {
                         },
                       ),
                       SizedBox(height: 5.w),
-                      TextFormField(
+                      TextInputField(
+                        'パスワード',
                         obscureText: isObscure.value,
-                        keyboardType: TextInputType.visiblePassword,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                            RegExp(r'[a-zA-Z0-9@.+*_~/,!#$%&-]+'),
+                        errorText: passError.value,
+                        type: FormType.password,
+                        suffixIcon: IconButton(
+                          icon: SvgPicture.asset(
+                            isObscure.value
+                                ? 'assets/icons/visibility_on.svg'
+                                : 'assets/icons/visibility_off.svg',
                           ),
-                        ],
-                        decoration: InputDecoration(
-                          labelText: 'パスワード',
-                          errorText: passError.value,
-                          labelStyle: const TextStyle(color: Color(0xFFB3B3B3)),
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFDADADA)),
-                          ),
-                          focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFDADADA)),
-                          ),
-                          filled: true,
-                          fillColor: Colors.white,
-                          isDense: true,
-                          suffixIcon: IconButton(
-                            icon: SvgPicture.asset(
-                              isObscure.value
-                                  ? 'assets/icons/visibility_on.svg'
-                                  : 'assets/icons/visibility_off.svg',
-                            ),
-                            onPressed: () {
-                              isObscure.value = !isObscure.value;
-                            },
-                          ),
+                          onPressed: () {
+                            isObscure.value = !isObscure.value;
+                          },
                         ),
                         onChanged: (value) {
                           isPass.value = value.isNotEmpty;
@@ -237,7 +204,7 @@ class LoginScreen extends HookWidget {
               Container(
                 margin: EdgeInsets.only(bottom: 20.w),
                 child: FilledButton(
-                  onPressed: () {},
+                  onPressed: () => context.push('/register_input'),
                   style: ButtonStyle(
                     minimumSize: MaterialStateProperty.all<Size>(
                       Size(240.w, 54.w),

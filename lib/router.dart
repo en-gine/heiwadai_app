@@ -3,11 +3,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:heiwadai_app/screens/login_screen.dart';
 import 'package:heiwadai_app/screens/forget_pass_screen.dart';
+import 'package:heiwadai_app/screens/register_input_screen.dart';
 import 'package:heiwadai_app/screens/home_screen.dart';
 import 'package:heiwadai_app/screens/voucher_list_screen.dart';
 
 final authProvider = Provider((ref) => (
-      isAuth: true,
+      // isAuth: true,
+      isAuth: false,
       isLoading: false,
       hasError: false,
     ));
@@ -40,22 +42,11 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/forget_pass',
         builder: (context, state) => const ForgetPassScreen(),
-        redirect: null,
-      )
-
-      // GoRoute(
-      //   path: '/',
-      //   builder: (context, state) => const HomeScreen(),
-      // ),
-      // GoRoute(
-      //   path: '/login',
-      //   builder: (context, state) => const LoginScreen(),
-      // ),
-      // GoRoute(
-      //   path: '/forget_pass',
-      //   builder: (context, state) => const ForgetPassScreen(),
-      //   redirect: null,
-      // )
+      ),
+      GoRoute(
+        path: '/register_input',
+        builder: (context, state) => const RegisterInputScreen(),
+      ),
     ],
   );
 });

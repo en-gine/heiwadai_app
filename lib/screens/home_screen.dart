@@ -11,7 +11,7 @@ import 'package:heiwadai_app/widgets/menu/appbar_bottom.dart';
 import 'package:heiwadai_app/widgets/coupon_button.dart';
 import 'package:heiwadai_app/widgets/plan_card.dart';
 import 'package:heiwadai_app/widgets/contents_area.dart';
-import 'package:heiwadai_app/widgets/replica/heading.dart';
+import 'package:heiwadai_app/widgets/components/heading.dart';
 
 import 'package:heiwadai_app/data/coupons.dart';
 import 'package:heiwadai_app/data/posts.dart';

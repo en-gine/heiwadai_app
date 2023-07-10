@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:heiwadai_app/widgets/contents_area.dart';
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
-import 'package:heiwadai_app/widgets/replica/heading.dart';
+import 'package:heiwadai_app/widgets/components/heading.dart';
 
 class ForgetPassScreen extends HookWidget {
   const ForgetPassScreen({super.key, this.title});
