@@ -8,7 +8,13 @@ void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-var colorScheme = ColorScheme.fromSeed(seedColor: Colors.white);
+var colorScheme = const ColorScheme.light().copyWith(
+  primary: Colors.black,
+  secondary: Colors.white,
+  surface: Colors.white,
+  background: Colors.white,
+  error: Colors.red,
+);
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});

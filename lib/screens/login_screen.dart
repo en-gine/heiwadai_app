@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,8 +21,6 @@ class LoginScreen extends HookWidget {
 
     final isPass = useState(false);
     final passError = useState<String?>(null);
-
-    final isObscure = useState(true);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -124,19 +121,8 @@ class LoginScreen extends HookWidget {
                       SizedBox(height: 5.w),
                       TextInputField(
                         'パスワード',
-                        obscureText: isObscure.value,
                         errorText: passError.value,
                         type: FormType.password,
-                        suffixIcon: IconButton(
-                          icon: SvgPicture.asset(
-                            isObscure.value
-                                ? 'assets/icons/visibility_on.svg'
-                                : 'assets/icons/visibility_off.svg',
-                          ),
-                          onPressed: () {
-                            isObscure.value = !isObscure.value;
-                          },
-                        ),
                         onChanged: (value) {
                           isPass.value = value.isNotEmpty;
                         },

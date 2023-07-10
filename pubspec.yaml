@@ -45,6 +45,7 @@ dependencies:
   hooks_riverpod: ^2.3.6
   intl: ^0.18.0
   google_fonts: ^5.1.0
+  flutter_datetime_picker_plus: ^2.0.1
 
 dev_dependencies:
   flutter_test:
