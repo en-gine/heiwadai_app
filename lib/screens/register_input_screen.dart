@@ -67,6 +67,7 @@ class RegisterInputScreen extends HookWidget {
       '沖縄県',
     ];
     final selectedValue = useState<String?>(null);
+    final isSwitched = useState<bool>(true);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -98,7 +99,9 @@ class RegisterInputScreen extends HookWidget {
                   style: TextStyle(fontSize: 12.sp, height: 16.sp / 12.sp),
                 ),
                 ContentsArea(
-                  iconName: 'lock',
+                  iconName: 'people',
+                  iconWidth: 30.w,
+                  iconHeight: 32.64.w,
                   widgets: [
                     Container(
                       margin: EdgeInsets.only(bottom: 6.sp),
@@ -189,8 +192,12 @@ class RegisterInputScreen extends HookWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Center(
-                              child:
-                                  headindIcon('lock', colorCode: 0xffffffff)),
+                              child: headindIcon(
+                            'home',
+                            colorCode: 0xffffffff,
+                            width: 33.w,
+                            height: 30.w,
+                          )),
                           Container(
                             alignment: Alignment.center,
                             margin: EdgeInsets.only(bottom: 6.sp),
@@ -214,6 +221,7 @@ class RegisterInputScreen extends HookWidget {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 10.w),
                             width: double.infinity,
+                            height: 54.w,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               border:
@@ -261,6 +269,68 @@ class RegisterInputScreen extends HookWidget {
                             '番地マンション名',
                             type: FormType.text,
                             hint: '例：舞鶴1-5-6',
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(
+                        top: 10.w,
+                        left: 20.w,
+                        right: 20.w,
+                        bottom: 50.w,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(
+                              child: headindIcon(
+                            'mail',
+                            width: 28.w,
+                            height: 20.w,
+                          )),
+                          Container(
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.only(bottom: 6.sp),
+                            child: const Heading('ご連絡先', type: HeadingType.h3),
+                          ),
+                          Text(
+                            'ご入力のメールアドレスがログインIDとなります。',
+                            style: TextStyle(height: 22.sp / 16.sp),
+                          ),
+                          SizedBox(height: 28.w),
+                          const RequiredFieldTitle('メールアドレス'),
+                          SizedBox(height: 10.w),
+                          const TextInputField(
+                            'メールアドレス',
+                            type: FormType.email,
+                            hint: '例：email@example.com',
+                          ),
+                          SizedBox(height: 28.w),
+                          const RequiredFieldTitle('電話番号', required: false),
+                          SizedBox(height: 10.w),
+                          const TextInputField(
+                            '電話番号',
+                            type: FormType.phone,
+                            hint: '例：0901234000',
+                          ),
+                          SizedBox(height: 30.w),
+                          Row(
+                            children: [
+                              Text(
+                                'メルマガの配信を希望する',
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  height: 1,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const Spacer(),
+                              Switch(
+                                value: isSwitched.value,
+                                onChanged: (value) => isSwitched.value = value,
+                              ),
+                            ],
                           ),
                         ],
                       ),

@@ -9,6 +9,7 @@ import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 enum FormType {
   text,
   ruby,
+  phone,
   email,
   password,
   date,
@@ -17,6 +18,7 @@ enum FormType {
 Map<FormType, TextInputType?> _keyboard = {
   FormType.text: TextInputType.text,
   FormType.ruby: TextInputType.text,
+  FormType.phone: TextInputType.phone,
   FormType.email: TextInputType.emailAddress,
   FormType.password: TextInputType.visiblePassword,
   FormType.date: TextInputType.datetime,
@@ -27,6 +29,11 @@ Map<FormType, List<TextInputFormatter>?> _formatters = {
   FormType.ruby: [
     FilteringTextInputFormatter.allow(
       RegExp(r'[ぁ-ん]'),
+    ),
+  ],
+  FormType.phone: [
+    FilteringTextInputFormatter.allow(
+      RegExp(r'[0-9]+'),
     ),
   ],
   FormType.email: [
@@ -71,6 +78,7 @@ class TextInputField extends HookWidget {
     Map<FormType, Widget?> suffix = {
       FormType.text: null,
       FormType.ruby: null,
+      FormType.phone: null,
       FormType.email: null,
       FormType.password: IconButton(
         icon: SvgPicture.asset(

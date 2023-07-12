@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget headindIcon(String iconName, {int colorCode = 0xFFF2F2F2}) {
+Widget headindIcon(String iconName,
+    {int colorCode = 0xFFF2F2F2, double? width, double? height}) {
   return Container(
     margin: EdgeInsets.only(top: 20.w),
     width: 60.w,
@@ -16,8 +17,8 @@ Widget headindIcon(String iconName, {int colorCode = 0xFFF2F2F2}) {
       fit: BoxFit.scaleDown,
       child: SvgPicture.asset(
         'assets/icons/$iconName.svg',
-        width: 35.w,
-        height: 35.w,
+        width: width ?? 35.w,
+        height: height ?? 35.w,
         colorFilter: const ColorFilter.mode(
           Colors.black,
           BlendMode.srcIn,
@@ -28,9 +29,17 @@ Widget headindIcon(String iconName, {int colorCode = 0xFFF2F2F2}) {
 }
 
 class ContentsArea extends StatelessWidget {
-  const ContentsArea({super.key, required this.widgets, this.iconName});
+  const ContentsArea({
+    super.key,
+    required this.widgets,
+    this.iconName,
+    this.iconWidth,
+    this.iconHeight,
+  });
   final List<Widget> widgets;
   final String? iconName;
+  final double? iconWidth;
+  final double? iconHeight;
 
   @override
   Widget build(BuildContext context) {
