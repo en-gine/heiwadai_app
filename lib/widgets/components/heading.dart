@@ -21,10 +21,10 @@ class Heading extends StatelessWidget {
         height: (type == HeadingType.h2) ? 44.sp / 24.sp : 36.sp / 20.sp,
         fontWeight: FontWeight.bold,
       ),
-      textHeightBehavior: const TextHeightBehavior(
-        applyHeightToFirstAscent: false,
-        applyHeightToLastDescent: false,
-      ),
+      // textHeightBehavior: const TextHeightBehavior(
+      //   applyHeightToFirstAscent: false,
+      //   applyHeightToLastDescent: false,
+      // ),
     );
   }
 }

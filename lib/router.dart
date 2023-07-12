@@ -8,8 +8,7 @@ import 'package:heiwadai_app/screens/home_screen.dart';
 import 'package:heiwadai_app/screens/voucher_list_screen.dart';
 
 final authProvider = Provider((ref) => (
-      // isAuth: true,
-      isAuth: false,
+      isAuth: true,
       isLoading: false,
       hasError: false,
     ));
