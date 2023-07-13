@@ -46,6 +46,7 @@ dependencies:
   intl: ^0.18.0
   google_fonts: ^5.1.0
   flutter_datetime_picker_plus: ^2.0.1
+  collection: ^1.17.1
 
 dev_dependencies:
   flutter_test:

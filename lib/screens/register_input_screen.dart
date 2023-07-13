@@ -112,7 +112,7 @@ class RegisterInputScreen extends HookWidget {
                     iconHeight: 32.64.w,
                     widgets: [
                       Container(
-                        margin: EdgeInsets.only(bottom: 6.sp),
+                        margin: EdgeInsets.only(top: 14.w, bottom: 6.sp),
                         child: const Heading('基本情報', type: HeadingType.h3),
                       ),
                       SizedBox(height: 28.w),

@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
+import 'package:heiwadai_app/widgets/menu/footer_overview.dart';
 import 'package:heiwadai_app/widgets/components/form/text_input_field.dart';
 
 class LoginScreen extends HookWidget {
@@ -210,47 +211,7 @@ class LoginScreen extends HookWidget {
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 15.w, bottom: 25.w),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        '運営会社',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: Colors.black,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        '利用規約',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: Colors.black,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        'プライバシーポリシー',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: Colors.black,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              const FooterOverview(),
             ],
           ),
         ),
