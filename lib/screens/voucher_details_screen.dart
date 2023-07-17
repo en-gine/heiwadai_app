@@ -89,32 +89,68 @@ class VoucherDetailsScreen extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           child: Container(
-            margin: const EdgeInsets.only(top: 80),
+            margin: const EdgeInsets.only(top: 40),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(height: 10.w),
-                  RichText(
-                    text: TextSpan(
-                      style: TextStyle(
-                        fontSize: 24.sp,
-                        height: 34.sp / 40.sp,
-                        fontWeight: FontWeight.bold,
+                  Container(
+                    width: 180.w,
+                    height: 180.w,
+                    decoration: BoxDecoration(
+                      // color: Colors.white,
+                      borderRadius: BorderRadius.circular(90.w),
+                      border: Border.all(
                         color: Colors.black,
+                        width: 4,
                       ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextSpan(
-                          text: coupon.name,
-                          style: TextStyle(fontSize: 40.sp),
+                        SvgPicture.asset(
+                          'assets/icons/present_box.svg',
+                          width: 50.w,
+                          height: 50.w,
                         ),
-                        TextSpan(
-                            text: (coupon.couponType == CouponType.standard)
-                                ? "割引クーポン"
-                                : "クーポン"),
+                        SizedBox(height: 14.w),
+                        SizedBox(
+                          width: 140.w,
+                          child: RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                              style: TextStyle(
+                                fontSize: 24.sp,
+                                height: 34.sp / 24.sp,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: coupon.name,
+                                  style: TextStyle(
+                                    fontSize: (coupon.couponType ==
+                                            CouponType.standard)
+                                        ? 40.sp
+                                        : 35.sp,
+                                    height: 40.sp / 40.sp,
+                                  ),
+                                ),
+                                TextSpan(
+                                    text: (coupon.couponType ==
+                                            CouponType.standard)
+                                        ? "割引クーポン"
+                                        : "クーポン"),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
+                  SizedBox(height: 10.w),
                   SizedBox(
                     width: 220.w,
                     child: Text(
@@ -147,7 +183,7 @@ class VoucherDetailsScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(bottom: 5.w),
+                              padding: EdgeInsets.only(bottom: 10.w),
                               child: const Heading("ご利用方法"),
                             ),
                             RichText(
@@ -203,7 +239,7 @@ class VoucherDetailsScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(bottom: 5.w),
+                              padding: EdgeInsets.only(bottom: 10.w),
                               child: const Heading("クーポン利用対象店"),
                             ),
                             ListView.builder(
