@@ -43,6 +43,18 @@ class MyApp extends ConsumerWidget {
               borderRadius: BorderRadius.all(Radius.zero),
             ),
           ),
+          dialogTheme: const DialogTheme().copyWith(
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+            ),
+            titleTextStyle: TextStyle(
+              fontSize: 22.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
         ),
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,

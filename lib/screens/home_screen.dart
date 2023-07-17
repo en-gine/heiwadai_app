@@ -12,17 +12,18 @@ import 'package:heiwadai_app/widgets/coupon_button.dart';
 import 'package:heiwadai_app/widgets/plan_card.dart';
 import 'package:heiwadai_app/widgets/contents_area.dart';
 import 'package:heiwadai_app/widgets/components/heading.dart';
+// import 'package:heiwadai_app/widgets/components/dialog.dart';
 
 import 'package:heiwadai_app/data/coupons.dart';
 import 'package:heiwadai_app/data/posts.dart';
 import 'package:heiwadai_app/data/stores.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key, this.title});
-  final String? title;
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Future.delayed(Duration.zero, () => notificationDialog(context));
     DateFormat dateFormat = DateFormat('yyyy.MM.dd', "ja_JP");
 
     Widget couponList = const SizedBox(height: 10);
@@ -194,4 +195,5 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: const MyBottomNavi(),
     );
   }
+
 }
