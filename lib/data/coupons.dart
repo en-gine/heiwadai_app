@@ -8,7 +8,7 @@ List<CouponItem> coupons = [
     couponType: CouponType.standard,
     discount: 500,
     expire: DateTime(2023, 10, 20),
-    isCombinationable: true,
+    isCombinationable: false,
     notices: [],
     usedAt: null,
     targetStore: stores,

@@ -8,6 +8,7 @@ import 'package:heiwadai_app/screens/register_done_screen.dart';
 import 'package:heiwadai_app/screens/register_pass_screen.dart';
 import 'package:heiwadai_app/screens/home_screen.dart';
 import 'package:heiwadai_app/screens/voucher_list_screen.dart';
+import 'package:heiwadai_app/screens/voucher_details_screen.dart';
 
 final authProvider = Provider((ref) => (
       isAuth: true,
@@ -33,6 +34,13 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: 'voucher_list',
             builder: (context, state) => const VoucherListScreen(),
+          ),
+          GoRoute(
+            path: 'voucher_details/:id',
+            builder: (context, state) {
+              if (state.pathParameters['id'] == null) return const HomeScreen();
+              return VoucherDetailsScreen(id: state.pathParameters['id']!);
+            },
           ),
         ],
       ),

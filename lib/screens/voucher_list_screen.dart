@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
@@ -38,8 +39,7 @@ Widget stamp(String image, String date) {
 }
 
 class VoucherListScreen extends StatelessWidget {
-  const VoucherListScreen({super.key, this.title});
-  final String? title;
+  const VoucherListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -64,75 +64,74 @@ class VoucherListScreen extends StatelessWidget {
                 children: <Widget>[
                   SizedBox(height: 10.w),
                   Container(
-                      margin: EdgeInsets.symmetric(horizontal: 20.w),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10.w)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.15),
-                            blurRadius: 20,
-                            offset: const Offset(0, 0),
+                    margin: EdgeInsets.symmetric(horizontal: 20.w),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(10.w)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.15),
+                          blurRadius: 20,
+                          offset: const Offset(0, 0),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 30.w, vertical: 15.w),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 10.w),
+                                child: const Heading("チェックイン履歴"),
+                              ),
+                              Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      stamp(
+                                        'assets/images/wood.png',
+                                        "2023/10/12",
+                                      ),
+                                      SizedBox(width: 10.w),
+                                      stamp(
+                                        'assets/images/wood.png',
+                                        "2023/10/12",
+                                      ),
+                                      SizedBox(width: 10.w),
+                                      stamp(
+                                        'assets/images/wood.png',
+                                        "2023/10/12",
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      stamp(
+                                        'assets/images/wood.png',
+                                        "2023/10/12",
+                                      ),
+                                      SizedBox(width: 10.w),
+                                      stamp(
+                                        'assets/images/wood.png',
+                                        "2023/10/12",
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            margin: EdgeInsets.symmetric(
-                                horizontal: 30.w, vertical: 15.w),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(bottom: 10.w),
-                                  child: const Heading("チェックイン履歴"),
-                                ),
-                                Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        stamp(
-                                          'assets/images/wood.png',
-                                          "2023/10/12",
-                                        ),
-                                        SizedBox(width: 10.w),
-                                        stamp(
-                                          'assets/images/wood.png',
-                                          "2023/10/12",
-                                        ),
-                                        SizedBox(width: 10.w),
-                                        stamp(
-                                          'assets/images/wood.png',
-                                          "2023/10/12",
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        stamp(
-                                          'assets/images/wood.png',
-                                          "2023/10/12",
-                                        ),
-                                        SizedBox(width: 10.w),
-                                        stamp(
-                                          'assets/images/wood.png',
-                                          "2023/10/12",
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      )),
+                        ),
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 10.w),
                   RichText(
                     text: TextSpan(
@@ -185,6 +184,51 @@ class VoucherListScreen extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(bottom: 5.w),
                               child: const Heading("クーポン利用対象店"),
+                            ),
+                            ListView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              itemCount: stores.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                    margin: EdgeInsets.only(bottom: 5.w),
+                                    padding: EdgeInsets.only(left: 10.w),
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xfff2f2f2),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Text(stores[index].name),
+                                        const Spacer(),
+                                        SizedBox(
+                                          width: 25.w,
+                                          height: 40.w,
+                                          child: IconButton(
+                                            iconSize: 20.w,
+                                            padding: EdgeInsets.zero,
+                                            constraints: const BoxConstraints(),
+                                            onPressed: () {},
+                                            icon: SvgPicture.asset(
+                                              'assets/icons/map.svg',
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 25.w,
+                                          height: 40.w,
+                                          child: IconButton(
+                                            iconSize: 12.w,
+                                            padding: EdgeInsets.zero,
+                                            constraints: const BoxConstraints(),
+                                            onPressed: () {},
+                                            icon: SvgPicture.asset(
+                                              'assets/icons/arrow_right.svg',
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ));
+                              },
                             ),
                             const SizedBox(height: 100),
                           ],
