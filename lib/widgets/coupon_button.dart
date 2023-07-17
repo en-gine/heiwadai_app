@@ -3,16 +3,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import "package:intl/intl.dart";
+import 'package:go_router/go_router.dart';
 
 import 'package:heiwadai_app/models/coupon_item.dart';
 
 class CouponButton extends StatelessWidget {
   const CouponButton({
     super.key,
+    required this.id,
     required this.name,
     required this.expire,
     required this.type,
   });
+  final String id;
   final String name;
   final DateTime expire;
   final CouponType type;
@@ -37,7 +40,7 @@ class CouponButton extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: () {},
+        onPressed: ()  => context.push('/voucher_details/$id'),
         child: Row(
           children: [
             Column(
