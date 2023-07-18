@@ -13,7 +13,7 @@ import 'package:heiwadai_app/widgets/components/heading.dart';
 import 'package:heiwadai_app/data/coupons.dart';
 import 'package:heiwadai_app/data/stores.dart';
 
-Widget stamp(String image, String date) {
+Widget stamp(String image, String date, {double fontSize = 10,double offset = 10}) {
   return Container(
     width: 85.w,
     height: 85.w,
@@ -25,12 +25,12 @@ Widget stamp(String image, String date) {
       ),
     ),
     child: Padding(
-      padding: EdgeInsets.only(top: 10.w),
+      padding: EdgeInsets.only(top: offset.w),
       child: Text(
         date,
         style: TextStyle(
-          fontSize: 10.sp,
-          height: 22.sp / 10.sp,
+          fontSize: fontSize.sp,
+          height: 22.sp / fontSize.sp,
           fontWeight: FontWeight.bold,
         ),
       ),
