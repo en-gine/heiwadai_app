@@ -95,17 +95,17 @@ class VoucherListScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       stamp(
-                                        'assets/images/wood.png',
+                                        'assets/images/stamp_sample1.png',
                                         "2023/10/12",
                                       ),
                                       SizedBox(width: 10.w),
                                       stamp(
-                                        'assets/images/wood.png',
+                                        'assets/images/stamp_sample2.png',
                                         "2023/10/12",
                                       ),
                                       SizedBox(width: 10.w),
                                       stamp(
-                                        'assets/images/wood.png',
+                                        'assets/images/stamp_sample1.png',
                                         "2023/10/12",
                                       ),
                                     ],
@@ -114,12 +114,12 @@ class VoucherListScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       stamp(
-                                        'assets/images/wood.png',
+                                        'assets/images/stamp_sample1.png',
                                         "2023/10/12",
                                       ),
                                       SizedBox(width: 10.w),
                                       stamp(
-                                        'assets/images/wood.png',
+                                        'assets/images/stamp_sample2.png',
                                         "2023/10/12",
                                       ),
                                     ],
