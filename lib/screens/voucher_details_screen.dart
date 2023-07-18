@@ -9,13 +9,14 @@ import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
 import 'package:heiwadai_app/widgets/contents_area.dart';
 import 'package:heiwadai_app/widgets/components/heading.dart';
+import 'package:heiwadai_app/widgets/components/dialog.dart';
 
 import 'package:heiwadai_app/data/stores.dart';
 import 'package:heiwadai_app/data/coupons.dart';
 
 import 'package:heiwadai_app/models/coupon_item.dart';
 
-Widget activateCoupon(String id) {
+Widget activateCoupon(BuildContext context, String id) {
   return Container(
     height: 122.w,
     padding: EdgeInsets.only(top: 10.w, right: 20.w, bottom: 20.w, left: 20.w),
@@ -35,7 +36,18 @@ Widget activateCoupon(String id) {
         ),
         SizedBox(height: 10.w),
         FilledButton(
-          onPressed: () {},
+          onPressed: () {
+            modalDialog(
+              context,
+              'クーポンを使用済にします',
+              '使用する際はスタッフに画面を提示してください。\n\nこの処理はキャンセルできません。\n宜しいですか？',
+              noText: 'キャンセル',
+              yesText: '使用済にする',
+              onPressed: () {
+                print('使用済');
+              },
+            );
+          },
           style: ButtonStyle(
             minimumSize: MaterialStateProperty.all<Size>(
               Size(240.w, 54.w),
@@ -300,7 +312,7 @@ class VoucherDetailsScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: activateCoupon(id),
+      bottomNavigationBar: activateCoupon(context, id),
     );
   }
 }

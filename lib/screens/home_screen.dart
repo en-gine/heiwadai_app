@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Future.delayed(Duration.zero, () => notificationDialog(context));
+    // Future.delayed(Duration.zero, () => modalDialog(context));
     DateFormat dateFormat = DateFormat('yyyy.MM.dd', "ja_JP");
 
     Widget couponList = const SizedBox(height: 10);
