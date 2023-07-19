@@ -10,6 +10,7 @@ import 'package:heiwadai_app/screens/home_screen.dart';
 import 'package:heiwadai_app/screens/voucher_list_screen.dart';
 import 'package:heiwadai_app/screens/voucher_details_screen.dart';
 import 'package:heiwadai_app/screens/news_list_screen.dart';
+import 'package:heiwadai_app/screens/news_details_screen.dart';
 
 final authProvider = Provider((ref) => (
       isAuth: true,
@@ -46,6 +47,13 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: 'news_list',
             builder: (context, state) => const NewsListScreen(),
+          ),
+          GoRoute(
+            path: 'news_details/:id',
+            builder: (context, state) {
+              if (state.pathParameters['id'] == null) return const HomeScreen();
+              return NewsDetailsScreen(id: state.pathParameters['id']!);
+            },
           ),
         ],
       ),

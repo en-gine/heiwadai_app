@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import "package:intl/intl.dart";
+import 'package:go_router/go_router.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
@@ -37,29 +38,34 @@ class NewsListScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 15.w),
                   for (final post in posts)
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(bottom: 6.w),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20.w, vertical: 10.w),
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
+                    GestureDetector(
+                      onTap: () {
+                        context.push('/news_details/${post.id}');
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(bottom: 6.w),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20.w, vertical: 10.w),
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(dateFormat.format(post.postDate.toLocal()),
+                                    style: const TextStyle(fontSize: 16)),
+                                Text(
+                                  post.title,
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            ),
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(dateFormat.format(post.postDate.toLocal()),
-                                  style: const TextStyle(fontSize: 16)),
-                              Text(
-                                post.title,
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   SizedBox(height: 125.w),
                 ],
