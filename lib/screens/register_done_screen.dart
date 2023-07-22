@@ -5,7 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 // import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:heiwadai_app/widgets/contents_area.dart';
+import 'package:heiwadai_app/widgets/components/contents_area.dart';
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/footer_overview.dart';
 

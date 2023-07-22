@@ -9,7 +9,7 @@ import 'package:flutter_hooks/flutter_hooks.dart' as hooks;
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
 import 'package:heiwadai_app/widgets/menu/appbar_bottom.dart';
-import 'package:heiwadai_app/widgets/plan_card.dart';
+import 'package:heiwadai_app/widgets/components/plan_card.dart';
 
 import 'package:heiwadai_app/data/stores.dart';
 import 'package:heiwadai_app/data/reservations.dart';

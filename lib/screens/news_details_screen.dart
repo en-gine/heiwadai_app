@@ -8,7 +8,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
 import 'package:heiwadai_app/widgets/menu/appbar_bottom.dart';
-import 'package:heiwadai_app/widgets/contents_area.dart';
+import 'package:heiwadai_app/widgets/components/contents_area.dart';
 import 'package:heiwadai_app/widgets/components/heading.dart';
 
 import 'package:heiwadai_app/data/stores.dart';

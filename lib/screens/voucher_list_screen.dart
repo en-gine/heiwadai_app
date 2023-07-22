@@ -6,8 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
 import 'package:heiwadai_app/widgets/menu/appbar_bottom.dart';
-import 'package:heiwadai_app/widgets/coupon_button.dart';
-import 'package:heiwadai_app/widgets/contents_area.dart';
+import 'package:heiwadai_app/widgets/components/coupon_button.dart';
+import 'package:heiwadai_app/widgets/components/contents_area.dart';
 import 'package:heiwadai_app/widgets/components/heading.dart';
 
 import 'package:heiwadai_app/data/coupons.dart';

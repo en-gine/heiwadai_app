@@ -7,7 +7,7 @@ import "package:intl/intl.dart";
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
-import 'package:heiwadai_app/widgets/contents_area.dart';
+import 'package:heiwadai_app/widgets/components/contents_area.dart';
 import 'package:heiwadai_app/widgets/components/heading.dart';
 import 'package:heiwadai_app/widgets/components/dialog.dart';
 
