@@ -16,6 +16,7 @@ import 'package:heiwadai_app/widgets/components/heading.dart';
 
 import 'package:heiwadai_app/data/coupons.dart';
 import 'package:heiwadai_app/data/posts.dart';
+import 'package:heiwadai_app/data/reservations.dart';
 import 'package:heiwadai_app/data/stores.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,7 +25,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Future.delayed(Duration.zero, () => modalDialog(context));
-    DateFormat dateFormat = DateFormat('yyyy.MM.dd', "ja_JP");
+    DateFormat dateFormatPlan = DateFormat('yyyy/MM/dd', "ja_JP");
+    DateFormat dateFormatInfo = DateFormat('yyyy.MM.dd', "ja_JP");
 
     Widget couponList = const SizedBox(height: 10);
     Widget postList = const SizedBox(height: 10);
@@ -115,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(dateFormat.format(post.postDate.toLocal()),
+                        Text(dateFormatInfo.format(post.postDate.toLocal()),
                             style: const TextStyle(fontSize: 16)),
                         Text(
                           post.title,
@@ -150,16 +152,17 @@ class HomeScreen extends StatelessWidget {
                 children: <Widget>[
                   SizedBox(height: 5.w),
                   const Heading('ご予約中のプラン'),
-                  const PlanCard(
-                    title: "平和台ホテル天神",
-                    startDate: "2023/12/20",
-                    endDate: "2023/12/20",
-                    people: "1",
-                    summary: "朝食なし夕食あり／禁煙／セミダブル",
-                    // priceText: "¥1000",
-                    imageUrl: "https://placehold.jp/150x150.png",
-                  ),
                   SizedBox(height: 5.w),
+                  for (final reservation in reservations)
+                    PlanCard(
+                      title: '${reservation.stayStore.name}${reservation.stayStore.branchName}',
+                      startDate: dateFormatPlan.format(reservation.checkInDate.toLocal()),
+                      endDate: dateFormatPlan.format(reservation.checkOutDate.toLocal()),
+                      people: "1",
+                      summary:
+                          "${reservation.reservedPlan.mealType.displayName}／${reservation.reservedPlan.smokeType.displayName}／${reservation.reservedPlan.roomType.displayName}",
+                      imageUrl: "https://placehold.jp/150x150.png",
+                    ),
                   RichText(
                     text: TextSpan(
                         style: TextStyle(
@@ -196,5 +199,4 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: const MyBottomNavi(),
     );
   }
-
 }

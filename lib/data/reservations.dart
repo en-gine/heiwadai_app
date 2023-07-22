@@ -8,7 +8,7 @@ List<Reservation> reservations = [
   Reservation(
     id: "1",
     checkInDate: DateTime(2021, 10, 20),
-    checkOutDate: DateTime(2021, 10, 21),
+    checkOutDate: DateTime(2021, 10, 22),
     checkInTime: "27:00",
     content: "0000",
     cost: 10000,
@@ -21,8 +21,8 @@ List<Reservation> reservations = [
   ),
   Reservation(
     id: "2",
-    checkInDate: DateTime(2021, 10, 20),
-    checkOutDate: DateTime(2021, 10, 21),
+    checkInDate: DateTime(2021, 10, 21),
+    checkOutDate: DateTime(2021, 10, 25),
     checkInTime: "15:00",
     content: "0000",
     cost: 10000,
