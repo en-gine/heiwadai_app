@@ -53,6 +53,7 @@ class Plan {
     required this.id,
     required this.title,
     required this.price,
+    required this.imageURL,
     required this.roomType,
     required this.mealType,
     required this.smokeType,
@@ -61,6 +62,7 @@ class Plan {
   final String id;
   final String title;
   final int price;
+  final String imageURL;
   final RoomType roomType;
   final MealType mealType;
   final SmokeType smokeType;
@@ -72,6 +74,7 @@ class Plan {
 // 	ID        uuid.UUID
 // 	Title     string
 // 	Price     uint
+// 	ImageURL  string
 // 	RoomType  RoomType
 // 	MealType  MealType
 // 	SmokeType SmokeType

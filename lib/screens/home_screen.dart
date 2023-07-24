@@ -161,7 +161,7 @@ class HomeScreen extends StatelessWidget {
                       people: "1",
                       summary:
                           "${reservation.reservedPlan.mealType.displayName}／${reservation.reservedPlan.smokeType.displayName}／${reservation.reservedPlan.roomType.displayName}",
-                      imageUrl: "https://placehold.jp/150x150.png",
+                      imageUrl: reservation.reservedPlan.imageURL,
                     ),
                   RichText(
                     text: TextSpan(

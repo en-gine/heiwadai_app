@@ -296,7 +296,7 @@ class SearchScreen extends StatelessWidget {
                               .difference(reservation.checkInDate.toLocal())
                               .inDays +
                           1,
-                      imageUrl: "https://placehold.jp/150x180.png",
+                      imageUrl: reservation.reservedPlan.imageURL,
                     ),
                   SizedBox(height: 100.w),
                 ],
