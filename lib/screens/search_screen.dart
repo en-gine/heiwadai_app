@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import "package:intl/intl.dart";
+// import "package:intl/intl.dart";
 import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:go_router/go_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +10,7 @@ import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
 import 'package:heiwadai_app/widgets/menu/appbar_bottom.dart';
 import 'package:heiwadai_app/widgets/components/plan_card.dart';
+import 'package:heiwadai_app/widgets/components/calendar/open_calendar.dart';
 
 import 'package:heiwadai_app/data/stores.dart';
 import 'package:heiwadai_app/data/reservations.dart';
@@ -79,7 +80,7 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateFormat dateFormat = DateFormat('yyyy/MM/dd', "ja_JP");
+    // DateFormat dateFormat = DateFormat('yyyy/MM/dd', "ja_JP");
 
     List<Store> hotels =
         stores.where((store) => store.stayAble == true).toList();
@@ -164,6 +165,10 @@ class SearchScreen extends StatelessWidget {
                               child: Column(
                                 children: [
                                   TextFormField(
+                                    onTap: () {
+                                      openCalendar(context);
+                                    },
+                                    readOnly: true,
                                     decoration: InputDecoration(
                                       hintText: '日付を選択',
                                       prefixIcon: SvgPicture.asset(
