@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:go_router/go_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_hooks/flutter_hooks.dart' as hooks;
+// import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
@@ -16,6 +17,7 @@ import 'package:heiwadai_app/data/stores.dart';
 import 'package:heiwadai_app/data/reservations.dart';
 
 import 'package:heiwadai_app/models/store.dart';
+import 'package:heiwadai_app/models/calendar.dart';
 
 class HotelItem extends hooks.HookWidget {
   const HotelItem({super.key, required this.hotel});
@@ -164,23 +166,51 @@ class SearchScreen extends StatelessWidget {
                               padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.w),
                               child: Column(
                                 children: [
-                                  TextFormField(
-                                    onTap: () {
-                                      openCalendar(context);
-                                    },
-                                    readOnly: true,
-                                    decoration: InputDecoration(
-                                      hintText: '日付を選択',
-                                      prefixIcon: SvgPicture.asset(
-                                        'assets/icons/calendar.svg',
-                                        width: 20.93.w,
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormField(
+                                          onTap: () {
+                                            openCalendar(context, ReservationMode.start);
+                                          },
+                                          readOnly: true,
+                                          decoration: InputDecoration(
+                                            hintText: '開始日を選択',
+                                            prefixIcon: SvgPicture.asset(
+                                              'assets/icons/calendar.svg',
+                                              width: 20.93.w,
+                                            ),
+                                            prefixIconConstraints:
+                                                BoxConstraints(minWidth: 38.w),
+                                            border: const UnderlineInputBorder(),
+                                            contentPadding: EdgeInsets.all(9.w),
+                                            isDense: true,
+                                          ),
+                                        ),
                                       ),
-                                      prefixIconConstraints:
-                                          BoxConstraints(minWidth: 38.w),
-                                      border: const UnderlineInputBorder(),
-                                      contentPadding: EdgeInsets.all(9.w),
-                                      isDense: true,
-                                    ),
+                                      SizedBox(width: 10.w),
+                                      Expanded(
+                                        child: TextFormField(
+                                          onTap: () {
+                                            openCalendar(context, ReservationMode.end);
+                                          },
+                                          readOnly: true,
+                                          decoration: InputDecoration(
+                                            
+                                            hintText: '終了日を選択',
+                                            prefixIcon: SvgPicture.asset(
+                                              'assets/icons/calendar.svg',
+                                              width: 20.93.w,
+                                            ),
+                                            prefixIconConstraints:
+                                                BoxConstraints(minWidth: 38.w),
+                                            border: const UnderlineInputBorder(),
+                                            contentPadding: EdgeInsets.all(9.w),
+                                            isDense: true,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   SizedBox(height: 20.w),
                                   TextFormField(

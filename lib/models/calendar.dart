@@ -1,0 +1,4 @@
+enum ReservationMode {
+  start,
+  end,
+}
