@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:heiwadai_app/widgets/components/calendar/month_calendar.dart';
 
 import 'package:heiwadai_app/models/calendar.dart';
+import 'package:heiwadai_app/provider/reservation.dart';
 
 Widget calendar(ReservationMode res) {
   DateTime now = DateTime.now().toLocal();
@@ -87,7 +88,7 @@ class BottomConfirmForm extends ConsumerWidget {
                   decoration: BoxDecoration(
                     border: Border(
                       left: BorderSide(
-                        color: Color(0xffb3b3b3),
+                        color: const Color(0xffb3b3b3),
                         width: 1.w,
                       ),
                     ),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-// import "package:intl/intl.dart";
+import "package:intl/intl.dart";
 import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:go_router/go_router.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_hooks/flutter_hooks.dart' as hooks;
-// import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
@@ -19,26 +18,29 @@ import 'package:heiwadai_app/data/reservations.dart';
 import 'package:heiwadai_app/models/store.dart';
 import 'package:heiwadai_app/models/calendar.dart';
 
-class HotelItem extends hooks.HookWidget {
+import 'package:heiwadai_app/provider/reservation.dart';
+
+class HotelItem extends ConsumerWidget {
   const HotelItem({super.key, required this.hotel});
 
   final Store hotel;
 
   @override
-  Widget build(BuildContext context) {
-    final isSelected = hooks.useState(false);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selectHotel = ref.watch(selectHotelProvider);
+    final data = selectHotel.firstWhere((item) => item.id == hotel.id);
 
     return GestureDetector(
-      onTap: () => isSelected.value = !isSelected.value,
+      onTap: () => ref.read(selectHotelProvider.notifier).toggle(hotel.id),
       child: Container(
         width: 164.9.w,
         height: 60.w,
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.w),
         decoration: BoxDecoration(
-          color: (isSelected.value) ? const Color(0xfff2f2f2) : Colors.white,
+          color: (data.active) ? const Color(0xfff2f2f2) : Colors.white,
           border: Border.all(
             width: 2,
-            color: (isSelected.value) ? Colors.black : const Color(0xffb3b3b3),
+            color: (data.active) ? Colors.black : const Color(0xffb3b3b3),
           ),
           borderRadius: BorderRadius.circular(5.w),
         ),
@@ -77,12 +79,14 @@ class HotelItem extends hooks.HookWidget {
   }
 }
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends ConsumerWidget {
   const SearchScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // DateFormat dateFormat = DateFormat('yyyy/MM/dd', "ja_JP");
+  Widget build(BuildContext context, WidgetRef ref) {
+    final dateFormat = DateFormat('yyyy/MM/dd', "ja_JP");
+    final start = ref.watch(startProvider);
+    final end = ref.watch(endProvider);
 
     List<Store> hotels =
         stores.where((store) => store.stayAble == true).toList();
@@ -171,9 +175,16 @@ class SearchScreen extends StatelessWidget {
                                       Expanded(
                                         child: TextFormField(
                                           onTap: () {
-                                            openCalendar(context, ReservationMode.start);
+                                            openCalendar(
+                                                context, ReservationMode.start);
                                           },
                                           readOnly: true,
+                                          controller: start != null
+                                              ? TextEditingController(
+                                                  text:
+                                                      dateFormat.format(start),
+                                                )
+                                              : null,
                                           decoration: InputDecoration(
                                             hintText: '開始日を選択',
                                             prefixIcon: SvgPicture.asset(
@@ -182,7 +193,8 @@ class SearchScreen extends StatelessWidget {
                                             ),
                                             prefixIconConstraints:
                                                 BoxConstraints(minWidth: 38.w),
-                                            border: const UnderlineInputBorder(),
+                                            border:
+                                                const UnderlineInputBorder(),
                                             contentPadding: EdgeInsets.all(9.w),
                                             isDense: true,
                                           ),
@@ -192,11 +204,16 @@ class SearchScreen extends StatelessWidget {
                                       Expanded(
                                         child: TextFormField(
                                           onTap: () {
-                                            openCalendar(context, ReservationMode.end);
+                                            openCalendar(
+                                                context, ReservationMode.end);
                                           },
                                           readOnly: true,
+                                          controller: end != null
+                                              ? TextEditingController(
+                                                  text: dateFormat.format(end),
+                                                )
+                                              : null,
                                           decoration: InputDecoration(
-                                            
                                             hintText: '終了日を選択',
                                             prefixIcon: SvgPicture.asset(
                                               'assets/icons/calendar.svg',
@@ -204,7 +221,8 @@ class SearchScreen extends StatelessWidget {
                                             ),
                                             prefixIconConstraints:
                                                 BoxConstraints(minWidth: 38.w),
-                                            border: const UnderlineInputBorder(),
+                                            border:
+                                                const UnderlineInputBorder(),
                                             contentPadding: EdgeInsets.all(9.w),
                                             isDense: true,
                                           ),
