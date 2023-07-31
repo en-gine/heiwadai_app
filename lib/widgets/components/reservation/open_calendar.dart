@@ -84,7 +84,7 @@ class BottomConfirmForm extends ConsumerWidget {
                 Container(
                   width: 140.w,
                   height: 38.w,
-                  padding: EdgeInsets.symmetric(horizontal:10.w),
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
                   decoration: BoxDecoration(
                     border: Border(
                       left: BorderSide(
@@ -117,7 +117,7 @@ class BottomConfirmForm extends ConsumerWidget {
                   width: 65.w,
                   height: 38.w,
                   alignment: Alignment.bottomLeft,
-                  padding: EdgeInsets.symmetric(horizontal:10.w),
+                  padding: EdgeInsets.only(left: 10.w),
                   decoration: BoxDecoration(
                     border: Border(
                       left: BorderSide(
@@ -127,23 +127,25 @@ class BottomConfirmForm extends ConsumerWidget {
                     ),
                   ),
                   child: RichText(
+                      softWrap: false,
                       text: TextSpan(
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.sp,
-                      height: 28.sp / 16.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    children: [
-                      const TextSpan(text: "全"),
-                      (start != null && end != null)
-                          ? TextSpan(
-                              text: (end.difference(start).inDays + 1).toString(),
-                            )
-                          : const TextSpan(text: "-"),
-                      const TextSpan(text: "泊"),
-                    ],
-                  )),
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16.sp,
+                          height: 28.sp / 16.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        children: [
+                          const TextSpan(text: "全"),
+                          (start != null && end != null)
+                              ? TextSpan(
+                                  text: (end.difference(start).inDays + 1)
+                                      .toString(),
+                                )
+                              : const TextSpan(text: "-"),
+                          const TextSpan(text: "泊"),
+                        ],
+                      )),
                 ),
               ],
             ),
