@@ -11,6 +11,7 @@ import 'package:heiwadai_app/widgets/menu/drawer.dart';
 import 'package:heiwadai_app/widgets/menu/appbar_bottom.dart';
 import 'package:heiwadai_app/widgets/components/plan_card.dart';
 import 'package:heiwadai_app/widgets/components/reservation/open_calendar.dart';
+import 'package:heiwadai_app/widgets/components/reservation/open_guests.dart';
 
 import 'package:heiwadai_app/data/stores.dart';
 import 'package:heiwadai_app/data/reservations.dart';
@@ -87,6 +88,9 @@ class SearchScreen extends ConsumerWidget {
     final dateFormat = DateFormat('yyyy/MM/dd', "ja_JP");
     final start = ref.watch(startProvider);
     final end = ref.watch(endProvider);
+    final adultCount = ref.watch(adultGuestsProvider);
+    final childCount = ref.watch(childGuestsProvider);
+    final roomCount = ref.watch(roomCountProvider);
 
     List<Store> hotels =
         stores.where((store) => store.stayAble == true).toList();
@@ -234,6 +238,13 @@ class SearchScreen extends ConsumerWidget {
                                   ),
                                   SizedBox(height: 20.w),
                                   TextFormField(
+                                    onTap: () => openGuests(context),
+                                    readOnly: true,
+                                    controller: TextEditingController(
+                                      text: (adultCount != null)
+                                          ? "大人：$adultCount名、小人：${childCount ?? 0}名${roomCount != null && roomCount > 0 ? '（$roomCount部屋）' : ''}"
+                                          : null,
+                                    ),
                                     decoration: InputDecoration(
                                       hintText: '人数を選択',
                                       prefixIcon: SvgPicture.asset(

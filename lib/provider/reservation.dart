@@ -1,8 +1,14 @@
 import 'package:meta/meta.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// 宿泊期間
 final startProvider = StateProvider<DateTime?>((ref) => null);
 final endProvider = StateProvider<DateTime?>((ref) => null);
+
+// 宿泊人数
+final adultGuestsProvider = StateProvider<int?>((ref) => null);
+final childGuestsProvider = StateProvider<int?>((ref) => null);
+final roomCountProvider = StateProvider<int?>((ref) => null);
 
 @immutable
 class _Hotel {
