@@ -4,7 +4,7 @@ import "package:intl/intl.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:heiwadai_app/widgets/components/calendar/month_calendar.dart';
+import 'package:heiwadai_app/widgets/components/reservation/month_calendar.dart';
 
 import 'package:heiwadai_app/models/calendar.dart';
 import 'package:heiwadai_app/provider/reservation.dart';

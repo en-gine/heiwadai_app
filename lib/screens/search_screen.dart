@@ -10,7 +10,7 @@ import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
 import 'package:heiwadai_app/widgets/menu/appbar_bottom.dart';
 import 'package:heiwadai_app/widgets/components/plan_card.dart';
-import 'package:heiwadai_app/widgets/components/calendar/open_calendar.dart';
+import 'package:heiwadai_app/widgets/components/reservation/open_calendar.dart';
 
 import 'package:heiwadai_app/data/stores.dart';
 import 'package:heiwadai_app/data/reservations.dart';
@@ -200,7 +200,9 @@ class SearchScreen extends ConsumerWidget {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(width: 10.w),
+                                      SizedBox(width: 5.w),
+                                      const Text("～"),
+                                      SizedBox(width: 5.w),
                                       Expanded(
                                         child: TextFormField(
                                           onTap: () {
