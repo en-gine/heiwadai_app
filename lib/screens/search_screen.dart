@@ -91,6 +91,9 @@ class SearchScreen extends ConsumerWidget {
     final adultCount = ref.watch(adultGuestsProvider);
     final childCount = ref.watch(childGuestsProvider);
     final roomCount = ref.watch(roomCountProvider);
+    final selectHotel = ref.watch(selectHotelProvider);
+
+    final selectCount = selectHotel.where((item) => item.active == true).length;
 
     List<Store> hotels =
         stores.where((store) => store.stayAble == true).toList();
@@ -119,7 +122,7 @@ class SearchScreen extends ConsumerWidget {
                     ),
                   ),
                   TextSpan(
-                    text: "2",
+                    text: selectCount.toString(),
                     style: TextStyle(
                       fontSize: 24.sp,
                       height: 22.sp / 24.sp,
