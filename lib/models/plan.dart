@@ -3,7 +3,7 @@ enum RoomType {
   semiDouble('セミダブル'),
   double('ダブル'),
   twin('ツイン'),
-  forth('フォース'),
+  fourth('フォース'),
   ;
 
   const RoomType(this.displayName);
