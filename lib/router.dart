@@ -8,6 +8,7 @@ import 'package:heiwadai_app/screens/register_done_screen.dart';
 import 'package:heiwadai_app/screens/register_pass_screen.dart';
 import 'package:heiwadai_app/screens/home_screen.dart';
 import 'package:heiwadai_app/screens/search_screen.dart';
+import 'package:heiwadai_app/screens/plan_detail/plan_detail_screen.dart';
 import 'package:heiwadai_app/screens/voucher_list_screen.dart';
 import 'package:heiwadai_app/screens/voucher_details_screen.dart';
 import 'package:heiwadai_app/screens/news_list_screen.dart';
@@ -37,6 +38,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: 'search',
             builder: (context, state) => const SearchScreen(),
+          ),
+          GoRoute(
+            path: 'plan_detail',
+            builder: (context, state) => const PlanDetailScreen(),
           ),
           GoRoute(
             path: 'voucher_list',

@@ -49,6 +49,7 @@ dependencies:
   collection: ^1.17.1
   flutter_html: ^3.0.0-beta.2
   meta: ^1.9.1
+  google_maps_flutter: ^2.4.0
 
 dev_dependencies:
   flutter_test:

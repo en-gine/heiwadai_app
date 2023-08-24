@@ -9,19 +9,23 @@ import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 enum FormType {
   text,
   ruby,
+  number,
   phone,
   email,
   password,
   date,
+  multiline,
 }
 
 Map<FormType, TextInputType?> _keyboard = {
   FormType.text: TextInputType.text,
   FormType.ruby: TextInputType.text,
+  FormType.number: TextInputType.number,
   FormType.phone: TextInputType.phone,
   FormType.email: TextInputType.emailAddress,
   FormType.password: TextInputType.visiblePassword,
   FormType.date: TextInputType.datetime,
+  FormType.multiline: TextInputType.multiline,
 };
 
 Map<FormType, List<TextInputFormatter>?> _formatters = {
@@ -29,6 +33,11 @@ Map<FormType, List<TextInputFormatter>?> _formatters = {
   FormType.ruby: [
     FilteringTextInputFormatter.allow(
       RegExp(r'[ぁ-ん]'),
+    ),
+  ],
+  FormType.number: [
+    FilteringTextInputFormatter.allow(
+      RegExp(r'[0-9]+'),
     ),
   ],
   FormType.phone: [
@@ -51,6 +60,7 @@ Map<FormType, List<TextInputFormatter>?> _formatters = {
       RegExp(r'[0-9/]+'),
     ),
   ],
+  FormType.multiline: null,
 };
 
 class TextInputField extends HookWidget {
@@ -78,6 +88,7 @@ class TextInputField extends HookWidget {
     Map<FormType, Widget?> suffix = {
       FormType.text: null,
       FormType.ruby: null,
+      FormType.number: null,
       FormType.phone: null,
       FormType.email: null,
       FormType.password: IconButton(
@@ -91,6 +102,7 @@ class TextInputField extends HookWidget {
         },
       ),
       FormType.date: const Icon(Icons.calendar_today, color: Colors.black),
+      FormType.multiline: null,
     };
 
     return TextFormField(
@@ -99,6 +111,8 @@ class TextInputField extends HookWidget {
       obscureText: (type == FormType.password) ? isObscure.value : false,
       keyboardType: _keyboard[type],
       inputFormatters: _formatters[type],
+      maxLines: (type == FormType.multiline) ? null : 1,
+      minLines: (type == FormType.multiline) ? 7 : 1,
       decoration: InputDecoration(
         labelText: label,
         labelStyle: const TextStyle(color: Color(0xFFB3B3B3)),
@@ -147,9 +161,12 @@ class TextInputField extends HookWidget {
 
               DatePicker.showDatePicker(
                 context,
-                currentTime: DateTime.now().subtract(const Duration(days: 35 * 365)),
-                minTime: DateTime.now().subtract(const Duration(days: 120 * 365)),
-                maxTime: DateTime.now().subtract(const Duration(days: 10 * 365)),
+                currentTime:
+                    DateTime.now().subtract(const Duration(days: 35 * 365)),
+                minTime:
+                    DateTime.now().subtract(const Duration(days: 120 * 365)),
+                maxTime:
+                    DateTime.now().subtract(const Duration(days: 10 * 365)),
                 locale: LocaleType.jp,
                 onConfirm: (date) {
                   String? formatedDate;
