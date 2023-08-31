@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:heiwadai_app/widgets/components/form/required_field_title.dart';
 import 'package:heiwadai_app/widgets/components/form/text_input_field.dart';
 import 'package:heiwadai_app/widgets/components/form/dropdown_builder.dart';
 import 'package:heiwadai_app/widgets/components/border_heading.dart';
-// import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:heiwadai_app/widgets/components/heading.dart';
+import 'package:heiwadai_app/widgets/components/contents_area.dart';
 
 class PlanDetailForms extends StatelessWidget {
   const PlanDetailForms({super.key});
@@ -20,7 +21,18 @@ class PlanDetailForms extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // const BorderHeading('ご予約'),
+          Center(
+              child: headindIcon(
+            'schedule',
+            width: 31.64.w,
+            height: 31.19.w,
+          )),
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.only(bottom: 6.sp),
+            child: const Heading('ご予約', type: HeadingType.h3),
+          ),
+
           Form(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'plan_detail_forms.dart';
+import 'plan_detail_applied.dart';
 import 'notes.dart';
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
@@ -142,7 +143,7 @@ class PlanDetailScreen extends ConsumerWidget {
                                     children: [
                                       const TextSpan(text: '税込'),
                                       TextSpan(
-                                        text: '¥${plans[0].price}',
+                                        text: '¥${plans[0].price} ',
                                         style: TextStyle(
                                           fontSize: 26.sp,
                                         ),
@@ -417,13 +418,25 @@ class PlanDetailScreen extends ConsumerWidget {
                           ),
                         ),
                         SizedBox(height: 10.w),
-                        const Row(
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Spacer(),
-                            Text('地図アプリで見る'),
-                            SizedBox(width: 10),
-                            Text('>'),
-                            SizedBox(width: 20),
+                            const Spacer(),
+                            Text(
+                              '地図アプリで見る',
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                height: 16.sp / 14.sp,
+                                fontWeight: FontWeight.bold,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                            SizedBox(width: 10.w),
+                            SvgPicture.asset(
+                              'assets/icons/arrow_right.svg',
+                              width: 8.w,
+                            ),
+                            SizedBox(width: 20.w),
                           ],
                         ),
                         SizedBox(height: 40.w),
@@ -438,297 +451,8 @@ class PlanDetailScreen extends ConsumerWidget {
                             children: [
                               const BorderHeading('申し込み内容'),
                               SizedBox(height: 20.w),
-                              Table(
-                                border: TableBorder(
-                                  horizontalInside: BorderSide(
-                                    color: const Color(0xfff2f2f2),
-                                    width: 5.w,
-                                  ),
-                                ),
-                                columnWidths: Map.fromEntries([
-                                  MapEntry(0, FixedColumnWidth(125.w)),
-                                  MapEntry(1, FixedColumnWidth(210.w)),
-                                ]),
-                                children: [
-                                  TableRow(
-                                    children: [
-                                      Container(
-                                        height: 38.w,
-                                        padding: EdgeInsets.all(5.w),
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xffdadada),
-                                        ),
-                                        child: Text(
-                                          'チェックイン',
-                                          style: TextStyle(
-                                            fontSize: 15.sp,
-                                            height: 20.sp / 12.sp,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 38.w,
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 10.w,
-                                          vertical: 5.w,
-                                        ),
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: Text(
-                                          '2023年04月29日(土)',
-                                          style: TextStyle(
-                                            fontSize: 15.sp,
-                                            height: 20.sp / 12.sp,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  TableRow(
-                                    children: [
-                                      Container(
-                                        height: 38.w,
-                                        padding: EdgeInsets.all(5.w),
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xffdadada),
-                                        ),
-                                        child: Text(
-                                          'チェックアウト',
-                                          style: TextStyle(
-                                            fontSize: 15.sp,
-                                            height: 20.sp / 12.sp,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 38.w,
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 10.w,
-                                          vertical: 5.w,
-                                        ),
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: Text(
-                                          '2023年04月30日(日)',
-                                          style: TextStyle(
-                                            fontSize: 15.sp,
-                                            height: 20.sp / 12.sp,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  TableRow(
-                                    children: [
-                                      Container(
-                                        height: 38.w,
-                                        padding: EdgeInsets.all(5.w),
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xffdadada),
-                                        ),
-                                        child: Text(
-                                          '部屋',
-                                          style: TextStyle(
-                                            fontSize: 15.sp,
-                                            height: 20.sp / 12.sp,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 38.w,
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 10.w,
-                                          vertical: 5.w,
-                                        ),
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: Text(
-                                          'ツイン × 1部屋',
-                                          style: TextStyle(
-                                            fontSize: 15.sp,
-                                            height: 20.sp / 12.sp,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  TableRow(
-                                    children: [
-                                      Container(
-                                        height: 60.w,
-                                        padding: EdgeInsets.all(5.w),
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xffdadada),
-                                        ),
-                                        child: Text(
-                                          '人数',
-                                          style: TextStyle(
-                                            fontSize: 15.sp,
-                                            height: 20.sp / 12.sp,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 60.w,
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 10.w,
-                                          vertical: 5.w,
-                                        ),
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              '1名',
-                                              style: TextStyle(
-                                                fontSize: 15.sp,
-                                                height: 20.sp / 12.sp,
-                                              ),
-                                            ),
-                                            Text(
-                                              '（大人：1名、小人：0名）',
-                                              style: TextStyle(
-                                                fontSize: 12.sp,
-                                                height: 20.sp / 12.sp,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  TableRow(
-                                    children: [
-                                      Container(
-                                        height: 95.w,
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 5.w,
-                                          vertical: 10.w,
-                                        ),
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xffdadada),
-                                        ),
-                                        child: Text(
-                                          '料金',
-                                          style: TextStyle(
-                                            fontSize: 15.sp,
-                                            height: 20.sp / 12.sp,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 95.w,
-                                        padding: EdgeInsets.all(10.w),
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              '支払い合計',
-                                              style: TextStyle(
-                                                fontSize: 12.sp,
-                                                height: 16.sp / 12.sp,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            Text(
-                                              '26,000円',
-                                              style: TextStyle(
-                                                fontSize: 20.sp,
-                                                height: 25.sp / 20.sp,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                            Text(
-                                              '大人1名様¥10000子供1名様¥10000',
-                                              style: TextStyle(
-                                                fontSize: 12.sp,
-                                                height: 20.sp / 12.sp,
-                                              ),
-                                            ),
-                                            Text(
-                                              '※サービス料・消費税込み',
-                                              style: TextStyle(
-                                                fontSize: 12.sp,
-                                                height: 16.sp / 12.sp,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  TableRow(
-                                    children: [
-                                      Container(
-                                        height: 91.w,
-                                        padding: EdgeInsets.symmetric(
-                                          horizontal: 5.w,
-                                          vertical: 10.w,
-                                        ),
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xffdadada),
-                                        ),
-                                        child: Text(
-                                          'お支払い方法',
-                                          style: TextStyle(
-                                            fontSize: 15.sp,
-                                            height: 20.sp / 12.sp,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 91.w,
-                                        padding: EdgeInsets.all(10.w),
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              '現地払い',
-                                              style: TextStyle(
-                                                height: 22.sp / 16.sp,
-                                              ),
-                                            ),
-                                            SizedBox(height: 5.w),
-                                            Text(
-                                              '現地では現金・クレジットカード・Paypayでお支払いいただけます。',
-                                              style: TextStyle(
-                                                fontSize: 12.sp,
-                                                height: 20.sp / 12.sp,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                              const PlanDetailApplied(
+                                  colorMode: ColorMode.dark),
                             ],
                           ),
                         ),
