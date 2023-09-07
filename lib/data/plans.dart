@@ -15,7 +15,7 @@ List<Plan> plans = [
     id: "2",
     title: "彩り綺麗な朝を自分スタイルで♪＜RAGGRUPPI朝食Aセット＞",
     price: 30000,
-    imageURL: "https://placehold.jp/180x180.png",
+    imageURL: "https://placehold.jp/375x375.png",
     roomType: RoomType.double,
     mealType: MealType(dinner: true, morning: true),
     smokeType: SmokeType.smoking,

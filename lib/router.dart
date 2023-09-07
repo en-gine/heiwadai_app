@@ -11,6 +11,7 @@ import 'package:heiwadai_app/screens/search_screen.dart';
 import 'package:heiwadai_app/screens/plan_detail/plan_detail_screen.dart';
 import 'package:heiwadai_app/screens/plan_detail/comfirm_plan_screen.dart';
 import 'package:heiwadai_app/screens/plan_detail/plan_thanks_screen.dart';
+import 'package:heiwadai_app/screens/plan_detail/my_booking_screen.dart';
 import 'package:heiwadai_app/screens/voucher_list_screen.dart';
 import 'package:heiwadai_app/screens/voucher_details_screen.dart';
 import 'package:heiwadai_app/screens/news_list_screen.dart';
@@ -52,6 +53,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: 'plan_thanks',
             builder: (context, state) => const PlanThanksScreen(),
+          ),
+          GoRoute(
+            path: 'my_booking',
+            builder: (context, state) => const MyBookingScreen(),
           ),
           GoRoute(
             path: 'voucher_list',
