@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+// import 'package:heiwadai_app/feature/massage_check.dart';
+import 'package:heiwadai_app/feature/update_check.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:go_router/go_router.dart';
 import "package:intl/intl.dart";
@@ -37,12 +39,12 @@ class _ControlledSliderState extends State<ControlledSlider> {
   @override
   void initState() {
     super.initState();
+    // messageCheck();
+    updateCheck(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    // List<int> imgList = [1, 2, 3, 4];
-
     return Column(
       children: <Widget>[
         CarouselSlider(
