@@ -63,6 +63,7 @@ dependencies:
   package_info_plus: ^4.2.0
   version: ^3.0.2
   firebase_remote_config: ^4.3.3
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
