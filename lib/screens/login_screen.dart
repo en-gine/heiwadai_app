@@ -4,10 +4,43 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:heiwadai_app/api/v1/user/Auth.pb.dart';
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/footer_overview.dart';
 import 'package:heiwadai_app/widgets/components/form/text_input_field.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:heiwadai_app/provider/grpc_client.dart';
+
+// ログインリクエストを実行する関数
+Future<void> signIn(
+    WidgetRef ref,
+    String email,
+    String password
+    ) async {
+  final authController = ref.read(authControllerProvider);
+
+  try {
+    // ログインリクエストの実行
+    final response = await authController.signIn(
+      UserAuthRequest(
+        email: email,
+        password: password,
+      ),
+    );
+
+    // レスポンスの処理（例：トークンの保存、ユーザー情報の更新など）
+    if(response.accessToken != "") {
+      ref.read(tokenProvider.notifier).update((state) => response.accessToken);
+    }
+    if(response.refreshToken != "") {
+      ref.read(refreshTokenProvider.notifier).update((state) => response.refreshToken);
+    }
+  } catch (e) {
+    // エラー処理
+    print("ログイン失敗: $e");
+  }
+}
 
 class LoginScreen extends HookWidget {
   const LoginScreen({super.key, this.title});
