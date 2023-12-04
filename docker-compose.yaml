@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  buf:
+    container_name: buf-compiler
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./lib:/work

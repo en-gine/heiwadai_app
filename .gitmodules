@@ -1,0 +1,3 @@
+[submodule "lib/v1"]
+	path = lib/v1
+	url = git@github.com:en-gine/heiwadai_proto.git
