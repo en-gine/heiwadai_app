@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:heiwadai_app/feature/massage_check.dart';
+import 'package:heiwadai_app/feature/update_check.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:go_router/go_router.dart';
 import "package:intl/intl.dart";
 
@@ -12,12 +16,99 @@ import 'package:heiwadai_app/widgets/components/coupon_button.dart';
 import 'package:heiwadai_app/widgets/components/plan_card.dart';
 import 'package:heiwadai_app/widgets/components/contents_area.dart';
 import 'package:heiwadai_app/widgets/components/heading.dart';
-// import 'package:heiwadai_app/widgets/components/dialog.dart';
 
 import 'package:heiwadai_app/data/coupons.dart';
 import 'package:heiwadai_app/data/posts.dart';
 import 'package:heiwadai_app/data/reservations.dart';
 import 'package:heiwadai_app/data/stores.dart';
+import 'package:heiwadai_app/data/sliders.dart';
+
+class ControlledSlider extends StatefulWidget {
+  const ControlledSlider({super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return _ControlledSliderState();
+  }
+}
+
+class _ControlledSliderState extends State<ControlledSlider> {
+  final CarouselController _controller = CarouselController();
+  int _current = 0;
+
+  @override
+  void initState() {
+    messageCheck(context);
+    updateCheck(context);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        CarouselSlider(
+          carouselController: _controller,
+          options: CarouselOptions(
+            height: 80.0,
+            viewportFraction: 0.53,
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            // autoPlayCurve: Curves.fastOutSlowIn,
+            // enlargeCenterPage: true,
+            // enlargeFactor: 0.3,
+            onPageChanged: (index, reason) {
+              setState(() {
+                _current = index;
+              });
+            },
+          ),
+          items: sliders.map((slide) {
+            return Builder(
+              builder: (BuildContext context) {
+                return GestureDetector(
+                  onTap: () => launchUrl(Uri.parse(slide.url)),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    // margin: EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: const BoxDecoration(color: Colors.white),
+                    child: Image.asset(
+                      'assets/images/${slide.imageUrl}',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                );
+              },
+            );
+          }).toList(),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: sliders.asMap().entries.map((entry) {
+            return GestureDetector(
+              onTap: () => _controller.animateToPage(entry.key),
+              child: Container(
+                width: 12.0,
+                height: 12.0,
+                margin: const EdgeInsets.symmetric(
+                  vertical: 8.0,
+                  horizontal: 4.0,
+                ),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: (Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black)
+                        .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
+    );
+  }
+}
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -155,9 +246,12 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: 5.w),
                   for (final reservation in reservations)
                     PlanCard(
-                      title: '${reservation.stayStore.name}${reservation.stayStore.branchName}',
-                      startDate: dateFormatPlan.format(reservation.checkInDate.toLocal()),
-                      endDate: dateFormatPlan.format(reservation.checkOutDate.toLocal()),
+                      title:
+                          '${reservation.stayStore.name}${reservation.stayStore.branchName}',
+                      startDate: dateFormatPlan
+                          .format(reservation.checkInDate.toLocal()),
+                      endDate: dateFormatPlan
+                          .format(reservation.checkOutDate.toLocal()),
                       people: "1",
                       summary:
                           "${reservation.reservedPlan.mealType.displayName}／${reservation.reservedPlan.smokeType.displayName}／${reservation.reservedPlan.roomType.displayName}",
@@ -186,6 +280,7 @@ class HomeScreen extends StatelessWidget {
                   ContentsArea(
                     widgets: [
                       couponList,
+                      const ControlledSlider(),
                       postList,
                       const SizedBox(height: 100),
                     ],
