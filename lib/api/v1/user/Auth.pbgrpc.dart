@@ -35,6 +35,12 @@ class AuthControllerClient extends $grpc.Client {
       '/server.user.AuthController/SignOut',
       ($2.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Empty.fromBuffer(value));
+  static final _$refresh =
+      $grpc.ClientMethod<$11.RefreshTokenRequest, $11.UserAuthResponse>(
+          '/server.user.AuthController/Refresh',
+          ($11.RefreshTokenRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $11.UserAuthResponse.fromBuffer(value));
   static final _$resetPasswordMail =
       $grpc.ClientMethod<$11.ResetPasswordRequest, $2.Empty>(
           '/server.user.AuthController/ResetPasswordMail',
@@ -74,6 +80,12 @@ class AuthControllerClient extends $grpc.Client {
   $grpc.ResponseFuture<$2.Empty> signOut($2.Empty request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$signOut, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$11.UserAuthResponse> refresh(
+      $11.RefreshTokenRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$refresh, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.Empty> resetPasswordMail(
@@ -127,6 +139,15 @@ abstract class AuthControllerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $2.Empty.fromBuffer(value),
         ($2.Empty value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$11.RefreshTokenRequest, $11.UserAuthResponse>(
+            'Refresh',
+            refresh_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $11.RefreshTokenRequest.fromBuffer(value),
+            ($11.UserAuthResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$11.ResetPasswordRequest, $2.Empty>(
         'ResetPasswordMail',
         resetPasswordMail_Pre,
@@ -173,6 +194,11 @@ abstract class AuthControllerServiceBase extends $grpc.Service {
     return signOut(call, await request);
   }
 
+  $async.Future<$11.UserAuthResponse> refresh_Pre($grpc.ServiceCall call,
+      $async.Future<$11.RefreshTokenRequest> request) async {
+    return refresh(call, await request);
+  }
+
   $async.Future<$2.Empty> resetPasswordMail_Pre($grpc.ServiceCall call,
       $async.Future<$11.ResetPasswordRequest> request) async {
     return resetPasswordMail(call, await request);
@@ -195,6 +221,8 @@ abstract class AuthControllerServiceBase extends $grpc.Service {
   $async.Future<$11.UserAuthResponse> signIn(
       $grpc.ServiceCall call, $11.UserAuthRequest request);
   $async.Future<$2.Empty> signOut($grpc.ServiceCall call, $2.Empty request);
+  $async.Future<$11.UserAuthResponse> refresh(
+      $grpc.ServiceCall call, $11.RefreshTokenRequest request);
   $async.Future<$2.Empty> resetPasswordMail(
       $grpc.ServiceCall call, $11.ResetPasswordRequest request);
   $async.Future<$2.Empty> updatePassword(

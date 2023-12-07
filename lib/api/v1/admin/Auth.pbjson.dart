@@ -19,6 +19,17 @@ const AdminAuthRequest$json = const {
 
 /// Descriptor for `AdminAuthRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List adminAuthRequestDescriptor = $convert.base64Decode('ChBBZG1pbkF1dGhSZXF1ZXN0EhQKBWVtYWlsGAEgASgJUgVlbWFpbBIaCghwYXNzd29yZBgCIAEoCVIIcGFzc3dvcmQ=');
+@$core.Deprecated('Use adminRefreshTokenRequestDescriptor instead')
+const AdminRefreshTokenRequest$json = const {
+  '1': 'AdminRefreshTokenRequest',
+  '2': const [
+    const {'1': 'accessToken', '3': 1, '4': 1, '5': 9, '10': 'accessToken'},
+    const {'1': 'refreshToken', '3': 2, '4': 1, '5': 9, '10': 'refreshToken'},
+  ],
+};
+
+/// Descriptor for `AdminRefreshTokenRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List adminRefreshTokenRequestDescriptor = $convert.base64Decode('ChhBZG1pblJlZnJlc2hUb2tlblJlcXVlc3QSIAoLYWNjZXNzVG9rZW4YASABKAlSC2FjY2Vzc1Rva2VuEiIKDHJlZnJlc2hUb2tlbhgCIAEoCVIMcmVmcmVzaFRva2Vu');
 @$core.Deprecated('Use adminAuthResponseDescriptor instead')
 const AdminAuthResponse$json = const {
   '1': 'AdminAuthResponse',

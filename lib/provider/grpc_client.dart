@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '/api/v1/user/Auth.pbgrpc.dart';
 import '/api/v1/user/Messages.pbgrpc.dart';
 import '/api/v1/user/Store.pbgrpc.dart';
+import '/api/v1/user/UserData.pbgrpc.dart';
 
 final clientProvider = Provider.autoDispose<ClientChannel>((ref) {
   const host = 'localhost';
@@ -46,5 +47,10 @@ final messageControllerProvider = Provider.autoDispose<MessageControllerClient>(
 final storeControllerProvider = Provider.autoDispose<StoreControllerClient>((ref) {
   final channel = ref.watch(clientProvider);
   return StoreControllerClient(channel, options: _callOptionsWithToken(ref));
+});
+
+final userDataControllerProvider = Provider.autoDispose<UserDataControllerClient>((ref) {
+  final channel = ref.watch(clientProvider);
+  return UserDataControllerClient(channel, options: _callOptionsWithToken(ref));
 });
 

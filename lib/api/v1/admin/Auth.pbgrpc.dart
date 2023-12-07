@@ -28,6 +28,12 @@ class AuthControllerClient extends $grpc.Client {
       '/server.admin.AuthController/SignOut',
       ($2.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Empty.fromBuffer(value));
+  static final _$refresh =
+      $grpc.ClientMethod<$1.AdminRefreshTokenRequest, $1.AdminAuthResponse>(
+          '/server.admin.AuthController/Refresh',
+          ($1.AdminRefreshTokenRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $1.AdminAuthResponse.fromBuffer(value));
   static final _$signIn =
       $grpc.ClientMethod<$1.AdminAuthRequest, $1.AdminAuthResponse>(
           '/server.admin.AuthController/SignIn',
@@ -68,6 +74,12 @@ class AuthControllerClient extends $grpc.Client {
   $grpc.ResponseFuture<$2.Empty> signOut($2.Empty request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$signOut, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.AdminAuthResponse> refresh(
+      $1.AdminRefreshTokenRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$refresh, request, options: options);
   }
 
   $grpc.ResponseFuture<$1.AdminAuthResponse> signIn($1.AdminAuthRequest request,
@@ -119,6 +131,15 @@ abstract class AuthControllerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $2.Empty.fromBuffer(value),
         ($2.Empty value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$1.AdminRefreshTokenRequest, $1.AdminAuthResponse>(
+            'Refresh',
+            refresh_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $1.AdminRefreshTokenRequest.fromBuffer(value),
+            ($1.AdminAuthResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.AdminAuthRequest, $1.AdminAuthResponse>(
         'SignIn',
         signIn_Pre,
@@ -167,6 +188,11 @@ abstract class AuthControllerServiceBase extends $grpc.Service {
     return signOut(call, await request);
   }
 
+  $async.Future<$1.AdminAuthResponse> refresh_Pre($grpc.ServiceCall call,
+      $async.Future<$1.AdminRefreshTokenRequest> request) async {
+    return refresh(call, await request);
+  }
+
   $async.Future<$1.AdminAuthResponse> signIn_Pre($grpc.ServiceCall call,
       $async.Future<$1.AdminAuthRequest> request) async {
     return signIn(call, await request);
@@ -192,6 +218,8 @@ abstract class AuthControllerServiceBase extends $grpc.Service {
   $async.Future<$2.Empty> signUp(
       $grpc.ServiceCall call, $1.AdminAuthRequest request);
   $async.Future<$2.Empty> signOut($grpc.ServiceCall call, $2.Empty request);
+  $async.Future<$1.AdminAuthResponse> refresh(
+      $grpc.ServiceCall call, $1.AdminRefreshTokenRequest request);
   $async.Future<$1.AdminAuthResponse> signIn(
       $grpc.ServiceCall call, $1.AdminAuthRequest request);
   $async.Future<$2.Empty> resetPasswordMail(
