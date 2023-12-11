@@ -46,9 +46,12 @@ final $typed_data.Uint8List stampCardResponseDescriptor = $convert.base64Decode(
 const CheckinResponse$json = const {
   '1': 'CheckinResponse',
   '2': const [
-    const {'1': 'MayCoupon', '3': 1, '4': 1, '5': 11, '6': '.server.shared.Coupon', '10': 'MayCoupon'},
+    const {'1': 'MayCoupon', '3': 1, '4': 1, '5': 11, '6': '.server.shared.Coupon', '9': 0, '10': 'MayCoupon', '17': true},
+  ],
+  '8': const [
+    const {'1': '_MayCoupon'},
   ],
 };
 
 /// Descriptor for `CheckinResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List checkinResponseDescriptor = $convert.base64Decode('Cg9DaGVja2luUmVzcG9uc2USMwoJTWF5Q291cG9uGAEgASgLMhUuc2VydmVyLnNoYXJlZC5Db3Vwb25SCU1heUNvdXBvbg==');
+final $typed_data.Uint8List checkinResponseDescriptor = $convert.base64Decode('Cg9DaGVja2luUmVzcG9uc2USOAoJTWF5Q291cG9uGAEgASgLMhUuc2VydmVyLnNoYXJlZC5Db3Vwb25IAFIJTWF5Q291cG9uiAEBQgwKCl9NYXlDb3Vwb24=');

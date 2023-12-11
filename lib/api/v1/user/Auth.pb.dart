@@ -73,15 +73,20 @@ class UserAuthRequest extends $pb.GeneratedMessage {
 
 class RefreshTokenRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RefreshTokenRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'refreshToken', protoName: 'refreshToken')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'accessToken', protoName: 'accessToken')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'refreshToken', protoName: 'refreshToken')
     ..hasRequiredFields = false
   ;
 
   RefreshTokenRequest._() : super();
   factory RefreshTokenRequest({
+    $core.String? accessToken,
     $core.String? refreshToken,
   }) {
     final _result = create();
+    if (accessToken != null) {
+      _result.accessToken = accessToken;
+    }
     if (refreshToken != null) {
       _result.refreshToken = refreshToken;
     }
@@ -109,13 +114,22 @@ class RefreshTokenRequest extends $pb.GeneratedMessage {
   static RefreshTokenRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get refreshToken => $_getSZ(0);
+  $core.String get accessToken => $_getSZ(0);
   @$pb.TagNumber(1)
-  set refreshToken($core.String v) { $_setString(0, v); }
+  set accessToken($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasRefreshToken() => $_has(0);
+  $core.bool hasAccessToken() => $_has(0);
   @$pb.TagNumber(1)
-  void clearRefreshToken() => clearField(1);
+  void clearAccessToken() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get refreshToken => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set refreshToken($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasRefreshToken() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearRefreshToken() => clearField(2);
 }
 
 class UserAuthResponse extends $pb.GeneratedMessage {

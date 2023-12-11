@@ -10,21 +10,21 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
+import '../../google/protobuf/empty.pb.dart' as $2;
 import 'MyCoupon.pb.dart' as $16;
 import '../shared/Coupon.pb.dart' as $17;
-import '../../google/protobuf/empty.pb.dart' as $2;
 export 'MyCoupon.pb.dart';
 
 class MyCouponControllerClient extends $grpc.Client {
+  static final _$getList = $grpc.ClientMethod<$2.Empty, $16.MyCouponsResponse>(
+      '/server.user.MyCouponController/GetList',
+      ($2.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $16.MyCouponsResponse.fromBuffer(value));
   static final _$getDetail =
       $grpc.ClientMethod<$16.CouponIDRequest, $17.Coupon>(
           '/server.user.MyCouponController/GetDetail',
           ($16.CouponIDRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $17.Coupon.fromBuffer(value));
-  static final _$getList = $grpc.ClientMethod<$2.Empty, $16.MyCouponsResponse>(
-      '/server.user.MyCouponController/GetList',
-      ($2.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $16.MyCouponsResponse.fromBuffer(value));
   static final _$use = $grpc.ClientMethod<$16.CouponIDRequest, $2.Empty>(
       '/server.user.MyCouponController/Use',
       ($16.CouponIDRequest value) => value.writeToBuffer(),
@@ -35,14 +35,14 @@ class MyCouponControllerClient extends $grpc.Client {
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$17.Coupon> getDetail($16.CouponIDRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$getDetail, request, options: options);
-  }
-
   $grpc.ResponseFuture<$16.MyCouponsResponse> getList($2.Empty request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getList, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$17.Coupon> getDetail($16.CouponIDRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getDetail, request, options: options);
   }
 
   $grpc.ResponseFuture<$2.Empty> use($16.CouponIDRequest request,
@@ -55,13 +55,6 @@ abstract class MyCouponControllerServiceBase extends $grpc.Service {
   $core.String get $name => 'server.user.MyCouponController';
 
   MyCouponControllerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$16.CouponIDRequest, $17.Coupon>(
-        'GetDetail',
-        getDetail_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $16.CouponIDRequest.fromBuffer(value),
-        ($17.Coupon value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$2.Empty, $16.MyCouponsResponse>(
         'GetList',
         getList_Pre,
@@ -69,6 +62,13 @@ abstract class MyCouponControllerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $2.Empty.fromBuffer(value),
         ($16.MyCouponsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$16.CouponIDRequest, $17.Coupon>(
+        'GetDetail',
+        getDetail_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $16.CouponIDRequest.fromBuffer(value),
+        ($17.Coupon value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$16.CouponIDRequest, $2.Empty>(
         'Use',
         use_Pre,
@@ -78,14 +78,14 @@ abstract class MyCouponControllerServiceBase extends $grpc.Service {
         ($2.Empty value) => value.writeToBuffer()));
   }
 
-  $async.Future<$17.Coupon> getDetail_Pre($grpc.ServiceCall call,
-      $async.Future<$16.CouponIDRequest> request) async {
-    return getDetail(call, await request);
-  }
-
   $async.Future<$16.MyCouponsResponse> getList_Pre(
       $grpc.ServiceCall call, $async.Future<$2.Empty> request) async {
     return getList(call, await request);
+  }
+
+  $async.Future<$17.Coupon> getDetail_Pre($grpc.ServiceCall call,
+      $async.Future<$16.CouponIDRequest> request) async {
+    return getDetail(call, await request);
   }
 
   $async.Future<$2.Empty> use_Pre($grpc.ServiceCall call,
@@ -93,10 +93,10 @@ abstract class MyCouponControllerServiceBase extends $grpc.Service {
     return use(call, await request);
   }
 
-  $async.Future<$17.Coupon> getDetail(
-      $grpc.ServiceCall call, $16.CouponIDRequest request);
   $async.Future<$16.MyCouponsResponse> getList(
       $grpc.ServiceCall call, $2.Empty request);
+  $async.Future<$17.Coupon> getDetail(
+      $grpc.ServiceCall call, $16.CouponIDRequest request);
   $async.Future<$2.Empty> use(
       $grpc.ServiceCall call, $16.CouponIDRequest request);
 }
