@@ -11,26 +11,26 @@ import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
 import '../../google/protobuf/empty.pb.dart' as $2;
-import 'Book.pb.dart' as $13;
+import 'Book.pb.dart' as $15;
 export 'Book.pb.dart';
 
 class BookControllerClient extends $grpc.Client {
-  static final _$getMyBook = $grpc.ClientMethod<$2.Empty, $13.BooksResponse>(
+  static final _$getMyBook = $grpc.ClientMethod<$2.Empty, $15.BooksResponse>(
       '/server.user.BookController/GetMyBook',
       ($2.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $13.BooksResponse.fromBuffer(value));
+      ($core.List<$core.int> value) => $15.BooksResponse.fromBuffer(value));
   static final _$getBookByID =
-      $grpc.ClientMethod<$13.BookIDRequest, $13.BookResponse>(
+      $grpc.ClientMethod<$15.BookIDRequest, $15.BookResponse>(
           '/server.user.BookController/GetBookByID',
-          ($13.BookIDRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $13.BookResponse.fromBuffer(value));
-  static final _$cancel = $grpc.ClientMethod<$13.BookIDRequest, $2.Empty>(
+          ($15.BookIDRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $15.BookResponse.fromBuffer(value));
+  static final _$cancel = $grpc.ClientMethod<$15.BookIDRequest, $2.Empty>(
       '/server.user.BookController/Cancel',
-      ($13.BookIDRequest value) => value.writeToBuffer(),
+      ($15.BookIDRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Empty.fromBuffer(value));
-  static final _$reserve = $grpc.ClientMethod<$13.ReserveRequest, $2.Empty>(
+  static final _$reserve = $grpc.ClientMethod<$15.ReserveRequest, $2.Empty>(
       '/server.user.BookController/Reserve',
-      ($13.ReserveRequest value) => value.writeToBuffer(),
+      ($15.ReserveRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Empty.fromBuffer(value));
 
   BookControllerClient($grpc.ClientChannel channel,
@@ -38,22 +38,22 @@ class BookControllerClient extends $grpc.Client {
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$13.BooksResponse> getMyBook($2.Empty request,
+  $grpc.ResponseFuture<$15.BooksResponse> getMyBook($2.Empty request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getMyBook, request, options: options);
   }
 
-  $grpc.ResponseFuture<$13.BookResponse> getBookByID($13.BookIDRequest request,
+  $grpc.ResponseFuture<$15.BookResponse> getBookByID($15.BookIDRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getBookByID, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.Empty> cancel($13.BookIDRequest request,
+  $grpc.ResponseFuture<$2.Empty> cancel($15.BookIDRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$cancel, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.Empty> reserve($13.ReserveRequest request,
+  $grpc.ResponseFuture<$2.Empty> reserve($15.ReserveRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$reserve, request, options: options);
   }
@@ -63,62 +63,62 @@ abstract class BookControllerServiceBase extends $grpc.Service {
   $core.String get $name => 'server.user.BookController';
 
   BookControllerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$2.Empty, $13.BooksResponse>(
+    $addMethod($grpc.ServiceMethod<$2.Empty, $15.BooksResponse>(
         'GetMyBook',
         getMyBook_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $2.Empty.fromBuffer(value),
-        ($13.BooksResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$13.BookIDRequest, $13.BookResponse>(
+        ($15.BooksResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$15.BookIDRequest, $15.BookResponse>(
         'GetBookByID',
         getBookByID_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $13.BookIDRequest.fromBuffer(value),
-        ($13.BookResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$13.BookIDRequest, $2.Empty>(
+        ($core.List<$core.int> value) => $15.BookIDRequest.fromBuffer(value),
+        ($15.BookResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$15.BookIDRequest, $2.Empty>(
         'Cancel',
         cancel_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $13.BookIDRequest.fromBuffer(value),
+        ($core.List<$core.int> value) => $15.BookIDRequest.fromBuffer(value),
         ($2.Empty value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$13.ReserveRequest, $2.Empty>(
+    $addMethod($grpc.ServiceMethod<$15.ReserveRequest, $2.Empty>(
         'Reserve',
         reserve_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $13.ReserveRequest.fromBuffer(value),
+        ($core.List<$core.int> value) => $15.ReserveRequest.fromBuffer(value),
         ($2.Empty value) => value.writeToBuffer()));
   }
 
-  $async.Future<$13.BooksResponse> getMyBook_Pre(
+  $async.Future<$15.BooksResponse> getMyBook_Pre(
       $grpc.ServiceCall call, $async.Future<$2.Empty> request) async {
     return getMyBook(call, await request);
   }
 
-  $async.Future<$13.BookResponse> getBookByID_Pre(
-      $grpc.ServiceCall call, $async.Future<$13.BookIDRequest> request) async {
+  $async.Future<$15.BookResponse> getBookByID_Pre(
+      $grpc.ServiceCall call, $async.Future<$15.BookIDRequest> request) async {
     return getBookByID(call, await request);
   }
 
   $async.Future<$2.Empty> cancel_Pre(
-      $grpc.ServiceCall call, $async.Future<$13.BookIDRequest> request) async {
+      $grpc.ServiceCall call, $async.Future<$15.BookIDRequest> request) async {
     return cancel(call, await request);
   }
 
   $async.Future<$2.Empty> reserve_Pre(
-      $grpc.ServiceCall call, $async.Future<$13.ReserveRequest> request) async {
+      $grpc.ServiceCall call, $async.Future<$15.ReserveRequest> request) async {
     return reserve(call, await request);
   }
 
-  $async.Future<$13.BooksResponse> getMyBook(
+  $async.Future<$15.BooksResponse> getMyBook(
       $grpc.ServiceCall call, $2.Empty request);
-  $async.Future<$13.BookResponse> getBookByID(
-      $grpc.ServiceCall call, $13.BookIDRequest request);
+  $async.Future<$15.BookResponse> getBookByID(
+      $grpc.ServiceCall call, $15.BookIDRequest request);
   $async.Future<$2.Empty> cancel(
-      $grpc.ServiceCall call, $13.BookIDRequest request);
+      $grpc.ServiceCall call, $15.BookIDRequest request);
   $async.Future<$2.Empty> reserve(
-      $grpc.ServiceCall call, $13.ReserveRequest request);
+      $grpc.ServiceCall call, $15.ReserveRequest request);
 }

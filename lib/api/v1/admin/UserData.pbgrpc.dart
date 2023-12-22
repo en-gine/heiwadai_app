@@ -10,46 +10,46 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'UserData.pb.dart' as $10;
+import 'UserData.pb.dart' as $11;
 import '../../google/protobuf/empty.pb.dart' as $2;
 export 'UserData.pb.dart';
 
 class UserDataControllerClient extends $grpc.Client {
   static final _$update =
-      $grpc.ClientMethod<$10.UserUpdateDataRequest, $10.UserDataResponse>(
+      $grpc.ClientMethod<$11.UserUpdateDataRequest, $11.UserDataResponse>(
           '/server.admin.UserDataController/Update',
-          ($10.UserUpdateDataRequest value) => value.writeToBuffer(),
+          ($11.UserUpdateDataRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $10.UserDataResponse.fromBuffer(value));
-  static final _$delete = $grpc.ClientMethod<$10.UserDeleteRequest, $2.Empty>(
+              $11.UserDataResponse.fromBuffer(value));
+  static final _$delete = $grpc.ClientMethod<$11.UserDeleteRequest, $2.Empty>(
       '/server.admin.UserDataController/Delete',
-      ($10.UserDeleteRequest value) => value.writeToBuffer(),
+      ($11.UserDeleteRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Empty.fromBuffer(value));
   static final _$getList =
-      $grpc.ClientMethod<$10.UserListFilterRequest, $10.UserListResponse>(
+      $grpc.ClientMethod<$11.UserListFilterRequest, $11.UserListResponse>(
           '/server.admin.UserDataController/GetList',
-          ($10.UserListFilterRequest value) => value.writeToBuffer(),
+          ($11.UserListFilterRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $10.UserListResponse.fromBuffer(value));
+              $11.UserListResponse.fromBuffer(value));
 
   UserDataControllerClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$10.UserDataResponse> update(
-      $10.UserUpdateDataRequest request,
+  $grpc.ResponseFuture<$11.UserDataResponse> update(
+      $11.UserUpdateDataRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$update, request, options: options);
   }
 
-  $grpc.ResponseFuture<$2.Empty> delete($10.UserDeleteRequest request,
+  $grpc.ResponseFuture<$2.Empty> delete($11.UserDeleteRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delete, request, options: options);
   }
 
-  $grpc.ResponseFuture<$10.UserListResponse> getList(
-      $10.UserListFilterRequest request,
+  $grpc.ResponseFuture<$11.UserListResponse> getList(
+      $11.UserListFilterRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getList, request, options: options);
   }
@@ -60,52 +60,52 @@ abstract class UserDataControllerServiceBase extends $grpc.Service {
 
   UserDataControllerServiceBase() {
     $addMethod(
-        $grpc.ServiceMethod<$10.UserUpdateDataRequest, $10.UserDataResponse>(
+        $grpc.ServiceMethod<$11.UserUpdateDataRequest, $11.UserDataResponse>(
             'Update',
             update_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $10.UserUpdateDataRequest.fromBuffer(value),
-            ($10.UserDataResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$10.UserDeleteRequest, $2.Empty>(
+                $11.UserUpdateDataRequest.fromBuffer(value),
+            ($11.UserDataResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$11.UserDeleteRequest, $2.Empty>(
         'Delete',
         delete_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $10.UserDeleteRequest.fromBuffer(value),
+            $11.UserDeleteRequest.fromBuffer(value),
         ($2.Empty value) => value.writeToBuffer()));
     $addMethod(
-        $grpc.ServiceMethod<$10.UserListFilterRequest, $10.UserListResponse>(
+        $grpc.ServiceMethod<$11.UserListFilterRequest, $11.UserListResponse>(
             'GetList',
             getList_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $10.UserListFilterRequest.fromBuffer(value),
-            ($10.UserListResponse value) => value.writeToBuffer()));
+                $11.UserListFilterRequest.fromBuffer(value),
+            ($11.UserListResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$10.UserDataResponse> update_Pre($grpc.ServiceCall call,
-      $async.Future<$10.UserUpdateDataRequest> request) async {
+  $async.Future<$11.UserDataResponse> update_Pre($grpc.ServiceCall call,
+      $async.Future<$11.UserUpdateDataRequest> request) async {
     return update(call, await request);
   }
 
   $async.Future<$2.Empty> delete_Pre($grpc.ServiceCall call,
-      $async.Future<$10.UserDeleteRequest> request) async {
+      $async.Future<$11.UserDeleteRequest> request) async {
     return delete(call, await request);
   }
 
-  $async.Future<$10.UserListResponse> getList_Pre($grpc.ServiceCall call,
-      $async.Future<$10.UserListFilterRequest> request) async {
+  $async.Future<$11.UserListResponse> getList_Pre($grpc.ServiceCall call,
+      $async.Future<$11.UserListFilterRequest> request) async {
     return getList(call, await request);
   }
 
-  $async.Future<$10.UserDataResponse> update(
-      $grpc.ServiceCall call, $10.UserUpdateDataRequest request);
+  $async.Future<$11.UserDataResponse> update(
+      $grpc.ServiceCall call, $11.UserUpdateDataRequest request);
   $async.Future<$2.Empty> delete(
-      $grpc.ServiceCall call, $10.UserDeleteRequest request);
-  $async.Future<$10.UserListResponse> getList(
-      $grpc.ServiceCall call, $10.UserListFilterRequest request);
+      $grpc.ServiceCall call, $11.UserDeleteRequest request);
+  $async.Future<$11.UserListResponse> getList(
+      $grpc.ServiceCall call, $11.UserListFilterRequest request);
 }

@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../google/protobuf/timestamp.pb.dart' as $21;
+import '../../google/protobuf/timestamp.pb.dart' as $23;
 
 class MessageRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MessageRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
@@ -105,7 +105,7 @@ class MessageResponse extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Content', protoName: 'Content')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'AuthorID', protoName: 'AuthorID')
-    ..aOM<$21.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DisplayDate', protoName: 'DisplayDate', subBuilder: $21.Timestamp.create)
+    ..aOM<$23.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DisplayDate', protoName: 'DisplayDate', subBuilder: $23.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -115,7 +115,7 @@ class MessageResponse extends $pb.GeneratedMessage {
     $core.String? title,
     $core.String? content,
     $core.String? authorID,
-    $21.Timestamp? displayDate,
+    $23.Timestamp? displayDate,
   }) {
     final _result = create();
     if (iD != null) {
@@ -193,14 +193,14 @@ class MessageResponse extends $pb.GeneratedMessage {
   void clearAuthorID() => clearField(4);
 
   @$pb.TagNumber(5)
-  $21.Timestamp get displayDate => $_getN(4);
+  $23.Timestamp get displayDate => $_getN(4);
   @$pb.TagNumber(5)
-  set displayDate($21.Timestamp v) { setField(5, v); }
+  set displayDate($23.Timestamp v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasDisplayDate() => $_has(4);
   @$pb.TagNumber(5)
   void clearDisplayDate() => clearField(5);
   @$pb.TagNumber(5)
-  $21.Timestamp ensureDisplayDate() => $_ensure(4);
+  $23.Timestamp ensureDisplayDate() => $_ensure(4);
 }
 

@@ -8,17 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use adminAuthRequestDescriptor instead')
-const AdminAuthRequest$json = const {
-  '1': 'AdminAuthRequest',
-  '2': const [
-    const {'1': 'email', '3': 1, '4': 1, '5': 9, '10': 'email'},
-    const {'1': 'password', '3': 2, '4': 1, '5': 9, '10': 'password'},
-  ],
-};
-
-/// Descriptor for `AdminAuthRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List adminAuthRequestDescriptor = $convert.base64Decode('ChBBZG1pbkF1dGhSZXF1ZXN0EhQKBWVtYWlsGAEgASgJUgVlbWFpbBIaCghwYXNzd29yZBgCIAEoCVIIcGFzc3dvcmQ=');
 @$core.Deprecated('Use adminRefreshTokenRequestDescriptor instead')
 const AdminRefreshTokenRequest$json = const {
   '1': 'AdminRefreshTokenRequest',
@@ -30,9 +19,9 @@ const AdminRefreshTokenRequest$json = const {
 
 /// Descriptor for `AdminRefreshTokenRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List adminRefreshTokenRequestDescriptor = $convert.base64Decode('ChhBZG1pblJlZnJlc2hUb2tlblJlcXVlc3QSIAoLYWNjZXNzVG9rZW4YASABKAlSC2FjY2Vzc1Rva2VuEiIKDHJlZnJlc2hUb2tlbhgCIAEoCVIMcmVmcmVzaFRva2Vu');
-@$core.Deprecated('Use adminAuthResponseDescriptor instead')
-const AdminAuthResponse$json = const {
-  '1': 'AdminAuthResponse',
+@$core.Deprecated('Use adminAuthTokenResponseDescriptor instead')
+const AdminAuthTokenResponse$json = const {
+  '1': 'AdminAuthTokenResponse',
   '2': const [
     const {'1': 'accessToken', '3': 1, '4': 1, '5': 9, '10': 'accessToken'},
     const {'1': 'expiresIn', '3': 2, '4': 1, '5': 3, '10': 'expiresIn'},
@@ -40,30 +29,8 @@ const AdminAuthResponse$json = const {
   ],
 };
 
-/// Descriptor for `AdminAuthResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List adminAuthResponseDescriptor = $convert.base64Decode('ChFBZG1pbkF1dGhSZXNwb25zZRIgCgthY2Nlc3NUb2tlbhgBIAEoCVILYWNjZXNzVG9rZW4SHAoJZXhwaXJlc0luGAIgASgDUglleHBpcmVzSW4SIgoMcmVmcmVzaFRva2VuGAMgASgJUgxyZWZyZXNoVG9rZW4=');
-@$core.Deprecated('Use adminRegisterRequestDescriptor instead')
-const AdminRegisterRequest$json = const {
-  '1': 'AdminRegisterRequest',
-  '2': const [
-    const {'1': 'Name', '3': 1, '4': 1, '5': 9, '10': 'Name'},
-    const {'1': 'Mail', '3': 2, '4': 1, '5': 9, '10': 'Mail'},
-    const {'1': 'BelongStoreID', '3': 4, '4': 1, '5': 9, '10': 'BelongStoreID'},
-  ],
-};
-
-/// Descriptor for `AdminRegisterRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List adminRegisterRequestDescriptor = $convert.base64Decode('ChRBZG1pblJlZ2lzdGVyUmVxdWVzdBISCgROYW1lGAEgASgJUgROYW1lEhIKBE1haWwYAiABKAlSBE1haWwSJAoNQmVsb25nU3RvcmVJRBgEIAEoCVINQmVsb25nU3RvcmVJRA==');
-@$core.Deprecated('Use resetPasswordRequestDescriptor instead')
-const ResetPasswordRequest$json = const {
-  '1': 'ResetPasswordRequest',
-  '2': const [
-    const {'1': 'email', '3': 1, '4': 1, '5': 9, '10': 'email'},
-  ],
-};
-
-/// Descriptor for `ResetPasswordRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List resetPasswordRequestDescriptor = $convert.base64Decode('ChRSZXNldFBhc3N3b3JkUmVxdWVzdBIUCgVlbWFpbBgBIAEoCVIFZW1haWw=');
+/// Descriptor for `AdminAuthTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List adminAuthTokenResponseDescriptor = $convert.base64Decode('ChZBZG1pbkF1dGhUb2tlblJlc3BvbnNlEiAKC2FjY2Vzc1Rva2VuGAEgASgJUgthY2Nlc3NUb2tlbhIcCglleHBpcmVzSW4YAiABKANSCWV4cGlyZXNJbhIiCgxyZWZyZXNoVG9rZW4YAyABKAlSDHJlZnJlc2hUb2tlbg==');
 @$core.Deprecated('Use updatePasswordRequestDescriptor instead')
 const UpdatePasswordRequest$json = const {
   '1': 'UpdatePasswordRequest',

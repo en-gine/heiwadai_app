@@ -9,8 +9,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../google/protobuf/timestamp.pb.dart' as $21;
-import '../shared/Coupon.pb.dart' as $17;
+import '../../google/protobuf/timestamp.pb.dart' as $23;
+import '../shared/Coupon.pb.dart' as $19;
 
 class CheckinRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CheckinRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
@@ -65,7 +65,7 @@ class CheckinStamp extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StoreID', protoName: 'StoreID')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StoreName', protoName: 'StoreName')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StoreStampImage', protoName: 'StoreStampImage')
-    ..aOM<$21.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CheckInAt', protoName: 'CheckInAt', subBuilder: $21.Timestamp.create)
+    ..aOM<$23.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CheckInAt', protoName: 'CheckInAt', subBuilder: $23.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -75,7 +75,7 @@ class CheckinStamp extends $pb.GeneratedMessage {
     $core.String? storeID,
     $core.String? storeName,
     $core.String? storeStampImage,
-    $21.Timestamp? checkInAt,
+    $23.Timestamp? checkInAt,
   }) {
     final _result = create();
     if (iD != null) {
@@ -153,15 +153,15 @@ class CheckinStamp extends $pb.GeneratedMessage {
   void clearStoreStampImage() => clearField(4);
 
   @$pb.TagNumber(5)
-  $21.Timestamp get checkInAt => $_getN(4);
+  $23.Timestamp get checkInAt => $_getN(4);
   @$pb.TagNumber(5)
-  set checkInAt($21.Timestamp v) { setField(5, v); }
+  set checkInAt($23.Timestamp v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasCheckInAt() => $_has(4);
   @$pb.TagNumber(5)
   void clearCheckInAt() => clearField(5);
   @$pb.TagNumber(5)
-  $21.Timestamp ensureCheckInAt() => $_ensure(4);
+  $23.Timestamp ensureCheckInAt() => $_ensure(4);
 }
 
 class StampCardResponse extends $pb.GeneratedMessage {
@@ -207,13 +207,13 @@ class StampCardResponse extends $pb.GeneratedMessage {
 
 class CheckinResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CheckinResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
-    ..aOM<$17.Coupon>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MayCoupon', protoName: 'MayCoupon', subBuilder: $17.Coupon.create)
+    ..aOM<$19.Coupon>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MayCoupon', protoName: 'MayCoupon', subBuilder: $19.Coupon.create)
     ..hasRequiredFields = false
   ;
 
   CheckinResponse._() : super();
   factory CheckinResponse({
-    $17.Coupon? mayCoupon,
+    $19.Coupon? mayCoupon,
   }) {
     final _result = create();
     if (mayCoupon != null) {
@@ -243,14 +243,14 @@ class CheckinResponse extends $pb.GeneratedMessage {
   static CheckinResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $17.Coupon get mayCoupon => $_getN(0);
+  $19.Coupon get mayCoupon => $_getN(0);
   @$pb.TagNumber(1)
-  set mayCoupon($17.Coupon v) { setField(1, v); }
+  set mayCoupon($19.Coupon v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasMayCoupon() => $_has(0);
   @$pb.TagNumber(1)
   void clearMayCoupon() => clearField(1);
   @$pb.TagNumber(1)
-  $17.Coupon ensureMayCoupon() => $_ensure(0);
+  $19.Coupon ensureMayCoupon() => $_ensure(0);
 }
 

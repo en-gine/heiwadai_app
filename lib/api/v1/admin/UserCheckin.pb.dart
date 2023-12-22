@@ -9,8 +9,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../google/protobuf/timestamp.pb.dart' as $21;
-import '../shared/Pager.pb.dart' as $22;
+import '../../google/protobuf/timestamp.pb.dart' as $23;
+import '../shared/Pager.pb.dart' as $24;
 
 class CheckinData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CheckinData', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
@@ -21,7 +21,7 @@ class CheckinData extends $pb.GeneratedMessage {
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserID', protoName: 'UserID')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserFirstName', protoName: 'UserFirstName')
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserLastName', protoName: 'UserLastName')
-    ..aOM<$21.Timestamp>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CheckinAt', protoName: 'CheckinAt', subBuilder: $21.Timestamp.create)
+    ..aOM<$23.Timestamp>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CheckinAt', protoName: 'CheckinAt', subBuilder: $23.Timestamp.create)
     ..aOB(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'IsArchive', protoName: 'IsArchive')
     ..hasRequiredFields = false
   ;
@@ -35,7 +35,7 @@ class CheckinData extends $pb.GeneratedMessage {
     $core.String? userID,
     $core.String? userFirstName,
     $core.String? userLastName,
-    $21.Timestamp? checkinAt,
+    $23.Timestamp? checkinAt,
     $core.bool? isArchive,
   }) {
     final _result = create();
@@ -153,15 +153,15 @@ class CheckinData extends $pb.GeneratedMessage {
   void clearUserLastName() => clearField(7);
 
   @$pb.TagNumber(8)
-  $21.Timestamp get checkinAt => $_getN(7);
+  $23.Timestamp get checkinAt => $_getN(7);
   @$pb.TagNumber(8)
-  set checkinAt($21.Timestamp v) { setField(8, v); }
+  set checkinAt($23.Timestamp v) { setField(8, v); }
   @$pb.TagNumber(8)
   $core.bool hasCheckinAt() => $_has(7);
   @$pb.TagNumber(8)
   void clearCheckinAt() => clearField(8);
   @$pb.TagNumber(8)
-  $21.Timestamp ensureCheckinAt() => $_ensure(7);
+  $23.Timestamp ensureCheckinAt() => $_ensure(7);
 
   @$pb.TagNumber(9)
   $core.bool get isArchive => $_getBF(8);
@@ -176,14 +176,14 @@ class CheckinData extends $pb.GeneratedMessage {
 class CheckinsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CheckinsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
     ..pc<CheckinData>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Checkins', $pb.PbFieldType.PM, protoName: 'Checkins', subBuilder: CheckinData.create)
-    ..aOM<$22.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PageResponse', protoName: 'PageResponse', subBuilder: $22.PageResponse.create)
+    ..aOM<$24.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PageResponse', protoName: 'PageResponse', subBuilder: $24.PageResponse.create)
     ..hasRequiredFields = false
   ;
 
   CheckinsResponse._() : super();
   factory CheckinsResponse({
     $core.Iterable<CheckinData>? checkins,
-    $22.PageResponse? pageResponse,
+    $24.PageResponse? pageResponse,
   }) {
     final _result = create();
     if (checkins != null) {
@@ -219,15 +219,15 @@ class CheckinsResponse extends $pb.GeneratedMessage {
   $core.List<CheckinData> get checkins => $_getList(0);
 
   @$pb.TagNumber(2)
-  $22.PageResponse get pageResponse => $_getN(1);
+  $24.PageResponse get pageResponse => $_getN(1);
   @$pb.TagNumber(2)
-  set pageResponse($22.PageResponse v) { setField(2, v); }
+  set pageResponse($24.PageResponse v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPageResponse() => $_has(1);
   @$pb.TagNumber(2)
   void clearPageResponse() => clearField(2);
   @$pb.TagNumber(2)
-  $22.PageResponse ensurePageResponse() => $_ensure(1);
+  $24.PageResponse ensurePageResponse() => $_ensure(1);
 }
 
 class GetRecentAllCheckinRequest extends $pb.GeneratedMessage {
@@ -280,14 +280,14 @@ class GetRecentAllCheckinRequest extends $pb.GeneratedMessage {
 class UserCheckinRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserCheckinRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserID', protoName: 'UserID')
-    ..aOM<$22.Pager>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Pager', protoName: 'Pager', subBuilder: $22.Pager.create)
+    ..aOM<$24.Pager>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Pager', protoName: 'Pager', subBuilder: $24.Pager.create)
     ..hasRequiredFields = false
   ;
 
   UserCheckinRequest._() : super();
   factory UserCheckinRequest({
     $core.String? userID,
-    $22.Pager? pager,
+    $24.Pager? pager,
   }) {
     final _result = create();
     if (userID != null) {
@@ -329,14 +329,14 @@ class UserCheckinRequest extends $pb.GeneratedMessage {
   void clearUserID() => clearField(1);
 
   @$pb.TagNumber(2)
-  $22.Pager get pager => $_getN(1);
+  $24.Pager get pager => $_getN(1);
   @$pb.TagNumber(2)
-  set pager($22.Pager v) { setField(2, v); }
+  set pager($24.Pager v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPager() => $_has(1);
   @$pb.TagNumber(2)
   void clearPager() => clearField(2);
   @$pb.TagNumber(2)
-  $22.Pager ensurePager() => $_ensure(1);
+  $24.Pager ensurePager() => $_ensure(1);
 }
 

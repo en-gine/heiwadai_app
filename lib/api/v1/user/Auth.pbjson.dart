@@ -8,17 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use userAuthRequestDescriptor instead')
-const UserAuthRequest$json = const {
-  '1': 'UserAuthRequest',
-  '2': const [
-    const {'1': 'email', '3': 1, '4': 1, '5': 9, '10': 'email'},
-    const {'1': 'password', '3': 2, '4': 1, '5': 9, '10': 'password'},
-  ],
-};
-
-/// Descriptor for `UserAuthRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List userAuthRequestDescriptor = $convert.base64Decode('Cg9Vc2VyQXV0aFJlcXVlc3QSFAoFZW1haWwYASABKAlSBWVtYWlsEhoKCHBhc3N3b3JkGAIgASgJUghwYXNzd29yZA==');
 @$core.Deprecated('Use refreshTokenRequestDescriptor instead')
 const RefreshTokenRequest$json = const {
   '1': 'RefreshTokenRequest',
@@ -30,9 +19,9 @@ const RefreshTokenRequest$json = const {
 
 /// Descriptor for `RefreshTokenRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List refreshTokenRequestDescriptor = $convert.base64Decode('ChNSZWZyZXNoVG9rZW5SZXF1ZXN0EiAKC2FjY2Vzc1Rva2VuGAEgASgJUgthY2Nlc3NUb2tlbhIiCgxyZWZyZXNoVG9rZW4YAiABKAlSDHJlZnJlc2hUb2tlbg==');
-@$core.Deprecated('Use userAuthResponseDescriptor instead')
-const UserAuthResponse$json = const {
-  '1': 'UserAuthResponse',
+@$core.Deprecated('Use userAuthTokenResponseDescriptor instead')
+const UserAuthTokenResponse$json = const {
+  '1': 'UserAuthTokenResponse',
   '2': const [
     const {'1': 'accessToken', '3': 1, '4': 1, '5': 9, '10': 'accessToken'},
     const {'1': 'expiresIn', '3': 2, '4': 1, '5': 3, '10': 'expiresIn'},
@@ -40,18 +29,8 @@ const UserAuthResponse$json = const {
   ],
 };
 
-/// Descriptor for `UserAuthResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List userAuthResponseDescriptor = $convert.base64Decode('ChBVc2VyQXV0aFJlc3BvbnNlEiAKC2FjY2Vzc1Rva2VuGAEgASgJUgthY2Nlc3NUb2tlbhIcCglleHBpcmVzSW4YAiABKANSCWV4cGlyZXNJbhIiCgxyZWZyZXNoVG9rZW4YAyABKAlSDHJlZnJlc2hUb2tlbg==');
-@$core.Deprecated('Use resetPasswordRequestDescriptor instead')
-const ResetPasswordRequest$json = const {
-  '1': 'ResetPasswordRequest',
-  '2': const [
-    const {'1': 'email', '3': 1, '4': 1, '5': 9, '10': 'email'},
-  ],
-};
-
-/// Descriptor for `ResetPasswordRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List resetPasswordRequestDescriptor = $convert.base64Decode('ChRSZXNldFBhc3N3b3JkUmVxdWVzdBIUCgVlbWFpbBgBIAEoCVIFZW1haWw=');
+/// Descriptor for `UserAuthTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userAuthTokenResponseDescriptor = $convert.base64Decode('ChVVc2VyQXV0aFRva2VuUmVzcG9uc2USIAoLYWNjZXNzVG9rZW4YASABKAlSC2FjY2Vzc1Rva2VuEhwKCWV4cGlyZXNJbhgCIAEoA1IJZXhwaXJlc0luEiIKDHJlZnJlc2hUb2tlbhgDIAEoCVIMcmVmcmVzaFRva2Vu');
 @$core.Deprecated('Use updatePasswordRequestDescriptor instead')
 const UpdatePasswordRequest$json = const {
   '1': 'UpdatePasswordRequest',

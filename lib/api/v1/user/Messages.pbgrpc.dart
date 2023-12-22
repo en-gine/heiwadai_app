@@ -10,24 +10,24 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'Messages.pb.dart' as $15;
+import 'Messages.pb.dart' as $17;
 export 'Messages.pb.dart';
 
 class MessageControllerClient extends $grpc.Client {
   static final _$getMessagesAfter =
-      $grpc.ClientMethod<$15.MessageRequest, $15.MessagesResponse>(
+      $grpc.ClientMethod<$17.MessageRequest, $17.MessagesResponse>(
           '/server.user.MessageController/GetMessagesAfter',
-          ($15.MessageRequest value) => value.writeToBuffer(),
+          ($17.MessageRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $15.MessagesResponse.fromBuffer(value));
+              $17.MessagesResponse.fromBuffer(value));
 
   MessageControllerClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$15.MessagesResponse> getMessagesAfter(
-      $15.MessageRequest request,
+  $grpc.ResponseFuture<$17.MessagesResponse> getMessagesAfter(
+      $17.MessageRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getMessagesAfter, request, options: options);
   }
@@ -37,20 +37,20 @@ abstract class MessageControllerServiceBase extends $grpc.Service {
   $core.String get $name => 'server.user.MessageController';
 
   MessageControllerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$15.MessageRequest, $15.MessagesResponse>(
+    $addMethod($grpc.ServiceMethod<$17.MessageRequest, $17.MessagesResponse>(
         'GetMessagesAfter',
         getMessagesAfter_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $15.MessageRequest.fromBuffer(value),
-        ($15.MessagesResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $17.MessageRequest.fromBuffer(value),
+        ($17.MessagesResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$15.MessagesResponse> getMessagesAfter_Pre(
-      $grpc.ServiceCall call, $async.Future<$15.MessageRequest> request) async {
+  $async.Future<$17.MessagesResponse> getMessagesAfter_Pre(
+      $grpc.ServiceCall call, $async.Future<$17.MessageRequest> request) async {
     return getMessagesAfter(call, await request);
   }
 
-  $async.Future<$15.MessagesResponse> getMessagesAfter(
-      $grpc.ServiceCall call, $15.MessageRequest request);
+  $async.Future<$17.MessagesResponse> getMessagesAfter(
+      $grpc.ServiceCall call, $17.MessageRequest request);
 }

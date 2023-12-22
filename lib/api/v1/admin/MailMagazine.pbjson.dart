@@ -31,6 +31,16 @@ const GetMailMagazineListRequest$json = const {
 
 /// Descriptor for `GetMailMagazineListRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List getMailMagazineListRequestDescriptor = $convert.base64Decode('ChpHZXRNYWlsTWFnYXppbmVMaXN0UmVxdWVzdBIqCgVQYWdlchgBIAEoCzIULnNlcnZlci5zaGFyZWQuUGFnZXJSBVBhZ2Vy');
+@$core.Deprecated('Use mailMagazineIDRequestDescriptor instead')
+const MailMagazineIDRequest$json = const {
+  '1': 'MailMagazineIDRequest',
+  '2': const [
+    const {'1': 'ID', '3': 1, '4': 1, '5': 9, '10': 'ID'},
+  ],
+};
+
+/// Descriptor for `MailMagazineIDRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List mailMagazineIDRequestDescriptor = $convert.base64Decode('ChVNYWlsTWFnYXppbmVJRFJlcXVlc3QSDgoCSUQYASABKAlSAklE');
 @$core.Deprecated('Use mailMagazineDescriptor instead')
 const MailMagazine$json = const {
   '1': 'MailMagazine',
@@ -44,24 +54,27 @@ const MailMagazine$json = const {
     const {'1': 'UnsentCount', '3': 7, '4': 1, '5': 5, '10': 'UnsentCount'},
     const {'1': 'SentCount', '3': 8, '4': 1, '5': 5, '10': 'SentCount'},
     const {'1': 'SentAt', '3': 9, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 0, '10': 'SentAt', '17': true},
+    const {'1': 'CreateAt', '3': 10, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 1, '10': 'CreateAt', '17': true},
   ],
   '8': const [
     const {'1': '_SentAt'},
+    const {'1': '_CreateAt'},
   ],
 };
 
 /// Descriptor for `MailMagazine`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List mailMagazineDescriptor = $convert.base64Decode('CgxNYWlsTWFnYXppbmUSDgoCSUQYASABKAlSAklEEhQKBVRpdGxlGAIgASgJUgVUaXRsZRIYCgdDb250ZW50GAMgASgJUgdDb250ZW50EhoKCEF1dGhvcklEGAQgASgJUghBdXRob3JJRBJFChBUYXJnZXRQcmVmZWN0dXJlGAUgAygOMhkuc2VydmVyLnNoYXJlZC5QcmVmZWN0dXJlUhBUYXJnZXRQcmVmZWN0dXJlElAKEk1haWxNYWdhemluZVN0YXR1cxgGIAEoDjIgLnNlcnZlci5hZG1pbi5NYWlsTWFnYXppbmVTdGF0dXNSEk1haWxNYWdhemluZVN0YXR1cxIgCgtVbnNlbnRDb3VudBgHIAEoBVILVW5zZW50Q291bnQSHAoJU2VudENvdW50GAggASgFUglTZW50Q291bnQSNwoGU2VudEF0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgAUgZTZW50QXSIAQFCCQoHX1NlbnRBdA==');
+final $typed_data.Uint8List mailMagazineDescriptor = $convert.base64Decode('CgxNYWlsTWFnYXppbmUSDgoCSUQYASABKAlSAklEEhQKBVRpdGxlGAIgASgJUgVUaXRsZRIYCgdDb250ZW50GAMgASgJUgdDb250ZW50EhoKCEF1dGhvcklEGAQgASgJUghBdXRob3JJRBJFChBUYXJnZXRQcmVmZWN0dXJlGAUgAygOMhkuc2VydmVyLnNoYXJlZC5QcmVmZWN0dXJlUhBUYXJnZXRQcmVmZWN0dXJlElAKEk1haWxNYWdhemluZVN0YXR1cxgGIAEoDjIgLnNlcnZlci5hZG1pbi5NYWlsTWFnYXppbmVTdGF0dXNSEk1haWxNYWdhemluZVN0YXR1cxIgCgtVbnNlbnRDb3VudBgHIAEoBVILVW5zZW50Q291bnQSHAoJU2VudENvdW50GAggASgFUglTZW50Q291bnQSNwoGU2VudEF0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgAUgZTZW50QXSIAQESOwoIQ3JlYXRlQXQYCiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wSAFSCENyZWF0ZUF0iAEBQgkKB19TZW50QXRCCwoJX0NyZWF0ZUF0');
 @$core.Deprecated('Use mailMagazinesResponseDescriptor instead')
 const MailMagazinesResponse$json = const {
   '1': 'MailMagazinesResponse',
   '2': const [
     const {'1': 'MailMagazines', '3': 1, '4': 3, '5': 11, '6': '.server.admin.MailMagazine', '10': 'MailMagazines'},
+    const {'1': 'PageResponse', '3': 2, '4': 1, '5': 11, '6': '.server.shared.PageResponse', '10': 'PageResponse'},
   ],
 };
 
 /// Descriptor for `MailMagazinesResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List mailMagazinesResponseDescriptor = $convert.base64Decode('ChVNYWlsTWFnYXppbmVzUmVzcG9uc2USQAoNTWFpbE1hZ2F6aW5lcxgBIAMoCzIaLnNlcnZlci5hZG1pbi5NYWlsTWFnYXppbmVSDU1haWxNYWdhemluZXM=');
+final $typed_data.Uint8List mailMagazinesResponseDescriptor = $convert.base64Decode('ChVNYWlsTWFnYXppbmVzUmVzcG9uc2USQAoNTWFpbE1hZ2F6aW5lcxgBIAMoCzIaLnNlcnZlci5hZG1pbi5NYWlsTWFnYXppbmVSDU1haWxNYWdhemluZXMSPwoMUGFnZVJlc3BvbnNlGAIgASgLMhsuc2VydmVyLnNoYXJlZC5QYWdlUmVzcG9uc2VSDFBhZ2VSZXNwb25zZQ==');
 @$core.Deprecated('Use createDraftRequestDescriptor instead')
 const CreateDraftRequest$json = const {
   '1': 'CreateDraftRequest',

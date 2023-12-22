@@ -10,24 +10,24 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'UserData.pb.dart' as $9;
+import 'UserData.pb.dart' as $10;
 export 'UserData.pb.dart';
 
 class UserDataControllerClient extends $grpc.Client {
   static final _$update =
-      $grpc.ClientMethod<$9.UserUpdateDataRequest, $9.UserDataResponse>(
+      $grpc.ClientMethod<$10.UserUpdateDataRequest, $10.UserDataResponse>(
           '/server.user.UserDataController/Update',
-          ($9.UserUpdateDataRequest value) => value.writeToBuffer(),
+          ($10.UserUpdateDataRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $9.UserDataResponse.fromBuffer(value));
+              $10.UserDataResponse.fromBuffer(value));
 
   UserDataControllerClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$9.UserDataResponse> update(
-      $9.UserUpdateDataRequest request,
+  $grpc.ResponseFuture<$10.UserDataResponse> update(
+      $10.UserUpdateDataRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$update, request, options: options);
   }
@@ -38,21 +38,21 @@ abstract class UserDataControllerServiceBase extends $grpc.Service {
 
   UserDataControllerServiceBase() {
     $addMethod(
-        $grpc.ServiceMethod<$9.UserUpdateDataRequest, $9.UserDataResponse>(
+        $grpc.ServiceMethod<$10.UserUpdateDataRequest, $10.UserDataResponse>(
             'Update',
             update_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $9.UserUpdateDataRequest.fromBuffer(value),
-            ($9.UserDataResponse value) => value.writeToBuffer()));
+                $10.UserUpdateDataRequest.fromBuffer(value),
+            ($10.UserDataResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$9.UserDataResponse> update_Pre($grpc.ServiceCall call,
-      $async.Future<$9.UserUpdateDataRequest> request) async {
+  $async.Future<$10.UserDataResponse> update_Pre($grpc.ServiceCall call,
+      $async.Future<$10.UserUpdateDataRequest> request) async {
     return update(call, await request);
   }
 
-  $async.Future<$9.UserDataResponse> update(
-      $grpc.ServiceCall call, $9.UserUpdateDataRequest request);
+  $async.Future<$10.UserDataResponse> update(
+      $grpc.ServiceCall call, $10.UserUpdateDataRequest request);
 }

@@ -11,21 +11,21 @@ import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
 import '../../google/protobuf/empty.pb.dart' as $2;
-import 'Banner.pb.dart' as $12;
+import 'Banner.pb.dart' as $14;
 export 'Banner.pb.dart';
 
 class BannerControllerClient extends $grpc.Client {
-  static final _$getBanner = $grpc.ClientMethod<$2.Empty, $12.BannerResponse>(
+  static final _$getBanner = $grpc.ClientMethod<$2.Empty, $14.BannerResponse>(
       '/server.user.BannerController/GetBanner',
       ($2.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $12.BannerResponse.fromBuffer(value));
+      ($core.List<$core.int> value) => $14.BannerResponse.fromBuffer(value));
 
   BannerControllerClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$12.BannerResponse> getBanner($2.Empty request,
+  $grpc.ResponseFuture<$14.BannerResponse> getBanner($2.Empty request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getBanner, request, options: options);
   }
@@ -35,20 +35,20 @@ abstract class BannerControllerServiceBase extends $grpc.Service {
   $core.String get $name => 'server.user.BannerController';
 
   BannerControllerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$2.Empty, $12.BannerResponse>(
+    $addMethod($grpc.ServiceMethod<$2.Empty, $14.BannerResponse>(
         'GetBanner',
         getBanner_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $2.Empty.fromBuffer(value),
-        ($12.BannerResponse value) => value.writeToBuffer()));
+        ($14.BannerResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$12.BannerResponse> getBanner_Pre(
+  $async.Future<$14.BannerResponse> getBanner_Pre(
       $grpc.ServiceCall call, $async.Future<$2.Empty> request) async {
     return getBanner(call, await request);
   }
 
-  $async.Future<$12.BannerResponse> getBanner(
+  $async.Future<$14.BannerResponse> getBanner(
       $grpc.ServiceCall call, $2.Empty request);
 }

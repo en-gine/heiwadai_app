@@ -9,8 +9,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../google/protobuf/timestamp.pb.dart' as $21;
-import '../shared/Coupon.pb.dart' as $17;
+import '../../google/protobuf/timestamp.pb.dart' as $23;
+import '../shared/Coupon.pb.dart' as $19;
 
 class CouponIDRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CouponIDRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
@@ -110,7 +110,7 @@ class CreateCustomCouponRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateCustomCouponRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Name', protoName: 'Name')
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DiscountAmount', $pb.PbFieldType.OU3, protoName: 'DiscountAmount')
-    ..aOM<$21.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ExpireAt', protoName: 'ExpireAt', subBuilder: $21.Timestamp.create)
+    ..aOM<$23.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ExpireAt', protoName: 'ExpireAt', subBuilder: $23.Timestamp.create)
     ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'IsCombinationable', protoName: 'IsCombinationable')
     ..pPS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Notices', protoName: 'Notices')
     ..hasRequiredFields = false
@@ -120,7 +120,7 @@ class CreateCustomCouponRequest extends $pb.GeneratedMessage {
   factory CreateCustomCouponRequest({
     $core.String? name,
     $core.int? discountAmount,
-    $21.Timestamp? expireAt,
+    $23.Timestamp? expireAt,
     $core.bool? isCombinationable,
     $core.Iterable<$core.String>? notices,
   }) {
@@ -182,15 +182,15 @@ class CreateCustomCouponRequest extends $pb.GeneratedMessage {
   void clearDiscountAmount() => clearField(2);
 
   @$pb.TagNumber(3)
-  $21.Timestamp get expireAt => $_getN(2);
+  $23.Timestamp get expireAt => $_getN(2);
   @$pb.TagNumber(3)
-  set expireAt($21.Timestamp v) { setField(3, v); }
+  set expireAt($23.Timestamp v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasExpireAt() => $_has(2);
   @$pb.TagNumber(3)
   void clearExpireAt() => clearField(3);
   @$pb.TagNumber(3)
-  $21.Timestamp ensureExpireAt() => $_ensure(2);
+  $23.Timestamp ensureExpireAt() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $core.bool get isCombinationable => $_getBF(3);
@@ -254,13 +254,13 @@ class AffectedCountResponse extends $pb.GeneratedMessage {
 
 class UserAttachedCouponsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserAttachedCouponsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
-    ..pc<$17.UserAttachedCoupon>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserAttachedCoupons', $pb.PbFieldType.PM, protoName: 'UserAttachedCoupons', subBuilder: $17.UserAttachedCoupon.create)
+    ..pc<$19.UserAttachedCoupon>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserAttachedCoupons', $pb.PbFieldType.PM, protoName: 'UserAttachedCoupons', subBuilder: $19.UserAttachedCoupon.create)
     ..hasRequiredFields = false
   ;
 
   UserAttachedCouponsResponse._() : super();
   factory UserAttachedCouponsResponse({
-    $core.Iterable<$17.UserAttachedCoupon>? userAttachedCoupons,
+    $core.Iterable<$19.UserAttachedCoupon>? userAttachedCoupons,
   }) {
     final _result = create();
     if (userAttachedCoupons != null) {
@@ -290,6 +290,6 @@ class UserAttachedCouponsResponse extends $pb.GeneratedMessage {
   static UserAttachedCouponsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$17.UserAttachedCoupon> get userAttachedCoupons => $_getList(0);
+  $core.List<$19.UserAttachedCoupon> get userAttachedCoupons => $_getList(0);
 }
 

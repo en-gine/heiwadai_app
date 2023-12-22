@@ -10,36 +10,36 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'UserCheckin.pb.dart' as $8;
+import 'UserCheckin.pb.dart' as $9;
 export 'UserCheckin.pb.dart';
 
 class UserCheckinControllerClient extends $grpc.Client {
   static final _$getAllRecent =
-      $grpc.ClientMethod<$8.GetRecentAllCheckinRequest, $8.CheckinsResponse>(
+      $grpc.ClientMethod<$9.GetRecentAllCheckinRequest, $9.CheckinsResponse>(
           '/server.admin.UserCheckinController/GetAllRecent',
-          ($8.GetRecentAllCheckinRequest value) => value.writeToBuffer(),
+          ($9.GetRecentAllCheckinRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $8.CheckinsResponse.fromBuffer(value));
+              $9.CheckinsResponse.fromBuffer(value));
   static final _$getUserLog =
-      $grpc.ClientMethod<$8.UserCheckinRequest, $8.CheckinsResponse>(
+      $grpc.ClientMethod<$9.UserCheckinRequest, $9.CheckinsResponse>(
           '/server.admin.UserCheckinController/GetUserLog',
-          ($8.UserCheckinRequest value) => value.writeToBuffer(),
+          ($9.UserCheckinRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $8.CheckinsResponse.fromBuffer(value));
+              $9.CheckinsResponse.fromBuffer(value));
 
   UserCheckinControllerClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$8.CheckinsResponse> getAllRecent(
-      $8.GetRecentAllCheckinRequest request,
+  $grpc.ResponseFuture<$9.CheckinsResponse> getAllRecent(
+      $9.GetRecentAllCheckinRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getAllRecent, request, options: options);
   }
 
-  $grpc.ResponseFuture<$8.CheckinsResponse> getUserLog(
-      $8.UserCheckinRequest request,
+  $grpc.ResponseFuture<$9.CheckinsResponse> getUserLog(
+      $9.UserCheckinRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getUserLog, request, options: options);
   }
@@ -50,36 +50,36 @@ abstract class UserCheckinControllerServiceBase extends $grpc.Service {
 
   UserCheckinControllerServiceBase() {
     $addMethod(
-        $grpc.ServiceMethod<$8.GetRecentAllCheckinRequest, $8.CheckinsResponse>(
+        $grpc.ServiceMethod<$9.GetRecentAllCheckinRequest, $9.CheckinsResponse>(
             'GetAllRecent',
             getAllRecent_Pre,
             false,
             false,
             ($core.List<$core.int> value) =>
-                $8.GetRecentAllCheckinRequest.fromBuffer(value),
-            ($8.CheckinsResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$8.UserCheckinRequest, $8.CheckinsResponse>(
+                $9.GetRecentAllCheckinRequest.fromBuffer(value),
+            ($9.CheckinsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$9.UserCheckinRequest, $9.CheckinsResponse>(
         'GetUserLog',
         getUserLog_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $8.UserCheckinRequest.fromBuffer(value),
-        ($8.CheckinsResponse value) => value.writeToBuffer()));
+            $9.UserCheckinRequest.fromBuffer(value),
+        ($9.CheckinsResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$8.CheckinsResponse> getAllRecent_Pre($grpc.ServiceCall call,
-      $async.Future<$8.GetRecentAllCheckinRequest> request) async {
+  $async.Future<$9.CheckinsResponse> getAllRecent_Pre($grpc.ServiceCall call,
+      $async.Future<$9.GetRecentAllCheckinRequest> request) async {
     return getAllRecent(call, await request);
   }
 
-  $async.Future<$8.CheckinsResponse> getUserLog_Pre($grpc.ServiceCall call,
-      $async.Future<$8.UserCheckinRequest> request) async {
+  $async.Future<$9.CheckinsResponse> getUserLog_Pre($grpc.ServiceCall call,
+      $async.Future<$9.UserCheckinRequest> request) async {
     return getUserLog(call, await request);
   }
 
-  $async.Future<$8.CheckinsResponse> getAllRecent(
-      $grpc.ServiceCall call, $8.GetRecentAllCheckinRequest request);
-  $async.Future<$8.CheckinsResponse> getUserLog(
-      $grpc.ServiceCall call, $8.UserCheckinRequest request);
+  $async.Future<$9.CheckinsResponse> getAllRecent(
+      $grpc.ServiceCall call, $9.GetRecentAllCheckinRequest request);
+  $async.Future<$9.CheckinsResponse> getUserLog(
+      $grpc.ServiceCall call, $9.UserCheckinRequest request);
 }

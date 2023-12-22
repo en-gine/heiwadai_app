@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../google/protobuf/timestamp.pb.dart' as $21;
+import '../../google/protobuf/timestamp.pb.dart' as $23;
 
 class PostRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PostRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
@@ -105,7 +105,7 @@ class PostResponse extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Content', protoName: 'Content')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Author', protoName: 'Author')
-    ..aOM<$21.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PostDate', protoName: 'PostDate', subBuilder: $21.Timestamp.create)
+    ..aOM<$23.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PostDate', protoName: 'PostDate', subBuilder: $23.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -115,7 +115,7 @@ class PostResponse extends $pb.GeneratedMessage {
     $core.String? title,
     $core.String? content,
     $core.String? author,
-    $21.Timestamp? postDate,
+    $23.Timestamp? postDate,
   }) {
     final _result = create();
     if (iD != null) {
@@ -193,14 +193,14 @@ class PostResponse extends $pb.GeneratedMessage {
   void clearAuthor() => clearField(4);
 
   @$pb.TagNumber(5)
-  $21.Timestamp get postDate => $_getN(4);
+  $23.Timestamp get postDate => $_getN(4);
   @$pb.TagNumber(5)
-  set postDate($21.Timestamp v) { setField(5, v); }
+  set postDate($23.Timestamp v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasPostDate() => $_has(4);
   @$pb.TagNumber(5)
   void clearPostDate() => clearField(5);
   @$pb.TagNumber(5)
-  $21.Timestamp ensurePostDate() => $_ensure(4);
+  $23.Timestamp ensurePostDate() => $_ensure(4);
 }
 

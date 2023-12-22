@@ -9,9 +9,9 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../google/protobuf/timestamp.pb.dart' as $21;
+import '../../google/protobuf/timestamp.pb.dart' as $23;
 
-import '../shared/Prefecture.pbenum.dart' as $23;
+import '../shared/Prefecture.pbenum.dart' as $25;
 
 class UserRegisterRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserRegisterRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
@@ -20,9 +20,9 @@ class UserRegisterRequest extends $pb.GeneratedMessage {
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'FirstNameKana', protoName: 'FirstNameKana')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LastNameKana', protoName: 'LastNameKana')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CompanyName', protoName: 'CompanyName')
-    ..aOM<$21.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'BirthDate', protoName: 'BirthDate', subBuilder: $21.Timestamp.create)
+    ..aOM<$23.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'BirthDate', protoName: 'BirthDate', subBuilder: $23.Timestamp.create)
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ZipCode', protoName: 'ZipCode')
-    ..e<$23.Prefecture>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Prefecture', $pb.PbFieldType.OE, protoName: 'Prefecture', defaultOrMaker: $23.Prefecture.Unspecified, valueOf: $23.Prefecture.valueOf, enumValues: $23.Prefecture.values)
+    ..e<$25.Prefecture>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Prefecture', $pb.PbFieldType.OE, protoName: 'Prefecture', defaultOrMaker: $25.Prefecture.Unspecified, valueOf: $25.Prefecture.valueOf, enumValues: $25.Prefecture.values)
     ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'City', protoName: 'City')
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Address', protoName: 'Address')
     ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Tel', protoName: 'Tel')
@@ -39,9 +39,9 @@ class UserRegisterRequest extends $pb.GeneratedMessage {
     $core.String? firstNameKana,
     $core.String? lastNameKana,
     $core.String? companyName,
-    $21.Timestamp? birthDate,
+    $23.Timestamp? birthDate,
     $core.String? zipCode,
-    $23.Prefecture? prefecture,
+    $25.Prefecture? prefecture,
     $core.String? city,
     $core.String? address,
     $core.String? tel,
@@ -161,15 +161,15 @@ class UserRegisterRequest extends $pb.GeneratedMessage {
   void clearCompanyName() => clearField(5);
 
   @$pb.TagNumber(6)
-  $21.Timestamp get birthDate => $_getN(5);
+  $23.Timestamp get birthDate => $_getN(5);
   @$pb.TagNumber(6)
-  set birthDate($21.Timestamp v) { setField(6, v); }
+  set birthDate($23.Timestamp v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasBirthDate() => $_has(5);
   @$pb.TagNumber(6)
   void clearBirthDate() => clearField(6);
   @$pb.TagNumber(6)
-  $21.Timestamp ensureBirthDate() => $_ensure(5);
+  $23.Timestamp ensureBirthDate() => $_ensure(5);
 
   @$pb.TagNumber(7)
   $core.String get zipCode => $_getSZ(6);
@@ -181,9 +181,9 @@ class UserRegisterRequest extends $pb.GeneratedMessage {
   void clearZipCode() => clearField(7);
 
   @$pb.TagNumber(8)
-  $23.Prefecture get prefecture => $_getN(7);
+  $25.Prefecture get prefecture => $_getN(7);
   @$pb.TagNumber(8)
-  set prefecture($23.Prefecture v) { setField(8, v); }
+  set prefecture($25.Prefecture v) { setField(8, v); }
   @$pb.TagNumber(8)
   $core.bool hasPrefecture() => $_has(7);
   @$pb.TagNumber(8)
@@ -252,9 +252,9 @@ class UserUpdateDataRequest extends $pb.GeneratedMessage {
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'FirstNameKana', protoName: 'FirstNameKana')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LastNameKana', protoName: 'LastNameKana')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CompanyName', protoName: 'CompanyName')
-    ..aOM<$21.Timestamp>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'BirthDate', protoName: 'BirthDate', subBuilder: $21.Timestamp.create)
+    ..aOM<$23.Timestamp>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'BirthDate', protoName: 'BirthDate', subBuilder: $23.Timestamp.create)
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ZipCode', protoName: 'ZipCode')
-    ..e<$23.Prefecture>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Prefecture', $pb.PbFieldType.OE, protoName: 'Prefecture', defaultOrMaker: $23.Prefecture.Unspecified, valueOf: $23.Prefecture.valueOf, enumValues: $23.Prefecture.values)
+    ..e<$25.Prefecture>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Prefecture', $pb.PbFieldType.OE, protoName: 'Prefecture', defaultOrMaker: $25.Prefecture.Unspecified, valueOf: $25.Prefecture.valueOf, enumValues: $25.Prefecture.values)
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'City', protoName: 'City')
     ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Address', protoName: 'Address')
     ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Tel', protoName: 'Tel')
@@ -271,9 +271,9 @@ class UserUpdateDataRequest extends $pb.GeneratedMessage {
     $core.String? firstNameKana,
     $core.String? lastNameKana,
     $core.String? companyName,
-    $21.Timestamp? birthDate,
+    $23.Timestamp? birthDate,
     $core.String? zipCode,
-    $23.Prefecture? prefecture,
+    $25.Prefecture? prefecture,
     $core.String? city,
     $core.String? address,
     $core.String? tel,
@@ -401,15 +401,15 @@ class UserUpdateDataRequest extends $pb.GeneratedMessage {
   void clearCompanyName() => clearField(6);
 
   @$pb.TagNumber(7)
-  $21.Timestamp get birthDate => $_getN(6);
+  $23.Timestamp get birthDate => $_getN(6);
   @$pb.TagNumber(7)
-  set birthDate($21.Timestamp v) { setField(7, v); }
+  set birthDate($23.Timestamp v) { setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasBirthDate() => $_has(6);
   @$pb.TagNumber(7)
   void clearBirthDate() => clearField(7);
   @$pb.TagNumber(7)
-  $21.Timestamp ensureBirthDate() => $_ensure(6);
+  $23.Timestamp ensureBirthDate() => $_ensure(6);
 
   @$pb.TagNumber(8)
   $core.String get zipCode => $_getSZ(7);
@@ -421,9 +421,9 @@ class UserUpdateDataRequest extends $pb.GeneratedMessage {
   void clearZipCode() => clearField(8);
 
   @$pb.TagNumber(9)
-  $23.Prefecture get prefecture => $_getN(8);
+  $25.Prefecture get prefecture => $_getN(8);
   @$pb.TagNumber(9)
-  set prefecture($23.Prefecture v) { setField(9, v); }
+  set prefecture($25.Prefecture v) { setField(9, v); }
   @$pb.TagNumber(9)
   $core.bool hasPrefecture() => $_has(8);
   @$pb.TagNumber(9)
@@ -483,9 +483,9 @@ class UserDataResponse extends $pb.GeneratedMessage {
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'FirstNameKana', protoName: 'FirstNameKana')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LastNameKana', protoName: 'LastNameKana')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CompanyName', protoName: 'CompanyName')
-    ..aOM<$21.Timestamp>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'BirthDate', protoName: 'BirthDate', subBuilder: $21.Timestamp.create)
+    ..aOM<$23.Timestamp>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'BirthDate', protoName: 'BirthDate', subBuilder: $23.Timestamp.create)
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ZipCode', protoName: 'ZipCode')
-    ..e<$23.Prefecture>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Prefecture', $pb.PbFieldType.OE, protoName: 'Prefecture', defaultOrMaker: $23.Prefecture.Unspecified, valueOf: $23.Prefecture.valueOf, enumValues: $23.Prefecture.values)
+    ..e<$25.Prefecture>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Prefecture', $pb.PbFieldType.OE, protoName: 'Prefecture', defaultOrMaker: $25.Prefecture.Unspecified, valueOf: $25.Prefecture.valueOf, enumValues: $25.Prefecture.values)
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'City', protoName: 'City')
     ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Address', protoName: 'Address')
     ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Tel', protoName: 'Tel')
@@ -502,9 +502,9 @@ class UserDataResponse extends $pb.GeneratedMessage {
     $core.String? firstNameKana,
     $core.String? lastNameKana,
     $core.String? companyName,
-    $21.Timestamp? birthDate,
+    $23.Timestamp? birthDate,
     $core.String? zipCode,
-    $23.Prefecture? prefecture,
+    $25.Prefecture? prefecture,
     $core.String? city,
     $core.String? address,
     $core.String? tel,
@@ -632,15 +632,15 @@ class UserDataResponse extends $pb.GeneratedMessage {
   void clearCompanyName() => clearField(6);
 
   @$pb.TagNumber(7)
-  $21.Timestamp get birthDate => $_getN(6);
+  $23.Timestamp get birthDate => $_getN(6);
   @$pb.TagNumber(7)
-  set birthDate($21.Timestamp v) { setField(7, v); }
+  set birthDate($23.Timestamp v) { setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasBirthDate() => $_has(6);
   @$pb.TagNumber(7)
   void clearBirthDate() => clearField(7);
   @$pb.TagNumber(7)
-  $21.Timestamp ensureBirthDate() => $_ensure(6);
+  $23.Timestamp ensureBirthDate() => $_ensure(6);
 
   @$pb.TagNumber(8)
   $core.String get zipCode => $_getSZ(7);
@@ -652,9 +652,9 @@ class UserDataResponse extends $pb.GeneratedMessage {
   void clearZipCode() => clearField(8);
 
   @$pb.TagNumber(9)
-  $23.Prefecture get prefecture => $_getN(8);
+  $25.Prefecture get prefecture => $_getN(8);
   @$pb.TagNumber(9)
-  set prefecture($23.Prefecture v) { setField(9, v); }
+  set prefecture($25.Prefecture v) { setField(9, v); }
   @$pb.TagNumber(9)
   $core.bool hasPrefecture() => $_has(8);
   @$pb.TagNumber(9)

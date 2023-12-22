@@ -9,8 +9,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../google/protobuf/timestamp.pb.dart' as $21;
-import 'Store.pb.dart' as $7;
+import '../../google/protobuf/timestamp.pb.dart' as $23;
+import 'Store.pb.dart' as $8;
 
 import 'Coupon.pbenum.dart';
 
@@ -22,10 +22,10 @@ class Coupon extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Name', protoName: 'Name')
     ..e<CouponType>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CouponType', $pb.PbFieldType.OE, protoName: 'CouponType', defaultOrMaker: CouponType.COUPON_STANDARD, valueOf: CouponType.valueOf, enumValues: CouponType.values)
     ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DiscountAmount', $pb.PbFieldType.OU3, protoName: 'DiscountAmount')
-    ..aOM<$21.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ExpireAt', protoName: 'ExpireAt', subBuilder: $21.Timestamp.create)
+    ..aOM<$23.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ExpireAt', protoName: 'ExpireAt', subBuilder: $23.Timestamp.create)
     ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'IsCombinationable', protoName: 'IsCombinationable')
     ..pPS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Notices', protoName: 'Notices')
-    ..pc<$7.Store>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TargetStore', $pb.PbFieldType.PM, protoName: 'TargetStore', subBuilder: $7.Store.create)
+    ..pc<$8.Store>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TargetStore', $pb.PbFieldType.PM, protoName: 'TargetStore', subBuilder: $8.Store.create)
     ..hasRequiredFields = false
   ;
 
@@ -35,10 +35,10 @@ class Coupon extends $pb.GeneratedMessage {
     $core.String? name,
     CouponType? couponType,
     $core.int? discountAmount,
-    $21.Timestamp? expireAt,
+    $23.Timestamp? expireAt,
     $core.bool? isCombinationable,
     $core.Iterable<$core.String>? notices,
-    $core.Iterable<$7.Store>? targetStore,
+    $core.Iterable<$8.Store>? targetStore,
   }) {
     final _result = create();
     if (iD != null) {
@@ -125,15 +125,15 @@ class Coupon extends $pb.GeneratedMessage {
   void clearDiscountAmount() => clearField(4);
 
   @$pb.TagNumber(5)
-  $21.Timestamp get expireAt => $_getN(4);
+  $23.Timestamp get expireAt => $_getN(4);
   @$pb.TagNumber(5)
-  set expireAt($21.Timestamp v) { setField(5, v); }
+  set expireAt($23.Timestamp v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasExpireAt() => $_has(4);
   @$pb.TagNumber(5)
   void clearExpireAt() => clearField(5);
   @$pb.TagNumber(5)
-  $21.Timestamp ensureExpireAt() => $_ensure(4);
+  $23.Timestamp ensureExpireAt() => $_ensure(4);
 
   @$pb.TagNumber(6)
   $core.bool get isCombinationable => $_getBF(5);
@@ -148,14 +148,14 @@ class Coupon extends $pb.GeneratedMessage {
   $core.List<$core.String> get notices => $_getList(6);
 
   @$pb.TagNumber(8)
-  $core.List<$7.Store> get targetStore => $_getList(7);
+  $core.List<$8.Store> get targetStore => $_getList(7);
 }
 
 class UserAttachedCoupon extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserAttachedCoupon', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.shared'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserID', protoName: 'UserID')
     ..aOM<Coupon>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Coupon', protoName: 'Coupon', subBuilder: Coupon.create)
-    ..aOM<$21.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UsedAt', protoName: 'UsedAt', subBuilder: $21.Timestamp.create)
+    ..aOM<$23.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UsedAt', protoName: 'UsedAt', subBuilder: $23.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -163,7 +163,7 @@ class UserAttachedCoupon extends $pb.GeneratedMessage {
   factory UserAttachedCoupon({
     $core.String? userID,
     Coupon? coupon,
-    $21.Timestamp? usedAt,
+    $23.Timestamp? usedAt,
   }) {
     final _result = create();
     if (userID != null) {
@@ -219,14 +219,14 @@ class UserAttachedCoupon extends $pb.GeneratedMessage {
   Coupon ensureCoupon() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $21.Timestamp get usedAt => $_getN(2);
+  $23.Timestamp get usedAt => $_getN(2);
   @$pb.TagNumber(3)
-  set usedAt($21.Timestamp v) { setField(3, v); }
+  set usedAt($23.Timestamp v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasUsedAt() => $_has(2);
   @$pb.TagNumber(3)
   void clearUsedAt() => clearField(3);
   @$pb.TagNumber(3)
-  $21.Timestamp ensureUsedAt() => $_ensure(2);
+  $23.Timestamp ensureUsedAt() => $_ensure(2);
 }
 
