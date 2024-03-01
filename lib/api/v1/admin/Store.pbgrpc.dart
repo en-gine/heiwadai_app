@@ -10,73 +10,82 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'Store.pb.dart' as $7;
-import '../shared/Store.pb.dart' as $8;
-import '../../google/protobuf/empty.pb.dart' as $2;
+import 'Store.pb.dart' as $9;
+import '../shared/Store.pb.dart' as $10;
+import '../../google/protobuf/empty.pb.dart' as $1;
 export 'Store.pb.dart';
 
 class StoreControllerClient extends $grpc.Client {
-  static final _$getByID = $grpc.ClientMethod<$7.SoreIDRequest, $8.Store>(
+  static final _$getByID = $grpc.ClientMethod<$9.SoreIDRequest, $10.Store>(
       '/server.admin.StoreController/GetByID',
-      ($7.SoreIDRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $8.Store.fromBuffer(value));
-  static final _$getAll = $grpc.ClientMethod<$2.Empty, $8.Stores>(
+      ($9.SoreIDRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $10.Store.fromBuffer(value));
+  static final _$getAll = $grpc.ClientMethod<$1.Empty, $10.Stores>(
       '/server.admin.StoreController/GetAll',
-      ($2.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $8.Stores.fromBuffer(value));
+      ($1.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $10.Stores.fromBuffer(value));
+  static final _$getActiveAll = $grpc.ClientMethod<$1.Empty, $10.Stores>(
+      '/server.admin.StoreController/GetActiveAll',
+      ($1.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $10.Stores.fromBuffer(value));
   static final _$register =
-      $grpc.ClientMethod<$7.StoreRegisterRequest, $8.Store>(
+      $grpc.ClientMethod<$9.StoreRegisterRequest, $10.Store>(
           '/server.admin.StoreController/Register',
-          ($7.StoreRegisterRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $8.Store.fromBuffer(value));
-  static final _$update = $grpc.ClientMethod<$7.StoreUpdateRequest, $8.Store>(
+          ($9.StoreRegisterRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $10.Store.fromBuffer(value));
+  static final _$update = $grpc.ClientMethod<$9.StoreUpdateRequest, $10.Store>(
       '/server.admin.StoreController/Update',
-      ($7.StoreUpdateRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $8.Store.fromBuffer(value));
+      ($9.StoreUpdateRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $10.Store.fromBuffer(value));
   static final _$regenQRCode =
-      $grpc.ClientMethod<$7.SoreIDRequest, $7.QRResponse>(
+      $grpc.ClientMethod<$9.SoreIDRequest, $9.QRResponse>(
           '/server.admin.StoreController/RegenQRCode',
-          ($7.SoreIDRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $7.QRResponse.fromBuffer(value));
+          ($9.SoreIDRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $9.QRResponse.fromBuffer(value));
   static final _$regenUnlimitQRCode =
-      $grpc.ClientMethod<$7.SoreIDRequest, $7.UnlimitQRResponse>(
+      $grpc.ClientMethod<$9.SoreIDRequest, $9.UnlimitQRResponse>(
           '/server.admin.StoreController/RegenUnlimitQRCode',
-          ($7.SoreIDRequest value) => value.writeToBuffer(),
+          ($9.SoreIDRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $7.UnlimitQRResponse.fromBuffer(value));
+              $9.UnlimitQRResponse.fromBuffer(value));
 
   StoreControllerClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$8.Store> getByID($7.SoreIDRequest request,
+  $grpc.ResponseFuture<$10.Store> getByID($9.SoreIDRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getByID, request, options: options);
   }
 
-  $grpc.ResponseFuture<$8.Stores> getAll($2.Empty request,
+  $grpc.ResponseFuture<$10.Stores> getAll($1.Empty request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getAll, request, options: options);
   }
 
-  $grpc.ResponseFuture<$8.Store> register($7.StoreRegisterRequest request,
+  $grpc.ResponseFuture<$10.Stores> getActiveAll($1.Empty request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getActiveAll, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$10.Store> register($9.StoreRegisterRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$register, request, options: options);
   }
 
-  $grpc.ResponseFuture<$8.Store> update($7.StoreUpdateRequest request,
+  $grpc.ResponseFuture<$10.Store> update($9.StoreUpdateRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$update, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.QRResponse> regenQRCode($7.SoreIDRequest request,
+  $grpc.ResponseFuture<$9.QRResponse> regenQRCode($9.SoreIDRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$regenQRCode, request, options: options);
   }
 
-  $grpc.ResponseFuture<$7.UnlimitQRResponse> regenUnlimitQRCode(
-      $7.SoreIDRequest request,
+  $grpc.ResponseFuture<$9.UnlimitQRResponse> regenUnlimitQRCode(
+      $9.SoreIDRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$regenUnlimitQRCode, request, options: options);
   }
@@ -86,91 +95,105 @@ abstract class StoreControllerServiceBase extends $grpc.Service {
   $core.String get $name => 'server.admin.StoreController';
 
   StoreControllerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$7.SoreIDRequest, $8.Store>(
+    $addMethod($grpc.ServiceMethod<$9.SoreIDRequest, $10.Store>(
         'GetByID',
         getByID_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.SoreIDRequest.fromBuffer(value),
-        ($8.Store value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.Empty, $8.Stores>(
+        ($core.List<$core.int> value) => $9.SoreIDRequest.fromBuffer(value),
+        ($10.Store value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.Empty, $10.Stores>(
         'GetAll',
         getAll_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $2.Empty.fromBuffer(value),
-        ($8.Stores value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.StoreRegisterRequest, $8.Store>(
+        ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
+        ($10.Stores value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.Empty, $10.Stores>(
+        'GetActiveAll',
+        getActiveAll_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
+        ($10.Stores value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$9.StoreRegisterRequest, $10.Store>(
         'Register',
         register_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $7.StoreRegisterRequest.fromBuffer(value),
-        ($8.Store value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.StoreUpdateRequest, $8.Store>(
+            $9.StoreRegisterRequest.fromBuffer(value),
+        ($10.Store value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$9.StoreUpdateRequest, $10.Store>(
         'Update',
         update_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
-            $7.StoreUpdateRequest.fromBuffer(value),
-        ($8.Store value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.SoreIDRequest, $7.QRResponse>(
+            $9.StoreUpdateRequest.fromBuffer(value),
+        ($10.Store value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$9.SoreIDRequest, $9.QRResponse>(
         'RegenQRCode',
         regenQRCode_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.SoreIDRequest.fromBuffer(value),
-        ($7.QRResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$7.SoreIDRequest, $7.UnlimitQRResponse>(
+        ($core.List<$core.int> value) => $9.SoreIDRequest.fromBuffer(value),
+        ($9.QRResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$9.SoreIDRequest, $9.UnlimitQRResponse>(
         'RegenUnlimitQRCode',
         regenUnlimitQRCode_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $7.SoreIDRequest.fromBuffer(value),
-        ($7.UnlimitQRResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $9.SoreIDRequest.fromBuffer(value),
+        ($9.UnlimitQRResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$8.Store> getByID_Pre(
-      $grpc.ServiceCall call, $async.Future<$7.SoreIDRequest> request) async {
+  $async.Future<$10.Store> getByID_Pre(
+      $grpc.ServiceCall call, $async.Future<$9.SoreIDRequest> request) async {
     return getByID(call, await request);
   }
 
-  $async.Future<$8.Stores> getAll_Pre(
-      $grpc.ServiceCall call, $async.Future<$2.Empty> request) async {
+  $async.Future<$10.Stores> getAll_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
     return getAll(call, await request);
   }
 
-  $async.Future<$8.Store> register_Pre($grpc.ServiceCall call,
-      $async.Future<$7.StoreRegisterRequest> request) async {
+  $async.Future<$10.Stores> getActiveAll_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
+    return getActiveAll(call, await request);
+  }
+
+  $async.Future<$10.Store> register_Pre($grpc.ServiceCall call,
+      $async.Future<$9.StoreRegisterRequest> request) async {
     return register(call, await request);
   }
 
-  $async.Future<$8.Store> update_Pre($grpc.ServiceCall call,
-      $async.Future<$7.StoreUpdateRequest> request) async {
+  $async.Future<$10.Store> update_Pre($grpc.ServiceCall call,
+      $async.Future<$9.StoreUpdateRequest> request) async {
     return update(call, await request);
   }
 
-  $async.Future<$7.QRResponse> regenQRCode_Pre(
-      $grpc.ServiceCall call, $async.Future<$7.SoreIDRequest> request) async {
+  $async.Future<$9.QRResponse> regenQRCode_Pre(
+      $grpc.ServiceCall call, $async.Future<$9.SoreIDRequest> request) async {
     return regenQRCode(call, await request);
   }
 
-  $async.Future<$7.UnlimitQRResponse> regenUnlimitQRCode_Pre(
-      $grpc.ServiceCall call, $async.Future<$7.SoreIDRequest> request) async {
+  $async.Future<$9.UnlimitQRResponse> regenUnlimitQRCode_Pre(
+      $grpc.ServiceCall call, $async.Future<$9.SoreIDRequest> request) async {
     return regenUnlimitQRCode(call, await request);
   }
 
-  $async.Future<$8.Store> getByID(
-      $grpc.ServiceCall call, $7.SoreIDRequest request);
-  $async.Future<$8.Stores> getAll($grpc.ServiceCall call, $2.Empty request);
-  $async.Future<$8.Store> register(
-      $grpc.ServiceCall call, $7.StoreRegisterRequest request);
-  $async.Future<$8.Store> update(
-      $grpc.ServiceCall call, $7.StoreUpdateRequest request);
-  $async.Future<$7.QRResponse> regenQRCode(
-      $grpc.ServiceCall call, $7.SoreIDRequest request);
-  $async.Future<$7.UnlimitQRResponse> regenUnlimitQRCode(
-      $grpc.ServiceCall call, $7.SoreIDRequest request);
+  $async.Future<$10.Store> getByID(
+      $grpc.ServiceCall call, $9.SoreIDRequest request);
+  $async.Future<$10.Stores> getAll($grpc.ServiceCall call, $1.Empty request);
+  $async.Future<$10.Stores> getActiveAll(
+      $grpc.ServiceCall call, $1.Empty request);
+  $async.Future<$10.Store> register(
+      $grpc.ServiceCall call, $9.StoreRegisterRequest request);
+  $async.Future<$10.Store> update(
+      $grpc.ServiceCall call, $9.StoreUpdateRequest request);
+  $async.Future<$9.QRResponse> regenQRCode(
+      $grpc.ServiceCall call, $9.SoreIDRequest request);
+  $async.Future<$9.UnlimitQRResponse> regenUnlimitQRCode(
+      $grpc.ServiceCall call, $9.SoreIDRequest request);
 }

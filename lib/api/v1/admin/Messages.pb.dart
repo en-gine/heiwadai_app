@@ -9,8 +9,8 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../shared/Pager.pb.dart' as $24;
-import '../../google/protobuf/timestamp.pb.dart' as $23;
+import '../shared/Pager.pb.dart' as $6;
+import '../../google/protobuf/timestamp.pb.dart' as $25;
 
 class MessageIDRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MessageIDRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
@@ -62,16 +62,21 @@ class MessageIDRequest extends $pb.GeneratedMessage {
 class MessagesResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MessagesResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
     ..pc<MessageResponse>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'messages', $pb.PbFieldType.PM, subBuilder: MessageResponse.create)
+    ..aOM<$6.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PageResponse', protoName: 'PageResponse', subBuilder: $6.PageResponse.create)
     ..hasRequiredFields = false
   ;
 
   MessagesResponse._() : super();
   factory MessagesResponse({
     $core.Iterable<MessageResponse>? messages,
+    $6.PageResponse? pageResponse,
   }) {
     final _result = create();
     if (messages != null) {
       _result.messages.addAll(messages);
+    }
+    if (pageResponse != null) {
+      _result.pageResponse = pageResponse;
     }
     return _result;
   }
@@ -98,17 +103,28 @@ class MessagesResponse extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $core.List<MessageResponse> get messages => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $6.PageResponse get pageResponse => $_getN(1);
+  @$pb.TagNumber(2)
+  set pageResponse($6.PageResponse v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPageResponse() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPageResponse() => clearField(2);
+  @$pb.TagNumber(2)
+  $6.PageResponse ensurePageResponse() => $_ensure(1);
 }
 
 class GetMessageRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMessageRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
-    ..aOM<$24.Pager>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Pager', protoName: 'Pager', subBuilder: $24.Pager.create)
+    ..aOM<$6.Pager>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Pager', protoName: 'Pager', subBuilder: $6.Pager.create)
     ..hasRequiredFields = false
   ;
 
   GetMessageRequest._() : super();
   factory GetMessageRequest({
-    $24.Pager? pager,
+    $6.Pager? pager,
   }) {
     final _result = create();
     if (pager != null) {
@@ -138,22 +154,22 @@ class GetMessageRequest extends $pb.GeneratedMessage {
   static GetMessageRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $24.Pager get pager => $_getN(0);
+  $6.Pager get pager => $_getN(0);
   @$pb.TagNumber(1)
-  set pager($24.Pager v) { setField(1, v); }
+  set pager($6.Pager v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasPager() => $_has(0);
   @$pb.TagNumber(1)
   void clearPager() => clearField(1);
   @$pb.TagNumber(1)
-  $24.Pager ensurePager() => $_ensure(0);
+  $6.Pager ensurePager() => $_ensure(0);
 }
 
 class MessageCreateRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MessageCreateRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Content', protoName: 'Content')
-    ..aOM<$23.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DisplayDate', protoName: 'DisplayDate', subBuilder: $23.Timestamp.create)
+    ..aOM<$25.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DisplayDate', protoName: 'DisplayDate', subBuilder: $25.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -161,7 +177,7 @@ class MessageCreateRequest extends $pb.GeneratedMessage {
   factory MessageCreateRequest({
     $core.String? title,
     $core.String? content,
-    $23.Timestamp? displayDate,
+    $25.Timestamp? displayDate,
   }) {
     final _result = create();
     if (title != null) {
@@ -215,15 +231,15 @@ class MessageCreateRequest extends $pb.GeneratedMessage {
   void clearContent() => clearField(2);
 
   @$pb.TagNumber(5)
-  $23.Timestamp get displayDate => $_getN(2);
+  $25.Timestamp get displayDate => $_getN(2);
   @$pb.TagNumber(5)
-  set displayDate($23.Timestamp v) { setField(5, v); }
+  set displayDate($25.Timestamp v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasDisplayDate() => $_has(2);
   @$pb.TagNumber(5)
   void clearDisplayDate() => clearField(5);
   @$pb.TagNumber(5)
-  $23.Timestamp ensureDisplayDate() => $_ensure(2);
+  $25.Timestamp ensureDisplayDate() => $_ensure(2);
 }
 
 class MessageUpdateRequest extends $pb.GeneratedMessage {
@@ -231,7 +247,7 @@ class MessageUpdateRequest extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Content', protoName: 'Content')
-    ..aOM<$23.Timestamp>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DisplayDate', protoName: 'DisplayDate', subBuilder: $23.Timestamp.create)
+    ..aOM<$25.Timestamp>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DisplayDate', protoName: 'DisplayDate', subBuilder: $25.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -240,7 +256,7 @@ class MessageUpdateRequest extends $pb.GeneratedMessage {
     $core.String? iD,
     $core.String? title,
     $core.String? content,
-    $23.Timestamp? displayDate,
+    $25.Timestamp? displayDate,
   }) {
     final _result = create();
     if (iD != null) {
@@ -306,15 +322,15 @@ class MessageUpdateRequest extends $pb.GeneratedMessage {
   void clearContent() => clearField(3);
 
   @$pb.TagNumber(4)
-  $23.Timestamp get displayDate => $_getN(3);
+  $25.Timestamp get displayDate => $_getN(3);
   @$pb.TagNumber(4)
-  set displayDate($23.Timestamp v) { setField(4, v); }
+  set displayDate($25.Timestamp v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasDisplayDate() => $_has(3);
   @$pb.TagNumber(4)
   void clearDisplayDate() => clearField(4);
   @$pb.TagNumber(4)
-  $23.Timestamp ensureDisplayDate() => $_ensure(3);
+  $25.Timestamp ensureDisplayDate() => $_ensure(3);
 }
 
 class MessageResponse extends $pb.GeneratedMessage {
@@ -323,7 +339,8 @@ class MessageResponse extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Content', protoName: 'Content')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'AuthorID', protoName: 'AuthorID')
-    ..aOM<$23.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DisplayDate', protoName: 'DisplayDate', subBuilder: $23.Timestamp.create)
+    ..aOM<$25.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'DisplayDate', protoName: 'DisplayDate', subBuilder: $25.Timestamp.create)
+    ..aOM<$25.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CreateAt', protoName: 'CreateAt', subBuilder: $25.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -333,7 +350,8 @@ class MessageResponse extends $pb.GeneratedMessage {
     $core.String? title,
     $core.String? content,
     $core.String? authorID,
-    $23.Timestamp? displayDate,
+    $25.Timestamp? displayDate,
+    $25.Timestamp? createAt,
   }) {
     final _result = create();
     if (iD != null) {
@@ -350,6 +368,9 @@ class MessageResponse extends $pb.GeneratedMessage {
     }
     if (displayDate != null) {
       _result.displayDate = displayDate;
+    }
+    if (createAt != null) {
+      _result.createAt = createAt;
     }
     return _result;
   }
@@ -411,14 +432,25 @@ class MessageResponse extends $pb.GeneratedMessage {
   void clearAuthorID() => clearField(4);
 
   @$pb.TagNumber(5)
-  $23.Timestamp get displayDate => $_getN(4);
+  $25.Timestamp get displayDate => $_getN(4);
   @$pb.TagNumber(5)
-  set displayDate($23.Timestamp v) { setField(5, v); }
+  set displayDate($25.Timestamp v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasDisplayDate() => $_has(4);
   @$pb.TagNumber(5)
   void clearDisplayDate() => clearField(5);
   @$pb.TagNumber(5)
-  $23.Timestamp ensureDisplayDate() => $_ensure(4);
+  $25.Timestamp ensureDisplayDate() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  $25.Timestamp get createAt => $_getN(5);
+  @$pb.TagNumber(6)
+  set createAt($25.Timestamp v) { setField(6, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasCreateAt() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearCreateAt() => clearField(6);
+  @$pb.TagNumber(6)
+  $25.Timestamp ensureCreateAt() => $_ensure(5);
 }
 

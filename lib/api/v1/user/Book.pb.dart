@@ -9,9 +9,9 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../../google/protobuf/timestamp.pb.dart' as $23;
+import '../../google/protobuf/timestamp.pb.dart' as $25;
 
-import '../shared/Prefecture.pbenum.dart' as $25;
+import '../shared/Prefecture.pbenum.dart' as $26;
 import 'Book.pbenum.dart';
 
 export 'Book.pbenum.dart';
@@ -19,8 +19,8 @@ export 'Book.pbenum.dart';
 class BookResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BookResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
-    ..aOM<$23.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StayFrom', protoName: 'StayFrom', subBuilder: $23.Timestamp.create)
-    ..aOM<$23.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StayTo', protoName: 'StayTo', subBuilder: $23.Timestamp.create)
+    ..aOM<$25.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StayFrom', protoName: 'StayFrom', subBuilder: $25.Timestamp.create)
+    ..aOM<$25.Timestamp>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StayTo', protoName: 'StayTo', subBuilder: $25.Timestamp.create)
     ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Adult', $pb.PbFieldType.OU3, protoName: 'Adult')
     ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Child', $pb.PbFieldType.OU3, protoName: 'Child')
     ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'RoomCount', $pb.PbFieldType.OU3, protoName: 'RoomCount')
@@ -35,8 +35,8 @@ class BookResponse extends $pb.GeneratedMessage {
   BookResponse._() : super();
   factory BookResponse({
     $core.String? iD,
-    $23.Timestamp? stayFrom,
-    $23.Timestamp? stayTo,
+    $25.Timestamp? stayFrom,
+    $25.Timestamp? stayTo,
     $core.int? adult,
     $core.int? child,
     $core.int? roomCount,
@@ -113,26 +113,26 @@ class BookResponse extends $pb.GeneratedMessage {
   void clearID() => clearField(1);
 
   @$pb.TagNumber(2)
-  $23.Timestamp get stayFrom => $_getN(1);
+  $25.Timestamp get stayFrom => $_getN(1);
   @$pb.TagNumber(2)
-  set stayFrom($23.Timestamp v) { setField(2, v); }
+  set stayFrom($25.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasStayFrom() => $_has(1);
   @$pb.TagNumber(2)
   void clearStayFrom() => clearField(2);
   @$pb.TagNumber(2)
-  $23.Timestamp ensureStayFrom() => $_ensure(1);
+  $25.Timestamp ensureStayFrom() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $23.Timestamp get stayTo => $_getN(2);
+  $25.Timestamp get stayTo => $_getN(2);
   @$pb.TagNumber(3)
-  set stayTo($23.Timestamp v) { setField(3, v); }
+  set stayTo($25.Timestamp v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasStayTo() => $_has(2);
   @$pb.TagNumber(3)
   void clearStayTo() => clearField(3);
   @$pb.TagNumber(3)
-  $23.Timestamp ensureStayTo() => $_ensure(2);
+  $25.Timestamp ensureStayTo() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $core.int get adult => $_getIZ(3);
@@ -219,7 +219,7 @@ class GuestData extends $pb.GeneratedMessage {
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LastNameKana', protoName: 'LastNameKana')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CompanyName', protoName: 'CompanyName')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ZipCode', protoName: 'ZipCode')
-    ..e<$25.Prefecture>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Prefecture', $pb.PbFieldType.OE, protoName: 'Prefecture', defaultOrMaker: $25.Prefecture.Unspecified, valueOf: $25.Prefecture.valueOf, enumValues: $25.Prefecture.values)
+    ..e<$26.Prefecture>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Prefecture', $pb.PbFieldType.OE, protoName: 'Prefecture', defaultOrMaker: $26.Prefecture.Unspecified, valueOf: $26.Prefecture.valueOf, enumValues: $26.Prefecture.values)
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'City', protoName: 'City')
     ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Address', protoName: 'Address')
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Tel', protoName: 'Tel')
@@ -235,7 +235,7 @@ class GuestData extends $pb.GeneratedMessage {
     $core.String? lastNameKana,
     $core.String? companyName,
     $core.String? zipCode,
-    $25.Prefecture? prefecture,
+    $26.Prefecture? prefecture,
     $core.String? city,
     $core.String? address,
     $core.String? tel,
@@ -353,9 +353,9 @@ class GuestData extends $pb.GeneratedMessage {
   void clearZipCode() => clearField(6);
 
   @$pb.TagNumber(7)
-  $25.Prefecture get prefecture => $_getN(6);
+  $26.Prefecture get prefecture => $_getN(6);
   @$pb.TagNumber(7)
-  set prefecture($25.Prefecture v) { setField(7, v); }
+  set prefecture($26.Prefecture v) { setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasPrefecture() => $_has(6);
   @$pb.TagNumber(7)
@@ -622,8 +622,8 @@ class MealType extends $pb.GeneratedMessage {
 
 class ReserveRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ReserveRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
-    ..aOM<$23.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StayFrom', protoName: 'StayFrom', subBuilder: $23.Timestamp.create)
-    ..aOM<$23.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StayTo', protoName: 'StayTo', subBuilder: $23.Timestamp.create)
+    ..aOM<$25.Timestamp>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StayFrom', protoName: 'StayFrom', subBuilder: $25.Timestamp.create)
+    ..aOM<$25.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StayTo', protoName: 'StayTo', subBuilder: $25.Timestamp.create)
     ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Adult', $pb.PbFieldType.OU3, protoName: 'Adult')
     ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Child', $pb.PbFieldType.OU3, protoName: 'Child')
     ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'RoomCount', $pb.PbFieldType.OU3, protoName: 'RoomCount')
@@ -637,8 +637,8 @@ class ReserveRequest extends $pb.GeneratedMessage {
 
   ReserveRequest._() : super();
   factory ReserveRequest({
-    $23.Timestamp? stayFrom,
-    $23.Timestamp? stayTo,
+    $25.Timestamp? stayFrom,
+    $25.Timestamp? stayTo,
     $core.int? adult,
     $core.int? child,
     $core.int? roomCount,
@@ -703,26 +703,26 @@ class ReserveRequest extends $pb.GeneratedMessage {
   static ReserveRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $23.Timestamp get stayFrom => $_getN(0);
+  $25.Timestamp get stayFrom => $_getN(0);
   @$pb.TagNumber(1)
-  set stayFrom($23.Timestamp v) { setField(1, v); }
+  set stayFrom($25.Timestamp v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasStayFrom() => $_has(0);
   @$pb.TagNumber(1)
   void clearStayFrom() => clearField(1);
   @$pb.TagNumber(1)
-  $23.Timestamp ensureStayFrom() => $_ensure(0);
+  $25.Timestamp ensureStayFrom() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $23.Timestamp get stayTo => $_getN(1);
+  $25.Timestamp get stayTo => $_getN(1);
   @$pb.TagNumber(2)
-  set stayTo($23.Timestamp v) { setField(2, v); }
+  set stayTo($25.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasStayTo() => $_has(1);
   @$pb.TagNumber(2)
   void clearStayTo() => clearField(2);
   @$pb.TagNumber(2)
-  $23.Timestamp ensureStayTo() => $_ensure(1);
+  $25.Timestamp ensureStayTo() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.int get adult => $_getIZ(2);

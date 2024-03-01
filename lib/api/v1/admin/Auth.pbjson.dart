@@ -45,9 +45,41 @@ final $typed_data.Uint8List updatePasswordRequestDescriptor = $convert.base64Dec
 const UpdateEmailRequest$json = const {
   '1': 'UpdateEmailRequest',
   '2': const [
-    const {'1': 'email', '3': 1, '4': 1, '5': 9, '10': 'email'},
+    const {'1': 'Mail', '3': 1, '4': 1, '5': 9, '10': 'Mail'},
   ],
 };
 
 /// Descriptor for `UpdateEmailRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List updateEmailRequestDescriptor = $convert.base64Decode('ChJVcGRhdGVFbWFpbFJlcXVlc3QSFAoFZW1haWwYASABKAlSBWVtYWls');
+final $typed_data.Uint8List updateEmailRequestDescriptor = $convert.base64Decode('ChJVcGRhdGVFbWFpbFJlcXVlc3QSEgoETWFpbBgBIAEoCVIETWFpbA==');
+@$core.Deprecated('Use adminRegisterRequestDescriptor instead')
+const AdminRegisterRequest$json = const {
+  '1': 'AdminRegisterRequest',
+  '2': const [
+    const {'1': 'Name', '3': 1, '4': 1, '5': 9, '10': 'Name'},
+    const {'1': 'Mail', '3': 2, '4': 1, '5': 9, '10': 'Mail'},
+    const {'1': 'BelongStoreID', '3': 4, '4': 1, '5': 9, '10': 'BelongStoreID'},
+  ],
+};
+
+/// Descriptor for `AdminRegisterRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List adminRegisterRequestDescriptor = $convert.base64Decode('ChRBZG1pblJlZ2lzdGVyUmVxdWVzdBISCgROYW1lGAEgASgJUgROYW1lEhIKBE1haWwYAiABKAlSBE1haWwSJAoNQmVsb25nU3RvcmVJRBgEIAEoCVINQmVsb25nU3RvcmVJRA==');
+@$core.Deprecated('Use adminRegisterResponseDescriptor instead')
+const AdminRegisterResponse$json = const {
+  '1': 'AdminRegisterResponse',
+  '2': const [
+    const {'1': 'ID', '3': 1, '4': 1, '5': 9, '10': 'ID'},
+  ],
+};
+
+/// Descriptor for `AdminRegisterResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List adminRegisterResponseDescriptor = $convert.base64Decode('ChVBZG1pblJlZ2lzdGVyUmVzcG9uc2USDgoCSUQYASABKAlSAklE');
+@$core.Deprecated('Use resendInviteRequestDescriptor instead')
+const ResendInviteRequest$json = const {
+  '1': 'ResendInviteRequest',
+  '2': const [
+    const {'1': 'Mail', '3': 1, '4': 1, '5': 9, '10': 'Mail'},
+  ],
+};
+
+/// Descriptor for `ResendInviteRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List resendInviteRequestDescriptor = $convert.base64Decode('ChNSZXNlbmRJbnZpdGVSZXF1ZXN0EhIKBE1haWwYASABKAlSBE1haWw=');

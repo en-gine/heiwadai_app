@@ -9,15 +9,15 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../user/UserData.pb.dart' as $10;
-import '../../google/protobuf/timestamp.pb.dart' as $23;
-import '../shared/Pager.pb.dart' as $24;
+import '../user/UserData.pb.dart' as $12;
+import '../../google/protobuf/timestamp.pb.dart' as $25;
+import '../shared/Pager.pb.dart' as $6;
 
-import '../shared/Prefecture.pbenum.dart' as $25;
+import '../shared/Prefecture.pbenum.dart' as $26;
 
 class UserUpdateDataRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserUpdateDataRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
-    ..aOM<$10.UserUpdateDataRequest>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'User', protoName: 'User', subBuilder: $10.UserUpdateDataRequest.create)
+    ..aOM<$12.UserUpdateDataRequest>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'User', protoName: 'User', subBuilder: $12.UserUpdateDataRequest.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'InnerNote', protoName: 'InnerNote')
     ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'IsBlackCustomer', protoName: 'IsBlackCustomer')
     ..hasRequiredFields = false
@@ -25,7 +25,7 @@ class UserUpdateDataRequest extends $pb.GeneratedMessage {
 
   UserUpdateDataRequest._() : super();
   factory UserUpdateDataRequest({
-    $10.UserUpdateDataRequest? user,
+    $12.UserUpdateDataRequest? user,
     $core.String? innerNote,
     $core.bool? isBlackCustomer,
   }) {
@@ -63,15 +63,15 @@ class UserUpdateDataRequest extends $pb.GeneratedMessage {
   static UserUpdateDataRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $10.UserUpdateDataRequest get user => $_getN(0);
+  $12.UserUpdateDataRequest get user => $_getN(0);
   @$pb.TagNumber(1)
-  set user($10.UserUpdateDataRequest v) { setField(1, v); }
+  set user($12.UserUpdateDataRequest v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasUser() => $_has(0);
   @$pb.TagNumber(1)
   void clearUser() => clearField(1);
   @$pb.TagNumber(1)
-  $10.UserUpdateDataRequest ensureUser() => $_ensure(0);
+  $12.UserUpdateDataRequest ensureUser() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get innerNote => $_getSZ(1);
@@ -94,7 +94,7 @@ class UserUpdateDataRequest extends $pb.GeneratedMessage {
 
 class UserDataResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserDataResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
-    ..aOM<$10.UserDataResponse>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'User', protoName: 'User', subBuilder: $10.UserDataResponse.create)
+    ..aOM<$12.UserDataResponse>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'User', protoName: 'User', subBuilder: $12.UserDataResponse.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'InnerNote', protoName: 'InnerNote')
     ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'IsBlackCustomer', protoName: 'IsBlackCustomer')
     ..hasRequiredFields = false
@@ -102,7 +102,7 @@ class UserDataResponse extends $pb.GeneratedMessage {
 
   UserDataResponse._() : super();
   factory UserDataResponse({
-    $10.UserDataResponse? user,
+    $12.UserDataResponse? user,
     $core.String? innerNote,
     $core.bool? isBlackCustomer,
   }) {
@@ -140,15 +140,15 @@ class UserDataResponse extends $pb.GeneratedMessage {
   static UserDataResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $10.UserDataResponse get user => $_getN(0);
+  $12.UserDataResponse get user => $_getN(0);
   @$pb.TagNumber(1)
-  set user($10.UserDataResponse v) { setField(1, v); }
+  set user($12.UserDataResponse v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasUser() => $_has(0);
   @$pb.TagNumber(1)
   void clearUser() => clearField(1);
   @$pb.TagNumber(1)
-  $10.UserDataResponse ensureUser() => $_ensure(0);
+  $12.UserDataResponse ensureUser() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get innerNote => $_getSZ(1);
@@ -171,15 +171,15 @@ class UserDataResponse extends $pb.GeneratedMessage {
 
 class UserWithCheckIn extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserWithCheckIn', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
-    ..aOM<$10.UserDataResponse>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'User', protoName: 'User', subBuilder: $10.UserDataResponse.create)
-    ..aOM<$23.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LastCheckinAt', protoName: 'LastCheckinAt', subBuilder: $23.Timestamp.create)
+    ..aOM<$12.UserDataResponse>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'User', protoName: 'User', subBuilder: $12.UserDataResponse.create)
+    ..aOM<$25.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LastCheckinAt', protoName: 'LastCheckinAt', subBuilder: $25.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
   UserWithCheckIn._() : super();
   factory UserWithCheckIn({
-    $10.UserDataResponse? user,
-    $23.Timestamp? lastCheckinAt,
+    $12.UserDataResponse? user,
+    $25.Timestamp? lastCheckinAt,
   }) {
     final _result = create();
     if (user != null) {
@@ -212,39 +212,39 @@ class UserWithCheckIn extends $pb.GeneratedMessage {
   static UserWithCheckIn? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $10.UserDataResponse get user => $_getN(0);
+  $12.UserDataResponse get user => $_getN(0);
   @$pb.TagNumber(1)
-  set user($10.UserDataResponse v) { setField(1, v); }
+  set user($12.UserDataResponse v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasUser() => $_has(0);
   @$pb.TagNumber(1)
   void clearUser() => clearField(1);
   @$pb.TagNumber(1)
-  $10.UserDataResponse ensureUser() => $_ensure(0);
+  $12.UserDataResponse ensureUser() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $23.Timestamp get lastCheckinAt => $_getN(1);
+  $25.Timestamp get lastCheckinAt => $_getN(1);
   @$pb.TagNumber(2)
-  set lastCheckinAt($23.Timestamp v) { setField(2, v); }
+  set lastCheckinAt($25.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasLastCheckinAt() => $_has(1);
   @$pb.TagNumber(2)
   void clearLastCheckinAt() => clearField(2);
   @$pb.TagNumber(2)
-  $23.Timestamp ensureLastCheckinAt() => $_ensure(1);
+  $25.Timestamp ensureLastCheckinAt() => $_ensure(1);
 }
 
 class UserListResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserListResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
     ..pc<UserWithCheckIn>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Users', $pb.PbFieldType.PM, protoName: 'Users', subBuilder: UserWithCheckIn.create)
-    ..aOM<$24.PageResponse>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PageResponse', protoName: 'PageResponse', subBuilder: $24.PageResponse.create)
+    ..aOM<$6.PageResponse>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PageResponse', protoName: 'PageResponse', subBuilder: $6.PageResponse.create)
     ..hasRequiredFields = false
   ;
 
   UserListResponse._() : super();
   factory UserListResponse({
     $core.Iterable<UserWithCheckIn>? users,
-    $24.PageResponse? pageResponse,
+    $6.PageResponse? pageResponse,
   }) {
     final _result = create();
     if (users != null) {
@@ -280,15 +280,62 @@ class UserListResponse extends $pb.GeneratedMessage {
   $core.List<UserWithCheckIn> get users => $_getList(0);
 
   @$pb.TagNumber(3)
-  $24.PageResponse get pageResponse => $_getN(1);
+  $6.PageResponse get pageResponse => $_getN(1);
   @$pb.TagNumber(3)
-  set pageResponse($24.PageResponse v) { setField(3, v); }
+  set pageResponse($6.PageResponse v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasPageResponse() => $_has(1);
   @$pb.TagNumber(3)
   void clearPageResponse() => clearField(3);
   @$pb.TagNumber(3)
-  $24.PageResponse ensurePageResponse() => $_ensure(1);
+  $6.PageResponse ensurePageResponse() => $_ensure(1);
+}
+
+class UserGetIDRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserGetIDRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
+    ..hasRequiredFields = false
+  ;
+
+  UserGetIDRequest._() : super();
+  factory UserGetIDRequest({
+    $core.String? iD,
+  }) {
+    final _result = create();
+    if (iD != null) {
+      _result.iD = iD;
+    }
+    return _result;
+  }
+  factory UserGetIDRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserGetIDRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserGetIDRequest clone() => UserGetIDRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserGetIDRequest copyWith(void Function(UserGetIDRequest) updates) => super.copyWith((message) => updates(message as UserGetIDRequest)) as UserGetIDRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UserGetIDRequest create() => UserGetIDRequest._();
+  UserGetIDRequest createEmptyInstance() => create();
+  static $pb.PbList<UserGetIDRequest> createRepeated() => $pb.PbList<UserGetIDRequest>();
+  @$core.pragma('dart2js:noInline')
+  static UserGetIDRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserGetIDRequest>(create);
+  static UserGetIDRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get iD => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set iD($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasID() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearID() => clearField(1);
 }
 
 class UserDeleteRequest extends $pb.GeneratedMessage {
@@ -344,7 +391,7 @@ class SearchFilter extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'FirstName', protoName: 'FirstName')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LastNameKana', protoName: 'LastNameKana')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'FirstNameKana', protoName: 'FirstNameKana')
-    ..e<$25.Prefecture>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Prefecture', $pb.PbFieldType.OE, protoName: 'Prefecture', defaultOrMaker: $25.Prefecture.Unspecified, valueOf: $25.Prefecture.valueOf, enumValues: $25.Prefecture.values)
+    ..e<$26.Prefecture>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Prefecture', $pb.PbFieldType.OE, protoName: 'Prefecture', defaultOrMaker: $26.Prefecture.Unspecified, valueOf: $26.Prefecture.valueOf, enumValues: $26.Prefecture.values)
     ..hasRequiredFields = false
   ;
 
@@ -354,7 +401,7 @@ class SearchFilter extends $pb.GeneratedMessage {
     $core.String? firstName,
     $core.String? lastNameKana,
     $core.String? firstNameKana,
-    $25.Prefecture? prefecture,
+    $26.Prefecture? prefecture,
   }) {
     final _result = create();
     if (lastName != null) {
@@ -432,9 +479,9 @@ class SearchFilter extends $pb.GeneratedMessage {
   void clearFirstNameKana() => clearField(4);
 
   @$pb.TagNumber(5)
-  $25.Prefecture get prefecture => $_getN(4);
+  $26.Prefecture get prefecture => $_getN(4);
   @$pb.TagNumber(5)
-  set prefecture($25.Prefecture v) { setField(5, v); }
+  set prefecture($26.Prefecture v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasPrefecture() => $_has(4);
   @$pb.TagNumber(5)
@@ -444,14 +491,14 @@ class SearchFilter extends $pb.GeneratedMessage {
 class UserListFilterRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserListFilterRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
     ..aOM<SearchFilter>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Search', protoName: 'Search', subBuilder: SearchFilter.create)
-    ..aOM<$24.Pager>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Pager', protoName: 'Pager', subBuilder: $24.Pager.create)
+    ..aOM<$6.Pager>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Pager', protoName: 'Pager', subBuilder: $6.Pager.create)
     ..hasRequiredFields = false
   ;
 
   UserListFilterRequest._() : super();
   factory UserListFilterRequest({
     SearchFilter? search,
-    $24.Pager? pager,
+    $6.Pager? pager,
   }) {
     final _result = create();
     if (search != null) {
@@ -495,14 +542,14 @@ class UserListFilterRequest extends $pb.GeneratedMessage {
   SearchFilter ensureSearch() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $24.Pager get pager => $_getN(1);
+  $6.Pager get pager => $_getN(1);
   @$pb.TagNumber(2)
-  set pager($24.Pager v) { setField(2, v); }
+  set pager($6.Pager v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPager() => $_has(1);
   @$pb.TagNumber(2)
   void clearPager() => clearField(2);
   @$pb.TagNumber(2)
-  $24.Pager ensurePager() => $_ensure(1);
+  $6.Pager ensurePager() => $_ensure(1);
 }
 

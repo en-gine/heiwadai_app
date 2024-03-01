@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../shared/Coupon.pb.dart' as $19;
+import '../shared/Coupon.pb.dart' as $5;
 
 class CouponIDRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CouponIDRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
@@ -60,13 +60,13 @@ class CouponIDRequest extends $pb.GeneratedMessage {
 
 class MyCouponsResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MyCouponsResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
-    ..pc<$19.Coupon>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Coupons', $pb.PbFieldType.PM, protoName: 'Coupons', subBuilder: $19.Coupon.create)
+    ..pc<$5.Coupon>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Coupons', $pb.PbFieldType.PM, protoName: 'Coupons', subBuilder: $5.Coupon.create)
     ..hasRequiredFields = false
   ;
 
   MyCouponsResponse._() : super();
   factory MyCouponsResponse({
-    $core.Iterable<$19.Coupon>? coupons,
+    $core.Iterable<$5.Coupon>? coupons,
   }) {
     final _result = create();
     if (coupons != null) {
@@ -96,6 +96,6 @@ class MyCouponsResponse extends $pb.GeneratedMessage {
   static MyCouponsResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$19.Coupon> get coupons => $_getList(0);
+  $core.List<$5.Coupon> get coupons => $_getList(0);
 }
 

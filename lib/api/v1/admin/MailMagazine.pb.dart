@@ -9,23 +9,23 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../shared/Pager.pb.dart' as $24;
-import '../../google/protobuf/timestamp.pb.dart' as $23;
+import '../shared/Pager.pb.dart' as $6;
+import '../../google/protobuf/timestamp.pb.dart' as $25;
 
-import '../shared/Prefecture.pbenum.dart' as $25;
+import '../shared/Prefecture.pbenum.dart' as $26;
 import 'MailMagazine.pbenum.dart';
 
 export 'MailMagazine.pbenum.dart';
 
 class GetMailMagazineListRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetMailMagazineListRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
-    ..aOM<$24.Pager>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Pager', protoName: 'Pager', subBuilder: $24.Pager.create)
+    ..aOM<$6.Pager>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Pager', protoName: 'Pager', subBuilder: $6.Pager.create)
     ..hasRequiredFields = false
   ;
 
   GetMailMagazineListRequest._() : super();
   factory GetMailMagazineListRequest({
-    $24.Pager? pager,
+    $6.Pager? pager,
   }) {
     final _result = create();
     if (pager != null) {
@@ -55,15 +55,15 @@ class GetMailMagazineListRequest extends $pb.GeneratedMessage {
   static GetMailMagazineListRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $24.Pager get pager => $_getN(0);
+  $6.Pager get pager => $_getN(0);
   @$pb.TagNumber(1)
-  set pager($24.Pager v) { setField(1, v); }
+  set pager($6.Pager v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasPager() => $_has(0);
   @$pb.TagNumber(1)
   void clearPager() => clearField(1);
   @$pb.TagNumber(1)
-  $24.Pager ensurePager() => $_ensure(0);
+  $6.Pager ensurePager() => $_ensure(0);
 }
 
 class MailMagazineIDRequest extends $pb.GeneratedMessage {
@@ -119,12 +119,12 @@ class MailMagazine extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Content', protoName: 'Content')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'AuthorID', protoName: 'AuthorID')
-    ..pc<$25.Prefecture>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TargetPrefecture', $pb.PbFieldType.KE, protoName: 'TargetPrefecture', valueOf: $25.Prefecture.valueOf, enumValues: $25.Prefecture.values, defaultEnumValue: $25.Prefecture.Unspecified)
+    ..pc<$26.Prefecture>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TargetPrefecture', $pb.PbFieldType.KE, protoName: 'TargetPrefecture', valueOf: $26.Prefecture.valueOf, enumValues: $26.Prefecture.values, defaultEnumValue: $26.Prefecture.Unspecified)
     ..e<MailMagazineStatus>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MailMagazineStatus', $pb.PbFieldType.OE, protoName: 'MailMagazineStatus', defaultOrMaker: MailMagazineStatus.MailMagazineDraft, valueOf: MailMagazineStatus.valueOf, enumValues: MailMagazineStatus.values)
     ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UnsentCount', $pb.PbFieldType.O3, protoName: 'UnsentCount')
     ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'SentCount', $pb.PbFieldType.O3, protoName: 'SentCount')
-    ..aOM<$23.Timestamp>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'SentAt', protoName: 'SentAt', subBuilder: $23.Timestamp.create)
-    ..aOM<$23.Timestamp>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CreateAt', protoName: 'CreateAt', subBuilder: $23.Timestamp.create)
+    ..aOM<$25.Timestamp>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'SentAt', protoName: 'SentAt', subBuilder: $25.Timestamp.create)
+    ..aOM<$25.Timestamp>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CreateAt', protoName: 'CreateAt', subBuilder: $25.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
@@ -134,12 +134,12 @@ class MailMagazine extends $pb.GeneratedMessage {
     $core.String? title,
     $core.String? content,
     $core.String? authorID,
-    $core.Iterable<$25.Prefecture>? targetPrefecture,
+    $core.Iterable<$26.Prefecture>? targetPrefecture,
     MailMagazineStatus? mailMagazineStatus,
     $core.int? unsentCount,
     $core.int? sentCount,
-    $23.Timestamp? sentAt,
-    $23.Timestamp? createAt,
+    $25.Timestamp? sentAt,
+    $25.Timestamp? createAt,
   }) {
     final _result = create();
     if (iD != null) {
@@ -232,7 +232,7 @@ class MailMagazine extends $pb.GeneratedMessage {
   void clearAuthorID() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.List<$25.Prefecture> get targetPrefecture => $_getList(4);
+  $core.List<$26.Prefecture> get targetPrefecture => $_getList(4);
 
   @$pb.TagNumber(6)
   MailMagazineStatus get mailMagazineStatus => $_getN(5);
@@ -262,39 +262,39 @@ class MailMagazine extends $pb.GeneratedMessage {
   void clearSentCount() => clearField(8);
 
   @$pb.TagNumber(9)
-  $23.Timestamp get sentAt => $_getN(8);
+  $25.Timestamp get sentAt => $_getN(8);
   @$pb.TagNumber(9)
-  set sentAt($23.Timestamp v) { setField(9, v); }
+  set sentAt($25.Timestamp v) { setField(9, v); }
   @$pb.TagNumber(9)
   $core.bool hasSentAt() => $_has(8);
   @$pb.TagNumber(9)
   void clearSentAt() => clearField(9);
   @$pb.TagNumber(9)
-  $23.Timestamp ensureSentAt() => $_ensure(8);
+  $25.Timestamp ensureSentAt() => $_ensure(8);
 
   @$pb.TagNumber(10)
-  $23.Timestamp get createAt => $_getN(9);
+  $25.Timestamp get createAt => $_getN(9);
   @$pb.TagNumber(10)
-  set createAt($23.Timestamp v) { setField(10, v); }
+  set createAt($25.Timestamp v) { setField(10, v); }
   @$pb.TagNumber(10)
   $core.bool hasCreateAt() => $_has(9);
   @$pb.TagNumber(10)
   void clearCreateAt() => clearField(10);
   @$pb.TagNumber(10)
-  $23.Timestamp ensureCreateAt() => $_ensure(9);
+  $25.Timestamp ensureCreateAt() => $_ensure(9);
 }
 
 class MailMagazinesResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MailMagazinesResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
     ..pc<MailMagazine>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MailMagazines', $pb.PbFieldType.PM, protoName: 'MailMagazines', subBuilder: MailMagazine.create)
-    ..aOM<$24.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PageResponse', protoName: 'PageResponse', subBuilder: $24.PageResponse.create)
+    ..aOM<$6.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PageResponse', protoName: 'PageResponse', subBuilder: $6.PageResponse.create)
     ..hasRequiredFields = false
   ;
 
   MailMagazinesResponse._() : super();
   factory MailMagazinesResponse({
     $core.Iterable<MailMagazine>? mailMagazines,
-    $24.PageResponse? pageResponse,
+    $6.PageResponse? pageResponse,
   }) {
     final _result = create();
     if (mailMagazines != null) {
@@ -330,30 +330,30 @@ class MailMagazinesResponse extends $pb.GeneratedMessage {
   $core.List<MailMagazine> get mailMagazines => $_getList(0);
 
   @$pb.TagNumber(2)
-  $24.PageResponse get pageResponse => $_getN(1);
+  $6.PageResponse get pageResponse => $_getN(1);
   @$pb.TagNumber(2)
-  set pageResponse($24.PageResponse v) { setField(2, v); }
+  set pageResponse($6.PageResponse v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPageResponse() => $_has(1);
   @$pb.TagNumber(2)
   void clearPageResponse() => clearField(2);
   @$pb.TagNumber(2)
-  $24.PageResponse ensurePageResponse() => $_ensure(1);
+  $6.PageResponse ensurePageResponse() => $_ensure(1);
 }
 
-class CreateDraftRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateDraftRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+class SaveDraftRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SaveDraftRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Content', protoName: 'Content')
-    ..pc<$25.Prefecture>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TargetPrefectures', $pb.PbFieldType.KE, protoName: 'TargetPrefectures', valueOf: $25.Prefecture.valueOf, enumValues: $25.Prefecture.values, defaultEnumValue: $25.Prefecture.Unspecified)
+    ..pc<$26.Prefecture>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TargetPrefectures', $pb.PbFieldType.KE, protoName: 'TargetPrefectures', valueOf: $26.Prefecture.valueOf, enumValues: $26.Prefecture.values, defaultEnumValue: $26.Prefecture.Unspecified)
     ..hasRequiredFields = false
   ;
 
-  CreateDraftRequest._() : super();
-  factory CreateDraftRequest({
+  SaveDraftRequest._() : super();
+  factory SaveDraftRequest({
     $core.String? title,
     $core.String? content,
-    $core.Iterable<$25.Prefecture>? targetPrefectures,
+    $core.Iterable<$26.Prefecture>? targetPrefectures,
   }) {
     final _result = create();
     if (title != null) {
@@ -367,26 +367,26 @@ class CreateDraftRequest extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory CreateDraftRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory CreateDraftRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory SaveDraftRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SaveDraftRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  CreateDraftRequest clone() => CreateDraftRequest()..mergeFromMessage(this);
+  SaveDraftRequest clone() => SaveDraftRequest()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CreateDraftRequest copyWith(void Function(CreateDraftRequest) updates) => super.copyWith((message) => updates(message as CreateDraftRequest)) as CreateDraftRequest; // ignore: deprecated_member_use
+  SaveDraftRequest copyWith(void Function(SaveDraftRequest) updates) => super.copyWith((message) => updates(message as SaveDraftRequest)) as SaveDraftRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static CreateDraftRequest create() => CreateDraftRequest._();
-  CreateDraftRequest createEmptyInstance() => create();
-  static $pb.PbList<CreateDraftRequest> createRepeated() => $pb.PbList<CreateDraftRequest>();
+  static SaveDraftRequest create() => SaveDraftRequest._();
+  SaveDraftRequest createEmptyInstance() => create();
+  static $pb.PbList<SaveDraftRequest> createRepeated() => $pb.PbList<SaveDraftRequest>();
   @$core.pragma('dart2js:noInline')
-  static CreateDraftRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateDraftRequest>(create);
-  static CreateDraftRequest? _defaultInstance;
+  static SaveDraftRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SaveDraftRequest>(create);
+  static SaveDraftRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get title => $_getSZ(0);
@@ -407,7 +407,7 @@ class CreateDraftRequest extends $pb.GeneratedMessage {
   void clearContent() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<$25.Prefecture> get targetPrefectures => $_getList(2);
+  $core.List<$26.Prefecture> get targetPrefectures => $_getList(2);
 }
 
 class UpdateMailMagazineRequest extends $pb.GeneratedMessage {
@@ -415,7 +415,7 @@ class UpdateMailMagazineRequest extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Content', protoName: 'Content')
-    ..pc<$25.Prefecture>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TargetPrefectures', $pb.PbFieldType.KE, protoName: 'TargetPrefectures', valueOf: $25.Prefecture.valueOf, enumValues: $25.Prefecture.values, defaultEnumValue: $25.Prefecture.Unspecified)
+    ..pc<$26.Prefecture>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TargetPrefectures', $pb.PbFieldType.KE, protoName: 'TargetPrefectures', valueOf: $26.Prefecture.valueOf, enumValues: $26.Prefecture.values, defaultEnumValue: $26.Prefecture.Unspecified)
     ..hasRequiredFields = false
   ;
 
@@ -424,7 +424,7 @@ class UpdateMailMagazineRequest extends $pb.GeneratedMessage {
     $core.String? iD,
     $core.String? title,
     $core.String? content,
-    $core.Iterable<$25.Prefecture>? targetPrefectures,
+    $core.Iterable<$26.Prefecture>? targetPrefectures,
   }) {
     final _result = create();
     if (iD != null) {
@@ -490,7 +490,7 @@ class UpdateMailMagazineRequest extends $pb.GeneratedMessage {
   void clearContent() => clearField(3);
 
   @$pb.TagNumber(5)
-  $core.List<$25.Prefecture> get targetPrefectures => $_getList(3);
+  $core.List<$26.Prefecture> get targetPrefectures => $_getList(3);
 }
 
 class DeleteMailMagazineRequest extends $pb.GeneratedMessage {
@@ -585,5 +585,230 @@ class SendMailMagazineRequest extends $pb.GeneratedMessage {
   $core.bool hasID() => $_has(0);
   @$pb.TagNumber(1)
   void clearID() => clearField(1);
+}
+
+class UserLogListRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserLogListRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserID', protoName: 'UserID')
+    ..aOM<$6.Pager>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Pager', protoName: 'Pager', subBuilder: $6.Pager.create)
+    ..hasRequiredFields = false
+  ;
+
+  UserLogListRequest._() : super();
+  factory UserLogListRequest({
+    $core.String? userID,
+    $6.Pager? pager,
+  }) {
+    final _result = create();
+    if (userID != null) {
+      _result.userID = userID;
+    }
+    if (pager != null) {
+      _result.pager = pager;
+    }
+    return _result;
+  }
+  factory UserLogListRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserLogListRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserLogListRequest clone() => UserLogListRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserLogListRequest copyWith(void Function(UserLogListRequest) updates) => super.copyWith((message) => updates(message as UserLogListRequest)) as UserLogListRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UserLogListRequest create() => UserLogListRequest._();
+  UserLogListRequest createEmptyInstance() => create();
+  static $pb.PbList<UserLogListRequest> createRepeated() => $pb.PbList<UserLogListRequest>();
+  @$core.pragma('dart2js:noInline')
+  static UserLogListRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserLogListRequest>(create);
+  static UserLogListRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userID => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userID($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserID() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserID() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $6.Pager get pager => $_getN(1);
+  @$pb.TagNumber(2)
+  set pager($6.Pager v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPager() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPager() => clearField(2);
+  @$pb.TagNumber(2)
+  $6.Pager ensurePager() => $_ensure(1);
+}
+
+class UserMailMagazineLog extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserMailMagazineLog', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MailMagazineID', protoName: 'MailMagazineID')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserID', protoName: 'UserID')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
+    ..aOM<$25.Timestamp>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'SentAt', protoName: 'SentAt', subBuilder: $25.Timestamp.create)
+    ..hasRequiredFields = false
+  ;
+
+  UserMailMagazineLog._() : super();
+  factory UserMailMagazineLog({
+    $core.String? iD,
+    $core.String? mailMagazineID,
+    $core.String? userID,
+    $core.String? title,
+    $25.Timestamp? sentAt,
+  }) {
+    final _result = create();
+    if (iD != null) {
+      _result.iD = iD;
+    }
+    if (mailMagazineID != null) {
+      _result.mailMagazineID = mailMagazineID;
+    }
+    if (userID != null) {
+      _result.userID = userID;
+    }
+    if (title != null) {
+      _result.title = title;
+    }
+    if (sentAt != null) {
+      _result.sentAt = sentAt;
+    }
+    return _result;
+  }
+  factory UserMailMagazineLog.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserMailMagazineLog.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserMailMagazineLog clone() => UserMailMagazineLog()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserMailMagazineLog copyWith(void Function(UserMailMagazineLog) updates) => super.copyWith((message) => updates(message as UserMailMagazineLog)) as UserMailMagazineLog; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UserMailMagazineLog create() => UserMailMagazineLog._();
+  UserMailMagazineLog createEmptyInstance() => create();
+  static $pb.PbList<UserMailMagazineLog> createRepeated() => $pb.PbList<UserMailMagazineLog>();
+  @$core.pragma('dart2js:noInline')
+  static UserMailMagazineLog getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserMailMagazineLog>(create);
+  static UserMailMagazineLog? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get iD => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set iD($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasID() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearID() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get mailMagazineID => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set mailMagazineID($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasMailMagazineID() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearMailMagazineID() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get userID => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set userID($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasUserID() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearUserID() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get title => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set title($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasTitle() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTitle() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $25.Timestamp get sentAt => $_getN(4);
+  @$pb.TagNumber(5)
+  set sentAt($25.Timestamp v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasSentAt() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearSentAt() => clearField(5);
+  @$pb.TagNumber(5)
+  $25.Timestamp ensureSentAt() => $_ensure(4);
+}
+
+class UserMailMagazineLogResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserMailMagazineLogResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+    ..pc<UserMailMagazineLog>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserLogs', $pb.PbFieldType.PM, protoName: 'UserLogs', subBuilder: UserMailMagazineLog.create)
+    ..aOM<$6.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PageResponse', protoName: 'PageResponse', subBuilder: $6.PageResponse.create)
+    ..hasRequiredFields = false
+  ;
+
+  UserMailMagazineLogResponse._() : super();
+  factory UserMailMagazineLogResponse({
+    $core.Iterable<UserMailMagazineLog>? userLogs,
+    $6.PageResponse? pageResponse,
+  }) {
+    final _result = create();
+    if (userLogs != null) {
+      _result.userLogs.addAll(userLogs);
+    }
+    if (pageResponse != null) {
+      _result.pageResponse = pageResponse;
+    }
+    return _result;
+  }
+  factory UserMailMagazineLogResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserMailMagazineLogResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserMailMagazineLogResponse clone() => UserMailMagazineLogResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserMailMagazineLogResponse copyWith(void Function(UserMailMagazineLogResponse) updates) => super.copyWith((message) => updates(message as UserMailMagazineLogResponse)) as UserMailMagazineLogResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UserMailMagazineLogResponse create() => UserMailMagazineLogResponse._();
+  UserMailMagazineLogResponse createEmptyInstance() => create();
+  static $pb.PbList<UserMailMagazineLogResponse> createRepeated() => $pb.PbList<UserMailMagazineLogResponse>();
+  @$core.pragma('dart2js:noInline')
+  static UserMailMagazineLogResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserMailMagazineLogResponse>(create);
+  static UserMailMagazineLogResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<UserMailMagazineLog> get userLogs => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $6.PageResponse get pageResponse => $_getN(1);
+  @$pb.TagNumber(2)
+  set pageResponse($6.PageResponse v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPageResponse() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPageResponse() => clearField(2);
+  @$pb.TagNumber(2)
+  $6.PageResponse ensurePageResponse() => $_ensure(1);
 }
 

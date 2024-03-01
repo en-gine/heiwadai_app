@@ -10,32 +10,32 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import '../../google/protobuf/empty.pb.dart' as $2;
-import 'Post.pb.dart' as $20;
+import '../../google/protobuf/empty.pb.dart' as $1;
+import 'Post.pb.dart' as $22;
 export 'Post.pb.dart';
 
 class PostControllerClient extends $grpc.Client {
-  static final _$getPosts = $grpc.ClientMethod<$2.Empty, $20.PostsResponse>(
+  static final _$getPosts = $grpc.ClientMethod<$1.Empty, $22.PostsResponse>(
       '/server.user.PostController/GetPosts',
-      ($2.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $20.PostsResponse.fromBuffer(value));
+      ($1.Empty value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $22.PostsResponse.fromBuffer(value));
   static final _$getPostByID =
-      $grpc.ClientMethod<$20.PostRequest, $20.PostResponse>(
+      $grpc.ClientMethod<$22.PostRequest, $22.PostResponse>(
           '/server.user.PostController/GetPostByID',
-          ($20.PostRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $20.PostResponse.fromBuffer(value));
+          ($22.PostRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $22.PostResponse.fromBuffer(value));
 
   PostControllerClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$20.PostsResponse> getPosts($2.Empty request,
+  $grpc.ResponseFuture<$22.PostsResponse> getPosts($1.Empty request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getPosts, request, options: options);
   }
 
-  $grpc.ResponseFuture<$20.PostResponse> getPostByID($20.PostRequest request,
+  $grpc.ResponseFuture<$22.PostResponse> getPostByID($22.PostRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getPostByID, request, options: options);
   }
@@ -45,34 +45,34 @@ abstract class PostControllerServiceBase extends $grpc.Service {
   $core.String get $name => 'server.user.PostController';
 
   PostControllerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$2.Empty, $20.PostsResponse>(
+    $addMethod($grpc.ServiceMethod<$1.Empty, $22.PostsResponse>(
         'GetPosts',
         getPosts_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $2.Empty.fromBuffer(value),
-        ($20.PostsResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$20.PostRequest, $20.PostResponse>(
+        ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
+        ($22.PostsResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$22.PostRequest, $22.PostResponse>(
         'GetPostByID',
         getPostByID_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $20.PostRequest.fromBuffer(value),
-        ($20.PostResponse value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $22.PostRequest.fromBuffer(value),
+        ($22.PostResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$20.PostsResponse> getPosts_Pre(
-      $grpc.ServiceCall call, $async.Future<$2.Empty> request) async {
+  $async.Future<$22.PostsResponse> getPosts_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
     return getPosts(call, await request);
   }
 
-  $async.Future<$20.PostResponse> getPostByID_Pre(
-      $grpc.ServiceCall call, $async.Future<$20.PostRequest> request) async {
+  $async.Future<$22.PostResponse> getPostByID_Pre(
+      $grpc.ServiceCall call, $async.Future<$22.PostRequest> request) async {
     return getPostByID(call, await request);
   }
 
-  $async.Future<$20.PostsResponse> getPosts(
-      $grpc.ServiceCall call, $2.Empty request);
-  $async.Future<$20.PostResponse> getPostByID(
-      $grpc.ServiceCall call, $20.PostRequest request);
+  $async.Future<$22.PostsResponse> getPosts(
+      $grpc.ServiceCall call, $1.Empty request);
+  $async.Future<$22.PostResponse> getPostByID(
+      $grpc.ServiceCall call, $22.PostRequest request);
 }

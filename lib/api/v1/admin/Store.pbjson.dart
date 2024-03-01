@@ -18,7 +18,7 @@ const StoreRegisterRequest$json = const {
     const {'1': 'Address', '3': 4, '4': 1, '5': 9, '10': 'Address'},
     const {'1': 'Tel', '3': 5, '4': 1, '5': 9, '10': 'Tel'},
     const {'1': 'SiteURL', '3': 6, '4': 1, '5': 9, '10': 'SiteURL'},
-    const {'1': 'StampImageURL', '3': 7, '4': 1, '5': 9, '10': 'StampImageURL'},
+    const {'1': 'StampImageData', '3': 7, '4': 1, '5': 9, '10': 'StampImageData'},
     const {'1': 'Stayable', '3': 8, '4': 1, '5': 8, '10': 'Stayable'},
     const {'1': 'IsActive', '3': 9, '4': 1, '5': 8, '10': 'IsActive'},
     const {'1': 'QRCode', '3': 10, '4': 1, '5': 9, '10': 'QRCode'},
@@ -32,7 +32,7 @@ const StoreRegisterRequest$json = const {
 };
 
 /// Descriptor for `StoreRegisterRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List storeRegisterRequestDescriptor = $convert.base64Decode('ChRTdG9yZVJlZ2lzdGVyUmVxdWVzdBISCgROYW1lGAEgASgJUgROYW1lEiMKCkJyYW5jaE5hbWUYAiABKAlIAFIKQnJhbmNoTmFtZYgBARIYCgdaaXBDb2RlGAMgASgJUgdaaXBDb2RlEhgKB0FkZHJlc3MYBCABKAlSB0FkZHJlc3MSEAoDVGVsGAUgASgJUgNUZWwSGAoHU2l0ZVVSTBgGIAEoCVIHU2l0ZVVSTBIkCg1TdGFtcEltYWdlVVJMGAcgASgJUg1TdGFtcEltYWdlVVJMEhoKCFN0YXlhYmxlGAggASgIUghTdGF5YWJsZRIaCghJc0FjdGl2ZRgJIAEoCFIISXNBY3RpdmUSFgoGUVJDb2RlGAogASgJUgZRUkNvZGUSKAoPVW5MaW1pdGVkUVJDb2RlGAsgASgJUg9VbkxpbWl0ZWRRUkNvZGUSQwoMU3RheWFibGVJbmZvGAwgASgLMhouc2VydmVyLmFkbWluLlN0YXlhYmxlSW5mb0gBUgxTdGF5YWJsZUluZm+IAQFCDQoLX0JyYW5jaE5hbWVCDwoNX1N0YXlhYmxlSW5mbw==');
+final $typed_data.Uint8List storeRegisterRequestDescriptor = $convert.base64Decode('ChRTdG9yZVJlZ2lzdGVyUmVxdWVzdBISCgROYW1lGAEgASgJUgROYW1lEiMKCkJyYW5jaE5hbWUYAiABKAlIAFIKQnJhbmNoTmFtZYgBARIYCgdaaXBDb2RlGAMgASgJUgdaaXBDb2RlEhgKB0FkZHJlc3MYBCABKAlSB0FkZHJlc3MSEAoDVGVsGAUgASgJUgNUZWwSGAoHU2l0ZVVSTBgGIAEoCVIHU2l0ZVVSTBImCg5TdGFtcEltYWdlRGF0YRgHIAEoCVIOU3RhbXBJbWFnZURhdGESGgoIU3RheWFibGUYCCABKAhSCFN0YXlhYmxlEhoKCElzQWN0aXZlGAkgASgIUghJc0FjdGl2ZRIWCgZRUkNvZGUYCiABKAlSBlFSQ29kZRIoCg9VbkxpbWl0ZWRRUkNvZGUYCyABKAlSD1VuTGltaXRlZFFSQ29kZRJDCgxTdGF5YWJsZUluZm8YDCABKAsyGi5zZXJ2ZXIuYWRtaW4uU3RheWFibGVJbmZvSAFSDFN0YXlhYmxlSW5mb4gBAUINCgtfQnJhbmNoTmFtZUIPCg1fU3RheWFibGVJbmZv');
 @$core.Deprecated('Use storeUpdateRequestDescriptor instead')
 const StoreUpdateRequest$json = const {
   '1': 'StoreUpdateRequest',
@@ -44,7 +44,7 @@ const StoreUpdateRequest$json = const {
     const {'1': 'Address', '3': 5, '4': 1, '5': 9, '10': 'Address'},
     const {'1': 'Tel', '3': 6, '4': 1, '5': 9, '10': 'Tel'},
     const {'1': 'SiteURL', '3': 7, '4': 1, '5': 9, '10': 'SiteURL'},
-    const {'1': 'StampImageURL', '3': 8, '4': 1, '5': 9, '10': 'StampImageURL'},
+    const {'1': 'StampImageData', '3': 8, '4': 1, '5': 9, '10': 'StampImageData'},
     const {'1': 'Stayable', '3': 9, '4': 1, '5': 8, '10': 'Stayable'},
     const {'1': 'IsActive', '3': 10, '4': 1, '5': 8, '10': 'IsActive'},
     const {'1': 'QRCode', '3': 11, '4': 1, '5': 9, '10': 'QRCode'},
@@ -57,7 +57,7 @@ const StoreUpdateRequest$json = const {
 };
 
 /// Descriptor for `StoreUpdateRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List storeUpdateRequestDescriptor = $convert.base64Decode('ChJTdG9yZVVwZGF0ZVJlcXVlc3QSDgoCSUQYASABKAlSAklEEhIKBE5hbWUYAiABKAlSBE5hbWUSIwoKQnJhbmNoTmFtZRgDIAEoCUgAUgpCcmFuY2hOYW1liAEBEhgKB1ppcENvZGUYBCABKAlSB1ppcENvZGUSGAoHQWRkcmVzcxgFIAEoCVIHQWRkcmVzcxIQCgNUZWwYBiABKAlSA1RlbBIYCgdTaXRlVVJMGAcgASgJUgdTaXRlVVJMEiQKDVN0YW1wSW1hZ2VVUkwYCCABKAlSDVN0YW1wSW1hZ2VVUkwSGgoIU3RheWFibGUYCSABKAhSCFN0YXlhYmxlEhoKCElzQWN0aXZlGAogASgIUghJc0FjdGl2ZRIWCgZRUkNvZGUYCyABKAlSBlFSQ29kZRIoCg9VbkxpbWl0ZWRRUkNvZGUYDCABKAlSD1VuTGltaXRlZFFSQ29kZRI+CgxTdGF5YWJsZUluZm8YDSABKAsyGi5zZXJ2ZXIuYWRtaW4uU3RheWFibGVJbmZvUgxTdGF5YWJsZUluZm9CDQoLX0JyYW5jaE5hbWU=');
+final $typed_data.Uint8List storeUpdateRequestDescriptor = $convert.base64Decode('ChJTdG9yZVVwZGF0ZVJlcXVlc3QSDgoCSUQYASABKAlSAklEEhIKBE5hbWUYAiABKAlSBE5hbWUSIwoKQnJhbmNoTmFtZRgDIAEoCUgAUgpCcmFuY2hOYW1liAEBEhgKB1ppcENvZGUYBCABKAlSB1ppcENvZGUSGAoHQWRkcmVzcxgFIAEoCVIHQWRkcmVzcxIQCgNUZWwYBiABKAlSA1RlbBIYCgdTaXRlVVJMGAcgASgJUgdTaXRlVVJMEiYKDlN0YW1wSW1hZ2VEYXRhGAggASgJUg5TdGFtcEltYWdlRGF0YRIaCghTdGF5YWJsZRgJIAEoCFIIU3RheWFibGUSGgoISXNBY3RpdmUYCiABKAhSCElzQWN0aXZlEhYKBlFSQ29kZRgLIAEoCVIGUVJDb2RlEigKD1VuTGltaXRlZFFSQ29kZRgMIAEoCVIPVW5MaW1pdGVkUVJDb2RlEj4KDFN0YXlhYmxlSW5mbxgNIAEoCzIaLnNlcnZlci5hZG1pbi5TdGF5YWJsZUluZm9SDFN0YXlhYmxlSW5mb0INCgtfQnJhbmNoTmFtZQ==');
 @$core.Deprecated('Use stayableInfoDescriptor instead')
 const StayableInfo$json = const {
   '1': 'StayableInfo',

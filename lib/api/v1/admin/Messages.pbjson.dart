@@ -23,11 +23,12 @@ const MessagesResponse$json = const {
   '1': 'MessagesResponse',
   '2': const [
     const {'1': 'messages', '3': 1, '4': 3, '5': 11, '6': '.server.admin.MessageResponse', '10': 'messages'},
+    const {'1': 'PageResponse', '3': 2, '4': 1, '5': 11, '6': '.server.shared.PageResponse', '10': 'PageResponse'},
   ],
 };
 
 /// Descriptor for `MessagesResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List messagesResponseDescriptor = $convert.base64Decode('ChBNZXNzYWdlc1Jlc3BvbnNlEjkKCG1lc3NhZ2VzGAEgAygLMh0uc2VydmVyLmFkbWluLk1lc3NhZ2VSZXNwb25zZVIIbWVzc2FnZXM=');
+final $typed_data.Uint8List messagesResponseDescriptor = $convert.base64Decode('ChBNZXNzYWdlc1Jlc3BvbnNlEjkKCG1lc3NhZ2VzGAEgAygLMh0uc2VydmVyLmFkbWluLk1lc3NhZ2VSZXNwb25zZVIIbWVzc2FnZXMSPwoMUGFnZVJlc3BvbnNlGAIgASgLMhsuc2VydmVyLnNoYXJlZC5QYWdlUmVzcG9uc2VSDFBhZ2VSZXNwb25zZQ==');
 @$core.Deprecated('Use getMessageRequestDescriptor instead')
 const GetMessageRequest$json = const {
   '1': 'GetMessageRequest',
@@ -77,8 +78,9 @@ const MessageResponse$json = const {
     const {'1': 'Content', '3': 3, '4': 1, '5': 9, '10': 'Content'},
     const {'1': 'AuthorID', '3': 4, '4': 1, '5': 9, '10': 'AuthorID'},
     const {'1': 'DisplayDate', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'DisplayDate'},
+    const {'1': 'CreateAt', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'CreateAt'},
   ],
 };
 
 /// Descriptor for `MessageResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List messageResponseDescriptor = $convert.base64Decode('Cg9NZXNzYWdlUmVzcG9uc2USDgoCSUQYASABKAlSAklEEhQKBVRpdGxlGAIgASgJUgVUaXRsZRIYCgdDb250ZW50GAMgASgJUgdDb250ZW50EhoKCEF1dGhvcklEGAQgASgJUghBdXRob3JJRBI8CgtEaXNwbGF5RGF0ZRgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSC0Rpc3BsYXlEYXRl');
+final $typed_data.Uint8List messageResponseDescriptor = $convert.base64Decode('Cg9NZXNzYWdlUmVzcG9uc2USDgoCSUQYASABKAlSAklEEhQKBVRpdGxlGAIgASgJUgVUaXRsZRIYCgdDb250ZW50GAMgASgJUgdDb250ZW50EhoKCEF1dGhvcklEGAQgASgJUghBdXRob3JJRBI8CgtEaXNwbGF5RGF0ZRgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSC0Rpc3BsYXlEYXRlEjYKCENyZWF0ZUF0GAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIIQ3JlYXRlQXQ=');

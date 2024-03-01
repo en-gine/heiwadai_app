@@ -26,3 +26,20 @@ class CouponType extends $pb.ProtobufEnum {
   const CouponType._($core.int v, $core.String n) : super(v, n);
 }
 
+class CouponStatus extends $pb.ProtobufEnum {
+  static const CouponStatus COUPON_DRAFT = CouponStatus._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'COUPON_DRAFT');
+  static const CouponStatus COUPON_CREATED = CouponStatus._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'COUPON_CREATED');
+  static const CouponStatus COUPON_ISSUED = CouponStatus._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'COUPON_ISSUED');
+
+  static const $core.List<CouponStatus> values = <CouponStatus> [
+    COUPON_DRAFT,
+    COUPON_CREATED,
+    COUPON_ISSUED,
+  ];
+
+  static final $core.Map<$core.int, CouponStatus> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static CouponStatus? valueOf($core.int value) => _byValue[value];
+
+  const CouponStatus._($core.int v, $core.String n) : super(v, n);
+}
+

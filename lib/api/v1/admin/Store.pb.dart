@@ -17,7 +17,7 @@ class StoreRegisterRequest extends $pb.GeneratedMessage {
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Address', protoName: 'Address')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Tel', protoName: 'Tel')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'SiteURL', protoName: 'SiteURL')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StampImageURL', protoName: 'StampImageURL')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StampImageData', protoName: 'StampImageData')
     ..aOB(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Stayable', protoName: 'Stayable')
     ..aOB(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'IsActive', protoName: 'IsActive')
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'QRCode', protoName: 'QRCode')
@@ -34,7 +34,7 @@ class StoreRegisterRequest extends $pb.GeneratedMessage {
     $core.String? address,
     $core.String? tel,
     $core.String? siteURL,
-    $core.String? stampImageURL,
+    $core.String? stampImageData,
     $core.bool? stayable,
     $core.bool? isActive,
     $core.String? qRCode,
@@ -60,8 +60,8 @@ class StoreRegisterRequest extends $pb.GeneratedMessage {
     if (siteURL != null) {
       _result.siteURL = siteURL;
     }
-    if (stampImageURL != null) {
-      _result.stampImageURL = stampImageURL;
+    if (stampImageData != null) {
+      _result.stampImageData = stampImageData;
     }
     if (stayable != null) {
       _result.stayable = stayable;
@@ -156,13 +156,13 @@ class StoreRegisterRequest extends $pb.GeneratedMessage {
   void clearSiteURL() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.String get stampImageURL => $_getSZ(6);
+  $core.String get stampImageData => $_getSZ(6);
   @$pb.TagNumber(7)
-  set stampImageURL($core.String v) { $_setString(6, v); }
+  set stampImageData($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasStampImageURL() => $_has(6);
+  $core.bool hasStampImageData() => $_has(6);
   @$pb.TagNumber(7)
-  void clearStampImageURL() => clearField(7);
+  void clearStampImageData() => clearField(7);
 
   @$pb.TagNumber(8)
   $core.bool get stayable => $_getBF(7);
@@ -221,7 +221,7 @@ class StoreUpdateRequest extends $pb.GeneratedMessage {
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Address', protoName: 'Address')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Tel', protoName: 'Tel')
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'SiteURL', protoName: 'SiteURL')
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StampImageURL', protoName: 'StampImageURL')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StampImageData', protoName: 'StampImageData')
     ..aOB(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Stayable', protoName: 'Stayable')
     ..aOB(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'IsActive', protoName: 'IsActive')
     ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'QRCode', protoName: 'QRCode')
@@ -239,7 +239,7 @@ class StoreUpdateRequest extends $pb.GeneratedMessage {
     $core.String? address,
     $core.String? tel,
     $core.String? siteURL,
-    $core.String? stampImageURL,
+    $core.String? stampImageData,
     $core.bool? stayable,
     $core.bool? isActive,
     $core.String? qRCode,
@@ -268,8 +268,8 @@ class StoreUpdateRequest extends $pb.GeneratedMessage {
     if (siteURL != null) {
       _result.siteURL = siteURL;
     }
-    if (stampImageURL != null) {
-      _result.stampImageURL = stampImageURL;
+    if (stampImageData != null) {
+      _result.stampImageData = stampImageData;
     }
     if (stayable != null) {
       _result.stayable = stayable;
@@ -373,13 +373,13 @@ class StoreUpdateRequest extends $pb.GeneratedMessage {
   void clearSiteURL() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.String get stampImageURL => $_getSZ(7);
+  $core.String get stampImageData => $_getSZ(7);
   @$pb.TagNumber(8)
-  set stampImageURL($core.String v) { $_setString(7, v); }
+  set stampImageData($core.String v) { $_setString(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasStampImageURL() => $_has(7);
+  $core.bool hasStampImageData() => $_has(7);
   @$pb.TagNumber(8)
-  void clearStampImageURL() => clearField(8);
+  void clearStampImageData() => clearField(8);
 
   @$pb.TagNumber(9)
   $core.bool get stayable => $_getBF(8);

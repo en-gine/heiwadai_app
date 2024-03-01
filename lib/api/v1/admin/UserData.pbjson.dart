@@ -57,6 +57,16 @@ const UserListResponse$json = const {
 
 /// Descriptor for `UserListResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List userListResponseDescriptor = $convert.base64Decode('ChBVc2VyTGlzdFJlc3BvbnNlEjMKBVVzZXJzGAEgAygLMh0uc2VydmVyLmFkbWluLlVzZXJXaXRoQ2hlY2tJblIFVXNlcnMSPwoMUGFnZVJlc3BvbnNlGAMgASgLMhsuc2VydmVyLnNoYXJlZC5QYWdlUmVzcG9uc2VSDFBhZ2VSZXNwb25zZQ==');
+@$core.Deprecated('Use userGetIDRequestDescriptor instead')
+const UserGetIDRequest$json = const {
+  '1': 'UserGetIDRequest',
+  '2': const [
+    const {'1': 'ID', '3': 1, '4': 1, '5': 9, '10': 'ID'},
+  ],
+};
+
+/// Descriptor for `UserGetIDRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userGetIDRequestDescriptor = $convert.base64Decode('ChBVc2VyR2V0SURSZXF1ZXN0Eg4KAklEGAEgASgJUgJJRA==');
 @$core.Deprecated('Use userDeleteRequestDescriptor instead')
 const UserDeleteRequest$json = const {
   '1': 'UserDeleteRequest',

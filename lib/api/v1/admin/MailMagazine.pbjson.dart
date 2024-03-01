@@ -75,9 +75,9 @@ const MailMagazinesResponse$json = const {
 
 /// Descriptor for `MailMagazinesResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List mailMagazinesResponseDescriptor = $convert.base64Decode('ChVNYWlsTWFnYXppbmVzUmVzcG9uc2USQAoNTWFpbE1hZ2F6aW5lcxgBIAMoCzIaLnNlcnZlci5hZG1pbi5NYWlsTWFnYXppbmVSDU1haWxNYWdhemluZXMSPwoMUGFnZVJlc3BvbnNlGAIgASgLMhsuc2VydmVyLnNoYXJlZC5QYWdlUmVzcG9uc2VSDFBhZ2VSZXNwb25zZQ==');
-@$core.Deprecated('Use createDraftRequestDescriptor instead')
-const CreateDraftRequest$json = const {
-  '1': 'CreateDraftRequest',
+@$core.Deprecated('Use saveDraftRequestDescriptor instead')
+const SaveDraftRequest$json = const {
+  '1': 'SaveDraftRequest',
   '2': const [
     const {'1': 'Title', '3': 1, '4': 1, '5': 9, '10': 'Title'},
     const {'1': 'Content', '3': 2, '4': 1, '5': 9, '10': 'Content'},
@@ -85,8 +85,8 @@ const CreateDraftRequest$json = const {
   ],
 };
 
-/// Descriptor for `CreateDraftRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createDraftRequestDescriptor = $convert.base64Decode('ChJDcmVhdGVEcmFmdFJlcXVlc3QSFAoFVGl0bGUYASABKAlSBVRpdGxlEhgKB0NvbnRlbnQYAiABKAlSB0NvbnRlbnQSRwoRVGFyZ2V0UHJlZmVjdHVyZXMYAyADKA4yGS5zZXJ2ZXIuc2hhcmVkLlByZWZlY3R1cmVSEVRhcmdldFByZWZlY3R1cmVz');
+/// Descriptor for `SaveDraftRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List saveDraftRequestDescriptor = $convert.base64Decode('ChBTYXZlRHJhZnRSZXF1ZXN0EhQKBVRpdGxlGAEgASgJUgVUaXRsZRIYCgdDb250ZW50GAIgASgJUgdDb250ZW50EkcKEVRhcmdldFByZWZlY3R1cmVzGAMgAygOMhkuc2VydmVyLnNoYXJlZC5QcmVmZWN0dXJlUhFUYXJnZXRQcmVmZWN0dXJlcw==');
 @$core.Deprecated('Use updateMailMagazineRequestDescriptor instead')
 const UpdateMailMagazineRequest$json = const {
   '1': 'UpdateMailMagazineRequest',
@@ -124,3 +124,42 @@ const SendMailMagazineRequest$json = const {
 
 /// Descriptor for `SendMailMagazineRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sendMailMagazineRequestDescriptor = $convert.base64Decode('ChdTZW5kTWFpbE1hZ2F6aW5lUmVxdWVzdBIOCgJJRBgBIAEoCVICSUQ=');
+@$core.Deprecated('Use userLogListRequestDescriptor instead')
+const UserLogListRequest$json = const {
+  '1': 'UserLogListRequest',
+  '2': const [
+    const {'1': 'UserID', '3': 1, '4': 1, '5': 9, '10': 'UserID'},
+    const {'1': 'Pager', '3': 2, '4': 1, '5': 11, '6': '.server.shared.Pager', '10': 'Pager'},
+  ],
+};
+
+/// Descriptor for `UserLogListRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userLogListRequestDescriptor = $convert.base64Decode('ChJVc2VyTG9nTGlzdFJlcXVlc3QSFgoGVXNlcklEGAEgASgJUgZVc2VySUQSKgoFUGFnZXIYAiABKAsyFC5zZXJ2ZXIuc2hhcmVkLlBhZ2VyUgVQYWdlcg==');
+@$core.Deprecated('Use userMailMagazineLogDescriptor instead')
+const UserMailMagazineLog$json = const {
+  '1': 'UserMailMagazineLog',
+  '2': const [
+    const {'1': 'ID', '3': 1, '4': 1, '5': 9, '10': 'ID'},
+    const {'1': 'MailMagazineID', '3': 2, '4': 1, '5': 9, '10': 'MailMagazineID'},
+    const {'1': 'UserID', '3': 3, '4': 1, '5': 9, '10': 'UserID'},
+    const {'1': 'Title', '3': 4, '4': 1, '5': 9, '10': 'Title'},
+    const {'1': 'SentAt', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '9': 0, '10': 'SentAt', '17': true},
+  ],
+  '8': const [
+    const {'1': '_SentAt'},
+  ],
+};
+
+/// Descriptor for `UserMailMagazineLog`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userMailMagazineLogDescriptor = $convert.base64Decode('ChNVc2VyTWFpbE1hZ2F6aW5lTG9nEg4KAklEGAEgASgJUgJJRBImCg5NYWlsTWFnYXppbmVJRBgCIAEoCVIOTWFpbE1hZ2F6aW5lSUQSFgoGVXNlcklEGAMgASgJUgZVc2VySUQSFAoFVGl0bGUYBCABKAlSBVRpdGxlEjcKBlNlbnRBdBgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAFIGU2VudEF0iAEBQgkKB19TZW50QXQ=');
+@$core.Deprecated('Use userMailMagazineLogResponseDescriptor instead')
+const UserMailMagazineLogResponse$json = const {
+  '1': 'UserMailMagazineLogResponse',
+  '2': const [
+    const {'1': 'UserLogs', '3': 1, '4': 3, '5': 11, '6': '.server.admin.UserMailMagazineLog', '10': 'UserLogs'},
+    const {'1': 'PageResponse', '3': 2, '4': 1, '5': 11, '6': '.server.shared.PageResponse', '10': 'PageResponse'},
+  ],
+};
+
+/// Descriptor for `UserMailMagazineLogResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userMailMagazineLogResponseDescriptor = $convert.base64Decode('ChtVc2VyTWFpbE1hZ2F6aW5lTG9nUmVzcG9uc2USPQoIVXNlckxvZ3MYASADKAsyIS5zZXJ2ZXIuYWRtaW4uVXNlck1haWxNYWdhemluZUxvZ1IIVXNlckxvZ3MSPwoMUGFnZVJlc3BvbnNlGAIgASgLMhsuc2VydmVyLnNoYXJlZC5QYWdlUmVzcG9uc2VSDFBhZ2VSZXNwb25zZQ==');
