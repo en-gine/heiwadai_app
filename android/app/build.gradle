@@ -61,6 +61,22 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
+        
+        // debug {
+        //     applicationIdSuffix ".debug"
+        //     debuggable true
+        // }
+
+        // /**
+        //  * The `initWith` property allows you to copy configurations from other build types,
+        //  * then configure only the settings you want to change. This one copies the debug build
+        //  * type, and then changes the manifest placeholder and application ID.
+        //  */
+        // staging {
+        //     initWith debug
+        //     manifestPlaceholders = [hostName:"com.example.heiwadai_app"]
+        //     applicationIdSuffix ".debugStaging"
+        // }
     }
 }
 
