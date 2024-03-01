@@ -16,5 +16,6 @@ List<User> users = [
     tel: '092-123-4567',
     mail: 'mail@example.com',
     acceptMail: true,
+    acceptTerm: true,
   ),
 ];

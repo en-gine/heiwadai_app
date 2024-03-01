@@ -17,15 +17,10 @@ import 'package:heiwadai_app/screens/voucher_details_screen.dart';
 import 'package:heiwadai_app/screens/news_list_screen.dart';
 import 'package:heiwadai_app/screens/news_details_screen.dart';
 
-final authProvider = Provider((ref) => (
-      isAuth: true,
-      isLoading: false,
-      hasError: false,
-    ));
+// import 'package:heiwadai_app/provider/grpc_client.dart';
+import 'package:heiwadai_app/provider/rest_client.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
-  final authState = ref.watch(authProvider);
-
   return GoRouter(
     initialLocation: '/',
     routes: [
@@ -33,11 +28,18 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: '/',
         builder: (context, state) => const HomeScreen(),
         redirect: (context, state) {
-          if (authState.isLoading || authState.hasError) return null;
-
-          return authState.isAuth ? null : '/login';
+          final authState = ref.watch(tokenProvider);
+          return (authState != null) ? null : '/login'; // 有効時間のチェックも必要
         },
         routes: [
+          // GoRoute(
+          //   path: 'user_config',
+          //   builder: (context, state) => const SearchScreen(),
+          // ),
+          // GoRoute(
+          //   path: 'reset_pass',
+          //   builder: (context, state) => const SearchScreen(),
+          // ),
           GoRoute(
             path: 'search',
             builder: (context, state) => const SearchScreen(),
@@ -107,11 +109,11 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/terms',
-        builder: (context, state) => const HomeScreen(), // 規約
+        builder: (context, state) => const LoginScreen(), // 規約,未作成
       ),
       GoRoute(
         path: '/policy',
-        builder: (context, state) => const HomeScreen(), // プライバシーポリシー
+        builder: (context, state) => const LoginScreen(), // プライバシーポリシー,未作成
       ),
     ],
   );

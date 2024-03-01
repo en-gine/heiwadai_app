@@ -80,10 +80,13 @@ class TextInputField extends HookWidget {
   final void Function(String)? onChanged;
   final void Function(String?)? onSaved;
 
+  // final GlobalKey<FormState> _fieldKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final isObscure = useState(true);
-    final TextEditingController controller = TextEditingController();
+    // final TextEditingController controller = TextEditingController();
+    final controller = useTextEditingController();
 
     Map<FormType, Widget?> suffix = {
       FormType.text: null,
@@ -108,6 +111,7 @@ class TextInputField extends HookWidget {
     return TextFormField(
       readOnly: (type == FormType.date),
       controller: controller,
+      // key: _fieldKey,
       obscureText: (type == FormType.password) ? isObscure.value : false,
       keyboardType: _keyboard[type],
       inputFormatters: _formatters[type],
@@ -131,34 +135,10 @@ class TextInputField extends HookWidget {
         suffixIcon: suffix[type],
       ),
       onChanged: onChanged,
-      onSaved: onSaved,
+      // onSaved: onSaved,
       onTap: (type != FormType.date)
           ? null
           : () async {
-              // DateTime? picked = await showDatePicker(
-              //   context: context,
-              //   initialDate:
-              //       DateTime.now().subtract(const Duration(days: 35 * 365)),
-              //   firstDate:
-              //       DateTime.now().subtract(const Duration(days: 120 * 365)),
-              //   lastDate:
-              //       DateTime.now().subtract(const Duration(days: 10 * 365)),
-              //   locale: const Locale('ja'),
-              //   builder: (context, child) => Theme(
-              //       data: ThemeData.light().copyWith(
-              //         colorScheme: const ColorScheme.light().copyWith(
-              //           primary: const Color(0xFF3D3D3D),
-              //         ),
-              //       ),
-              //       child: child!,
-              //     )
-              // );
-              // String? formatedDate;
-              // try {
-              //   formatedDate = DateFormat('yyyy/MM/dd').format(picked!);
-              // } catch (_) {}
-              // if (formatedDate != null) controller.text = formatedDate;
-
               DatePicker.showDatePicker(
                 context,
                 currentTime:
@@ -170,10 +150,14 @@ class TextInputField extends HookWidget {
                 locale: LocaleType.jp,
                 onConfirm: (date) {
                   String? formatedDate;
+                  // print(date);
                   try {
                     formatedDate = DateFormat('yyyy/MM/dd').format(date);
                   } catch (_) {}
-                  if (formatedDate != null) controller.text = formatedDate;
+                  if (formatedDate != null) {
+                    controller.text = formatedDate;
+                    onChanged?.call(formatedDate);
+                  }
                 },
               );
             },

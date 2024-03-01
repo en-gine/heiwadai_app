@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
+import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,13 +15,36 @@ import 'package:heiwadai_app/widgets/components/heading.dart';
 import 'package:heiwadai_app/widgets/components/form/required_field_title.dart';
 import 'package:heiwadai_app/widgets/components/form/text_input_field.dart';
 
-class RegisterInputScreen extends HookWidget {
+import 'package:heiwadai_app/api/v1/user/UserData.pb.dart';
+import 'package:heiwadai_app/api/v1/shared/prefecture.pb.dart';
+import 'package:heiwadai_app/api/google/protobuf/timestamp.pb.dart';
+import 'package:heiwadai_app/feature/anon_auth.dart';
+
+// import 'package:heiwadai_app/models/user.dart';
+
+class RegisterInputScreen extends HookConsumerWidget {
   const RegisterInputScreen({super.key, this.title});
   final String? title;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final firstNameInput = useState("");
+    final lastNameInput = useState("");
+    final firstNameKanaInput = useState("");
+    final lastNameKanaInput = useState("");
+    final companyNameInput = useState("");
+    final birthDateInput = useState("");
+    final zipCodeInput = useState("");
+    final prefectureInput = useState(Prefecture.Unspecified.toString());
+    final cityInput = useState("");
+    final addressInput = useState("");
+    final telInput = useState("");
+    final mailInput = useState("");
+    final acceptMailInput = useState(false);
+    final acceptTermInput = useState(false);
+
     const prefectures = [
+      '',
       '北海道',
       '青森県',
       '岩手県',
@@ -68,9 +93,9 @@ class RegisterInputScreen extends HookWidget {
       '鹿児島県',
       '沖縄県',
     ];
-    final selectedValue = useState<String?>(null);
-    final isSwitched = useState<bool>(true);
-    final isChecked = useState<bool>(false);
+    // final selectedValue = useState<String?>(null);
+    // final isSwitched = useState<bool>(true);
+    // final isChecked = useState<bool>(false);
 
     final formKey = useMemoized(() => GlobalKey<FormState>());
 
@@ -128,43 +153,65 @@ class RegisterInputScreen extends HookWidget {
                           children: [
                             const RequiredFieldTitle('お名前'),
                             SizedBox(height: 10.w),
-                            const TextInputField(
+                            TextInputField(
                               '姓',
                               type: FormType.text,
                               hint: '例：山田',
+                              onChanged: (value) {
+                                lastNameInput.value = value;
+                              },
                             ),
                             SizedBox(height: 10.w),
-                            const TextInputField(
+                            TextInputField(
                               '名',
                               type: FormType.text,
                               hint: '例：太郎',
+                              onChanged: (value) {
+                                firstNameInput.value = value;
+                              },
                             ),
                             SizedBox(height: 20.w),
                             const RequiredFieldTitle('ふりがな'),
                             SizedBox(height: 10.w),
-                            const TextInputField(
+                            TextInputField(
                               'せい',
                               type: FormType.ruby,
                               hint: '例：やまだ',
+                              onChanged: (value) {
+                                lastNameKanaInput.value = value;
+                              },
                             ),
                             SizedBox(height: 10.w),
-                            const TextInputField(
+                            TextInputField(
                               'めい',
                               type: FormType.ruby,
                               hint: '例：たろう',
+                              onChanged: (value) {
+                                firstNameKanaInput.value = value;
+                              },
                             ),
                             SizedBox(height: 20.w),
                             const RequiredFieldTitle('会社名', required: false),
                             SizedBox(height: 10.w),
-                            const TextInputField(
+                            TextInputField(
                               '会社名',
                               type: FormType.text,
                               hint: '例：サンプル株式会社',
+                              onChanged: (value) {
+                                companyNameInput.value = value;
+                              },
                             ),
                             SizedBox(height: 20.w),
                             const RequiredFieldTitle('生年月日', required: false),
                             SizedBox(height: 10.w),
-                            const TextInputField('生年月日', type: FormType.date),
+                            TextInputField(
+                              '生年月日',
+                              type: FormType.date,
+                              hint: '1990/01/01',
+                              onChanged: (value) {
+                                birthDateInput.value = value;
+                              },
+                            ),
                             SizedBox(height: 10.w),
                             Row(
                               children: [
@@ -219,10 +266,13 @@ class RegisterInputScreen extends HookWidget {
                             SizedBox(height: 28.w),
                             const RequiredFieldTitle('郵便番号', required: false),
                             SizedBox(height: 10.w),
-                            const TextInputField(
+                            TextInputField(
                               '郵便番号',
                               type: FormType.text,
                               hint: '1230000',
+                              onChanged: (value) {
+                                zipCodeInput.value = value;
+                              },
                             ),
                             SizedBox(height: 28.w),
                             const RequiredFieldTitle('都道府県'),
@@ -246,12 +296,13 @@ class RegisterInputScreen extends HookWidget {
                                   fontSize: 16.sp,
                                   color: Colors.black,
                                 ),
-                                value: selectedValue.value,
-                                items: prefectures
+                                value: prefectureInput.value,
+                                items: Prefecture.values
                                     .map(
-                                      (list) => DropdownMenuItem(
-                                        value: list,
-                                        child: Text(list),
+                                      (prefecture) => DropdownMenuItem(
+                                        value: prefecture.name,
+                                        child:
+                                            Text(prefectures[prefecture.value]),
                                       ),
                                     )
                                     .toList(),
@@ -260,25 +311,31 @@ class RegisterInputScreen extends HookWidget {
                                   style: TextStyle(color: Color(0xffb3b3b3)),
                                 ),
                                 onChanged: (value) =>
-                                    selectedValue.value = value.toString(),
+                                    prefectureInput.value = value as String,
                               ),
                             ),
                             SizedBox(height: 28.w),
                             const RequiredFieldTitle('市区町村', required: false),
                             SizedBox(height: 10.w),
-                            const TextInputField(
+                            TextInputField(
                               '市区町村',
                               type: FormType.text,
                               hint: '例：福岡市中央区',
+                              onChanged: (value) {
+                                cityInput.value = value;
+                              },
                             ),
                             SizedBox(height: 28.w),
                             const RequiredFieldTitle('番地マンション名',
                                 required: false),
                             SizedBox(height: 10.w),
-                            const TextInputField(
+                            TextInputField(
                               '番地マンション名',
                               type: FormType.text,
                               hint: '例：舞鶴1-5-6',
+                              onChanged: (value) {
+                                addressInput.value = value;
+                              },
                             ),
                           ],
                         ),
@@ -312,18 +369,24 @@ class RegisterInputScreen extends HookWidget {
                             SizedBox(height: 28.w),
                             const RequiredFieldTitle('メールアドレス'),
                             SizedBox(height: 10.w),
-                            const TextInputField(
+                            TextInputField(
                               'メールアドレス',
                               type: FormType.email,
                               hint: '例：email@example.com',
+                              onChanged: (value) {
+                                mailInput.value = value;
+                              },
                             ),
                             SizedBox(height: 28.w),
                             const RequiredFieldTitle('電話番号', required: false),
                             SizedBox(height: 10.w),
-                            const TextInputField(
+                            TextInputField(
                               '電話番号',
                               type: FormType.phone,
                               hint: '例：0901234000',
+                              onChanged: (value) {
+                                telInput.value = value;
+                              },
                             ),
                             SizedBox(height: 30.w),
                             Row(
@@ -338,9 +401,9 @@ class RegisterInputScreen extends HookWidget {
                                 ),
                                 const Spacer(),
                                 Switch(
-                                  value: isSwitched.value,
+                                  value: acceptMailInput.value,
                                   onChanged: (value) =>
-                                      isSwitched.value = value,
+                                      acceptMailInput.value = value,
                                 ),
                               ],
                             ),
@@ -360,8 +423,10 @@ class RegisterInputScreen extends HookWidget {
                           borderRadius: BorderRadius.circular(5.w),
                         ),
                         child: CheckboxListTile(
-                          value: isChecked.value,
-                          onChanged: (value) => isChecked.value = value!,
+                          // value: isChecked.value,
+                          // onChanged: (value) => isChecked.value = value!,
+                          value: acceptTermInput.value,
+                          onChanged: (value) => acceptTermInput.value = value!,
                           controlAffinity: ListTileControlAffinity.leading,
                           contentPadding: EdgeInsets.zero,
                           title: Transform.translate(
@@ -402,7 +467,39 @@ class RegisterInputScreen extends HookWidget {
                       Container(
                         margin: EdgeInsets.only(bottom: 40.w),
                         child: FilledButton(
-                          onPressed: () => context.push('/register_input'),
+                          onPressed: () {
+                            register(
+                              ref,
+                              UserRegisterRequest(
+                                firstName: firstNameInput.value,
+                                lastName: lastNameInput.value,
+                                firstNameKana: firstNameKanaInput.value,
+                                lastNameKana: lastNameKanaInput.value,
+                                companyName: companyNameInput.value,
+                                birthDate: (birthDateInput.value != '')
+                                    ? Timestamp.fromDateTime(
+                                        DateFormat('yyyy/MM/dd').parse(
+                                          birthDateInput.value,
+                                        ),
+                                      )
+                                    : null,
+                                zipCode: zipCodeInput.value,
+                                prefecture: Prefecture.values.firstWhere(
+                                  (prefecture) =>
+                                      prefecture.name == prefectureInput.value,
+                                ),
+                                city: cityInput.value,
+                                address: addressInput.value,
+                                tel: telInput.value,
+                                mail: mailInput.value,
+                                acceptMail: acceptMailInput.value,
+                                acceptTerm: acceptTermInput.value,
+                              ),
+                              context,
+                            ).then((result) {
+                              if (result) context.push('/register_done');
+                            });
+                          },
                           style: ButtonStyle(
                             minimumSize: MaterialStateProperty.all<Size>(
                               Size(240.w, 54.w),
