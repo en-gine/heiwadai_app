@@ -4,55 +4,28 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:heiwadai_app/api/v1/user/Auth.pb.dart';
+// import 'package:heiwadai_app/api/v1/user/Auth.pb.dart';
+// import 'package:heiwadai_app/api/v1/user/AnonAuth.pb.dart';
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/footer_overview.dart';
 import 'package:heiwadai_app/widgets/components/form/text_input_field.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:heiwadai_app/provider/grpc_client.dart';
+import 'package:heiwadai_app/feature/anon_auth.dart';
 
-// ログインリクエストを実行する関数
-Future<void> signIn(
-    WidgetRef ref,
-    String email,
-    String password
-    ) async {
-  final authController = ref.read(authControllerProvider);
-
-  try {
-    // ログインリクエストの実行
-    final response = await authController.signIn(
-      UserAuthRequest(
-        email: email,
-        password: password,
-      ),
-    );
-
-    // レスポンスの処理（例：トークンの保存、ユーザー情報の更新など）
-    if(response.accessToken != "") {
-      ref.read(tokenProvider.notifier).update((state) => response.accessToken);
-    }
-    if(response.refreshToken != "") {
-      ref.read(refreshTokenProvider.notifier).update((state) => response.refreshToken);
-    }
-  } catch (e) {
-    // エラー処理
-    print("ログイン失敗: $e");
-  }
-}
-
-class LoginScreen extends HookWidget {
+class LoginScreen extends HookConsumerWidget {
   const LoginScreen({super.key, this.title});
   final String? title;
 
   @override
-  Widget build(BuildContext context) {
-    final formKey = useMemoized(() => GlobalKey<FormState>());
+  Widget build(BuildContext context, WidgetRef ref) {
+    // final formKey = useMemoized(() => GlobalKey<FormState>());
 
+    final mailInput = useState("");
     final isMail = useState(false);
     final mailError = useState<String?>(null);
 
+    final passInput = useState("");
     final isPass = useState(false);
     final passError = useState<String?>(null);
 
@@ -135,7 +108,7 @@ class LoginScreen extends HookWidget {
                 ),
               ),
               Form(
-                key: formKey,
+                // key: formKey,
                 child: Container(
                   margin:
                       EdgeInsets.symmetric(vertical: 10.w, horizontal: 20.w),
@@ -146,7 +119,9 @@ class LoginScreen extends HookWidget {
                         errorText: mailError.value,
                         type: FormType.email,
                         onChanged: (value) {
+                          print(value);
                           isMail.value = value.isNotEmpty;
+                          mailInput.value = value;
                         },
                         onSaved: (value) => () {
                           print('$value');
@@ -159,6 +134,7 @@ class LoginScreen extends HookWidget {
                         type: FormType.password,
                         onChanged: (value) {
                           isPass.value = value.isNotEmpty;
+                          passInput.value = value;
                         },
                         onSaved: (value) => () {
                           print('$value');
@@ -192,7 +168,14 @@ class LoginScreen extends HookWidget {
                           ),
                           onPressed: ((!isMail.value || !isPass.value))
                               ? null
-                              : () => formKey.currentState!.save(),
+                              : () => {
+                                    signIn(
+                                      ref,
+                                      mailInput.value,
+                                      passInput.value,
+                                    ),
+                                    // formKey.currentState!.save()
+                                  },
                           child: Text(
                             'ログイン',
                             style: TextStyle(

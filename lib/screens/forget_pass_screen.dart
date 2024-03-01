@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:heiwadai_app/widgets/components/contents_area.dart';
@@ -10,12 +11,22 @@ import 'package:heiwadai_app/widgets/menu/footer_overview.dart';
 import 'package:heiwadai_app/widgets/components/heading.dart';
 import 'package:heiwadai_app/widgets/components/form/text_input_field.dart';
 
-class ForgetPassScreen extends HookWidget {
+// import 'package:heiwadai_app/feature/anon_auth.dart';
+
+class ForgetPassScreen extends HookConsumerWidget {
   const ForgetPassScreen({super.key, this.title});
   final String? title;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final mailInput = useState("");
+    final isMail = useState(false);
+    // final mailError = useState<String?>(null);
+
+    // final passInput = useState("");
+    // final isPass = useState(false);
+    // final passError = useState<String?>(null);
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: MyAppBar(style: AppBarStyle.none, menu: MenuMode.close),
@@ -79,12 +90,21 @@ class ForgetPassScreen extends HookWidget {
                             ),
                           ),
                           SizedBox(height: 10.w),
-                          const TextInputField('メールアドレス', type: FormType.email),
+                          TextInputField(
+                            'メールアドレス',
+                            type: FormType.email,
+                            onChanged: (value) {
+                              isMail.value = value.isNotEmpty;
+                              mailInput.value = value;
+                            },
+                          ),
                           Container(
                             margin: EdgeInsets.only(top: 30.w),
                             alignment: Alignment.center,
                             child: FilledButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                // signUp(ref, mailInput.value, passInput.value);
+                              },
                               style: ButtonStyle(
                                 minimumSize: MaterialStateProperty.all<Size>(
                                   Size(240.w, 54.w),

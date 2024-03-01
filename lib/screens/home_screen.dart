@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:heiwadai_app/feature/massage_check.dart';
 import 'package:heiwadai_app/feature/update_check.dart';
@@ -23,22 +24,20 @@ import 'package:heiwadai_app/data/reservations.dart';
 import 'package:heiwadai_app/data/stores.dart';
 import 'package:heiwadai_app/data/sliders.dart';
 
-class ControlledSlider extends StatefulWidget {
+class ControlledSlider extends ConsumerStatefulWidget {
   const ControlledSlider({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    return _ControlledSliderState();
-  }
+  ControlledSliderState createState() => ControlledSliderState();
 }
 
-class _ControlledSliderState extends State<ControlledSlider> {
+class ControlledSliderState extends ConsumerState<ControlledSlider> {
   final CarouselController _controller = CarouselController();
   int _current = 0;
 
   @override
   void initState() {
-    messageCheck(context);
+    messageCheck(context, ref);
     updateCheck(context);
     super.initState();
   }
