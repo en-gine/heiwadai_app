@@ -14,6 +14,7 @@ class User {
     this.tel,
     required this.mail,
     required this.acceptMail,
+    required this.acceptTerm,
   });
   final String id;
   final String firstName;
@@ -29,6 +30,7 @@ class User {
   final String? tel;
   final String mail;
   final bool acceptMail;
+  final bool acceptTerm;
 }
 
 // type User struct {

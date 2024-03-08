@@ -1,81 +1,39 @@
 import 'dart:async';
-import 'dart:convert';
+import 'package:heiwadai_app/api/v1/user/Messages.pbgrpc.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// import 'package:shared_preferences/shared_preferences.dart';
-
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:http/http.dart' as http;
-
 import 'package:heiwadai_app/api/v1/user/Messages.pb.dart';
 import 'package:heiwadai_app/provider/rest_client.dart';
 
 import 'dart:developer';
 
-List<Map> data = [
-  {
-    "id": "14443",
-    "title": "タイトル1",
-    "content": "通知内容",
-    "display_date": "2021/10/1",
-    "author_id": 1,
-    "create_at": "2021-10-01"
-  },
-  {
-    "id": "47436",
-    "title": "タイトル1",
-    "content": "通知内容",
-    "display_date": "2021/10/1",
-    "author_id": 1,
-    "create_at": "2021-10-01"
-  },
-  {
-    "id": "576347",
-    "title": "タイトル1",
-    "content": "通知内容",
-    "display_date": "2021/10/1",
-    "author_id": 1,
-    "create_at": "2021-10-01"
-  }
-];
 
 Future messageCheck(context, WidgetRef ref) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final token = ref.watch(tokenProvider);
-  final refresh = ref.watch(refreshTokenProvider);
-
-  await dotenv.load(fileName: ".env");
-  String backend = dotenv.env['API_BASE_URL'] ?? "http://localhost:3000";
+  List<MessageResponse> messages = [];
 
   try {
-    Map<String, String> headers = {
-      'content-type': 'application/json',
-      "Authorization": "Bearer $token",
-      "X-Refresh-Token": "$refresh",
-    };
+
     final String? readUid = prefs.getString('last_uid');
-    // final request = json.encode(MessageRequest(iD: readUid).toProto3Json());
-    final request = json.encode(MessageRequest().toProto3Json());
-    final url =
-        Uri.parse('$backend/server.user.MessageController/GetMessagesAfter');
-    inspect(headers);
+    final request = MessageRequest(iD: readUid);
     inspect(request);
-    var response = await http.post(url, headers: headers, body: request);
+    final client = ref.watch(httpClientProvider);
+    var response = await client.call('MessageController/GetMessagesAfter', message: request);
     inspect(response);
-    if (response.statusCode == 200) {
-      print(response.body);
-    } else {
-      print('A network error occurred');
-    }
-     // テストデータ:data / apiのレスポンス:response.body
-    await prefs.setString('last_uid', data[0]['id']);
-    // await prefs.setString('lastUid', response.body[0]['id']);
+
+    final MessagesResponse data = MessagesResponse.fromJson(response.body);
+    final List<MessageResponse> messages = data.messages;
+    inspect(data);
+    await prefs.setString('lastUid', messages[0].iD);
   } catch (e) {
-    print(e);
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('メッセージの取得に失敗しました。')),
+    );
+    return false;
   }
   showDialog(
     context: context,
@@ -94,12 +52,12 @@ Future messageCheck(context, WidgetRef ref) async {
                   const Divider(
                 height: 25,
               ),
-              itemCount: data.length,
+              itemCount: messages.length,
               itemBuilder: (BuildContext context, int index) {
                 return messageArea(
-                  data[index]['title'],
-                  data[index]['display_date'],
-                  data[index]['content'],
+                  messages[index].title,
+                  messages[index].displayDate.toDateTime().toString(),
+                  messages[index].content,
                 );
               },
             ),

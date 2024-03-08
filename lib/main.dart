@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'env.dart';
 import 'firebase_options.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -11,7 +13,7 @@ import 'package:heiwadai_app/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Env.loadEnv();// envファイル読み込みクラスに格納
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

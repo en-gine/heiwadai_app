@@ -497,7 +497,11 @@ class RegisterInputScreen extends HookConsumerWidget {
                               ),
                               context,
                             ).then((result) {
-                              if (result) context.push('/register_done');
+                              context.push('/register_done');
+                            }).catchError((error) {
+                              const SnackBar(
+                                content: Text('登録に失敗しました。'),
+                              );
                             });
                           },
                           style: ButtonStyle(

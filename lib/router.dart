@@ -17,29 +17,40 @@ import 'package:heiwadai_app/screens/voucher_details_screen.dart';
 import 'package:heiwadai_app/screens/news_list_screen.dart';
 import 'package:heiwadai_app/screens/news_details_screen.dart';
 
-// import 'package:heiwadai_app/provider/grpc_client.dart';
-import 'package:heiwadai_app/provider/rest_client.dart';
+import 'package:heiwadai_app/provider/grpc_client.dart';
+// import 'package:heiwadai_app/provider/rest_client.dart';
+
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: '/',
+    initialLocation: '/login',
     routes: [
       GoRoute(
         path: '/',
         builder: (context, state) => const HomeScreen(),
-        redirect: (context, state) {
-          final authState = ref.watch(tokenProvider);
-          return (authState != null) ? null : '/login'; // 有効時間のチェックも必要
+        redirect: (context, state) async {
+          final tokenNotifier = ref.read(tokenProvider.notifier);
+          final tokenState = tokenNotifier.state;
+
+          if (tokenState.isTokenExpired) {
+            try {
+              await tokenNotifier.refreshToken();
+            } catch (e) {
+              return '/login'; // ログイン画面にリダイレクト
+            }
+          }
+          // Tokenが有効な場合は、リダイレクトしない
+          return null;
         },
         routes: [
-          // GoRoute(
-          //   path: 'user_config',
-          //   builder: (context, state) => const SearchScreen(),
-          // ),
-          // GoRoute(
-          //   path: 'reset_pass',
-          //   builder: (context, state) => const SearchScreen(),
-          // ),
+          GoRoute(
+            path: 'user_config',
+            builder: (context, state) => const SearchScreen(),
+          ),
+          GoRoute(
+            path: 'reset_pass',
+            builder: (context, state) => const SearchScreen(),
+          ),
           GoRoute(
             path: 'search',
             builder: (context, state) => const SearchScreen(),

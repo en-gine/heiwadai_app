@@ -7,6 +7,8 @@ import 'package:heiwadai_app/widgets/components/dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
+import '../env.dart';
+
 Future updateCheck(context) async {
   final remoteConfig = FirebaseRemoteConfig.instance;
   await remoteConfig.setConfigSettings(RemoteConfigSettings(
@@ -29,10 +31,10 @@ Future updateCheck(context) async {
       yesText: 'OK',
       onPressed: () {
         if(Platform.isIOS == true){
-          launchUrl(Uri.parse('http://www.google.com/'));
+          launchUrl(Uri.parse(Env.appStoreUrl));
         }
-        else{
-          launchUrl(Uri.parse('http://www.example.com/'));
+        else if(Platform.isAndroid == true){
+          launchUrl(Uri.parse(Env.playStoreUrl));
         }
         Navigator.pop(context);
       },
