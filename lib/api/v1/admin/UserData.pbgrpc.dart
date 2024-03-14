@@ -16,9 +16,9 @@ export 'UserData.pb.dart';
 
 class UserDataControllerClient extends $grpc.Client {
   static final _$getByID =
-      $grpc.ClientMethod<$13.UserGetIDRequest, $13.UserDataResponse>(
+      $grpc.ClientMethod<$13.UserIDRequest, $13.UserDataResponse>(
           '/server.admin.UserDataController/GetByID',
-          ($13.UserGetIDRequest value) => value.writeToBuffer(),
+          ($13.UserIDRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $13.UserDataResponse.fromBuffer(value));
   static final _$update =
@@ -37,14 +37,19 @@ class UserDataControllerClient extends $grpc.Client {
           ($13.UserListFilterRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $13.UserListResponse.fromBuffer(value));
+  static final _$getLoginLogList =
+      $grpc.ClientMethod<$13.UserLoginLogRequest, $13.UserLoginLogListResponse>(
+          '/server.admin.UserDataController/GetLoginLogList',
+          ($13.UserLoginLogRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $13.UserLoginLogListResponse.fromBuffer(value));
 
   UserDataControllerClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$13.UserDataResponse> getByID(
-      $13.UserGetIDRequest request,
+  $grpc.ResponseFuture<$13.UserDataResponse> getByID($13.UserIDRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getByID, request, options: options);
   }
@@ -65,18 +70,24 @@ class UserDataControllerClient extends $grpc.Client {
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getList, request, options: options);
   }
+
+  $grpc.ResponseFuture<$13.UserLoginLogListResponse> getLoginLogList(
+      $13.UserLoginLogRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getLoginLogList, request, options: options);
+  }
 }
 
 abstract class UserDataControllerServiceBase extends $grpc.Service {
   $core.String get $name => 'server.admin.UserDataController';
 
   UserDataControllerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$13.UserGetIDRequest, $13.UserDataResponse>(
+    $addMethod($grpc.ServiceMethod<$13.UserIDRequest, $13.UserDataResponse>(
         'GetByID',
         getByID_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $13.UserGetIDRequest.fromBuffer(value),
+        ($core.List<$core.int> value) => $13.UserIDRequest.fromBuffer(value),
         ($13.UserDataResponse value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$13.UserUpdateDataRequest, $13.UserDataResponse>(
@@ -104,10 +115,19 @@ abstract class UserDataControllerServiceBase extends $grpc.Service {
             ($core.List<$core.int> value) =>
                 $13.UserListFilterRequest.fromBuffer(value),
             ($13.UserListResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$13.UserLoginLogRequest,
+            $13.UserLoginLogListResponse>(
+        'GetLoginLogList',
+        getLoginLogList_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $13.UserLoginLogRequest.fromBuffer(value),
+        ($13.UserLoginLogListResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$13.UserDataResponse> getByID_Pre($grpc.ServiceCall call,
-      $async.Future<$13.UserGetIDRequest> request) async {
+  $async.Future<$13.UserDataResponse> getByID_Pre(
+      $grpc.ServiceCall call, $async.Future<$13.UserIDRequest> request) async {
     return getByID(call, await request);
   }
 
@@ -126,12 +146,20 @@ abstract class UserDataControllerServiceBase extends $grpc.Service {
     return getList(call, await request);
   }
 
+  $async.Future<$13.UserLoginLogListResponse> getLoginLogList_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$13.UserLoginLogRequest> request) async {
+    return getLoginLogList(call, await request);
+  }
+
   $async.Future<$13.UserDataResponse> getByID(
-      $grpc.ServiceCall call, $13.UserGetIDRequest request);
+      $grpc.ServiceCall call, $13.UserIDRequest request);
   $async.Future<$13.UserDataResponse> update(
       $grpc.ServiceCall call, $13.UserUpdateDataRequest request);
   $async.Future<$1.Empty> delete(
       $grpc.ServiceCall call, $13.UserDeleteRequest request);
   $async.Future<$13.UserListResponse> getList(
       $grpc.ServiceCall call, $13.UserListFilterRequest request);
+  $async.Future<$13.UserLoginLogListResponse> getLoginLogList(
+      $grpc.ServiceCall call, $13.UserLoginLogRequest request);
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,6 +13,13 @@ import 'package:heiwadai_app/widgets/components/heading.dart';
 
 import 'package:heiwadai_app/data/coupons.dart';
 import 'package:heiwadai_app/data/stores.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
+
+import '../api/v1/user/Checkin.pb.dart';
+import '../api/v1/user/MyCoupon.pb.dart';
+import '../feature/checkin.dart';
+import '../feature/coupon.dart';
 
 Widget stamp(String image, String date, {double fontSize = 10,double offset = 10}) {
   return Container(
@@ -38,11 +46,19 @@ Widget stamp(String image, String date, {double fontSize = 10,double offset = 10
   );
 }
 
-class VoucherListScreen extends StatelessWidget {
+class VoucherListScreen extends HookConsumerWidget {
   const VoucherListScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final stamps = useState<StampCardResponse?>(null);
+    final coupons = useState<MyCouponsResponse?>(null);
+
+    useEffect(() => () async {
+      stamps.value = await CheckinClient(ref).getStampCard();
+      coupons.value = await CouponClient(ref).getList();
+    }, const []);
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
@@ -91,39 +107,25 @@ class VoucherListScreen extends StatelessWidget {
                               ),
                               Column(
                                 children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      stamp(
-                                        'assets/images/stamp_sample1.png',
-                                        "2023/10/12",
+                                  if (stamps.value != null && stamps.value!.stamps.isNotEmpty)
+                                    for (int i = 0; i < stamps.value!.stamps.length; i += 3)
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          for (int j = i; j < i + 3 && j < stamps.value!.stamps.length; j++)
+                                            Row(
+                                              children: [
+                                                Expanded(
+                                                  child: stamp(
+                                                    stamps.value!.stamps[j].storeStampImage,
+                                                    DateFormat('yyyy/MM/dd', "ja_JP").format(stamps.value!.stamps[j].checkInAt.toDateTime()),
+                                                  ),
+                                                ),
+                                                if (j < i + 2 && j < stamps.value!.stamps.length - 1) SizedBox(width: 10.w),
+                                              ],
+                                            ),
+                                        ],
                                       ),
-                                      SizedBox(width: 10.w),
-                                      stamp(
-                                        'assets/images/stamp_sample2.png',
-                                        "2023/10/12",
-                                      ),
-                                      SizedBox(width: 10.w),
-                                      stamp(
-                                        'assets/images/stamp_sample1.png',
-                                        "2023/10/12",
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      stamp(
-                                        'assets/images/stamp_sample1.png',
-                                        "2023/10/12",
-                                      ),
-                                      SizedBox(width: 10.w),
-                                      stamp(
-                                        'assets/images/stamp_sample2.png',
-                                        "2023/10/12",
-                                      ),
-                                    ],
-                                  ),
                                 ],
                               ),
                             ],
@@ -165,11 +167,12 @@ class VoucherListScreen extends StatelessWidget {
                               padding: EdgeInsets.only(bottom: 5.w),
                               child: const Heading("使えるクーポン"),
                             ),
-                            for (final coupon in coupons)
+                            if (coupons.value != null && coupons.value!.coupons.isNotEmpty)
+                            for (final coupon in coupons.value!.coupons)
                               CouponButton(
-                                id: coupon.id,
+                                id: coupon.iD,
                                 name: coupon.name,
-                                expire: coupon.expire,
+                                expire: coupon.expireAt.toDateTime(),
                                 type: coupon.couponType,
                               ),
                           ],

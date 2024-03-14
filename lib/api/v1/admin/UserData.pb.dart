@@ -291,14 +291,14 @@ class UserListResponse extends $pb.GeneratedMessage {
   $6.PageResponse ensurePageResponse() => $_ensure(1);
 }
 
-class UserGetIDRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserGetIDRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+class UserIDRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserIDRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
     ..hasRequiredFields = false
   ;
 
-  UserGetIDRequest._() : super();
-  factory UserGetIDRequest({
+  UserIDRequest._() : super();
+  factory UserIDRequest({
     $core.String? iD,
   }) {
     final _result = create();
@@ -307,26 +307,26 @@ class UserGetIDRequest extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory UserGetIDRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory UserGetIDRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory UserIDRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserIDRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  UserGetIDRequest clone() => UserGetIDRequest()..mergeFromMessage(this);
+  UserIDRequest clone() => UserIDRequest()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  UserGetIDRequest copyWith(void Function(UserGetIDRequest) updates) => super.copyWith((message) => updates(message as UserGetIDRequest)) as UserGetIDRequest; // ignore: deprecated_member_use
+  UserIDRequest copyWith(void Function(UserIDRequest) updates) => super.copyWith((message) => updates(message as UserIDRequest)) as UserIDRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static UserGetIDRequest create() => UserGetIDRequest._();
-  UserGetIDRequest createEmptyInstance() => create();
-  static $pb.PbList<UserGetIDRequest> createRepeated() => $pb.PbList<UserGetIDRequest>();
+  static UserIDRequest create() => UserIDRequest._();
+  UserIDRequest createEmptyInstance() => create();
+  static $pb.PbList<UserIDRequest> createRepeated() => $pb.PbList<UserIDRequest>();
   @$core.pragma('dart2js:noInline')
-  static UserGetIDRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserGetIDRequest>(create);
-  static UserGetIDRequest? _defaultInstance;
+  static UserIDRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserIDRequest>(create);
+  static UserIDRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get iD => $_getSZ(0);
@@ -551,5 +551,216 @@ class UserListFilterRequest extends $pb.GeneratedMessage {
   void clearPager() => clearField(2);
   @$pb.TagNumber(2)
   $6.Pager ensurePager() => $_ensure(1);
+}
+
+class UserLoginLog extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserLoginLog', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserID', protoName: 'UserID')
+    ..aOM<$25.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LoginAt', protoName: 'LoginAt', subBuilder: $25.Timestamp.create)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'IP', protoName: 'IP')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserAgent', protoName: 'UserAgent')
+    ..hasRequiredFields = false
+  ;
+
+  UserLoginLog._() : super();
+  factory UserLoginLog({
+    $core.String? userID,
+    $25.Timestamp? loginAt,
+    $core.String? iP,
+    $core.String? userAgent,
+  }) {
+    final _result = create();
+    if (userID != null) {
+      _result.userID = userID;
+    }
+    if (loginAt != null) {
+      _result.loginAt = loginAt;
+    }
+    if (iP != null) {
+      _result.iP = iP;
+    }
+    if (userAgent != null) {
+      _result.userAgent = userAgent;
+    }
+    return _result;
+  }
+  factory UserLoginLog.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserLoginLog.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserLoginLog clone() => UserLoginLog()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserLoginLog copyWith(void Function(UserLoginLog) updates) => super.copyWith((message) => updates(message as UserLoginLog)) as UserLoginLog; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UserLoginLog create() => UserLoginLog._();
+  UserLoginLog createEmptyInstance() => create();
+  static $pb.PbList<UserLoginLog> createRepeated() => $pb.PbList<UserLoginLog>();
+  @$core.pragma('dart2js:noInline')
+  static UserLoginLog getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserLoginLog>(create);
+  static UserLoginLog? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userID => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userID($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserID() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserID() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $25.Timestamp get loginAt => $_getN(1);
+  @$pb.TagNumber(2)
+  set loginAt($25.Timestamp v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLoginAt() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLoginAt() => clearField(2);
+  @$pb.TagNumber(2)
+  $25.Timestamp ensureLoginAt() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.String get iP => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set iP($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasIP() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIP() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get userAgent => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set userAgent($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUserAgent() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUserAgent() => clearField(4);
+}
+
+class UserLoginLogRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserLoginLogRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserID', protoName: 'UserID')
+    ..aOM<$6.Pager>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Pager', protoName: 'Pager', subBuilder: $6.Pager.create)
+    ..hasRequiredFields = false
+  ;
+
+  UserLoginLogRequest._() : super();
+  factory UserLoginLogRequest({
+    $core.String? userID,
+    $6.Pager? pager,
+  }) {
+    final _result = create();
+    if (userID != null) {
+      _result.userID = userID;
+    }
+    if (pager != null) {
+      _result.pager = pager;
+    }
+    return _result;
+  }
+  factory UserLoginLogRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserLoginLogRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserLoginLogRequest clone() => UserLoginLogRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserLoginLogRequest copyWith(void Function(UserLoginLogRequest) updates) => super.copyWith((message) => updates(message as UserLoginLogRequest)) as UserLoginLogRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UserLoginLogRequest create() => UserLoginLogRequest._();
+  UserLoginLogRequest createEmptyInstance() => create();
+  static $pb.PbList<UserLoginLogRequest> createRepeated() => $pb.PbList<UserLoginLogRequest>();
+  @$core.pragma('dart2js:noInline')
+  static UserLoginLogRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserLoginLogRequest>(create);
+  static UserLoginLogRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userID => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userID($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserID() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserID() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $6.Pager get pager => $_getN(1);
+  @$pb.TagNumber(2)
+  set pager($6.Pager v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPager() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPager() => clearField(2);
+  @$pb.TagNumber(2)
+  $6.Pager ensurePager() => $_ensure(1);
+}
+
+class UserLoginLogListResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UserLoginLogListResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+    ..pc<UserLoginLog>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LoginLogs', $pb.PbFieldType.PM, protoName: 'LoginLogs', subBuilder: UserLoginLog.create)
+    ..aOM<$6.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PageResponse', protoName: 'PageResponse', subBuilder: $6.PageResponse.create)
+    ..hasRequiredFields = false
+  ;
+
+  UserLoginLogListResponse._() : super();
+  factory UserLoginLogListResponse({
+    $core.Iterable<UserLoginLog>? loginLogs,
+    $6.PageResponse? pageResponse,
+  }) {
+    final _result = create();
+    if (loginLogs != null) {
+      _result.loginLogs.addAll(loginLogs);
+    }
+    if (pageResponse != null) {
+      _result.pageResponse = pageResponse;
+    }
+    return _result;
+  }
+  factory UserLoginLogListResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserLoginLogListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserLoginLogListResponse clone() => UserLoginLogListResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserLoginLogListResponse copyWith(void Function(UserLoginLogListResponse) updates) => super.copyWith((message) => updates(message as UserLoginLogListResponse)) as UserLoginLogListResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static UserLoginLogListResponse create() => UserLoginLogListResponse._();
+  UserLoginLogListResponse createEmptyInstance() => create();
+  static $pb.PbList<UserLoginLogListResponse> createRepeated() => $pb.PbList<UserLoginLogListResponse>();
+  @$core.pragma('dart2js:noInline')
+  static UserLoginLogListResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserLoginLogListResponse>(create);
+  static UserLoginLogListResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<UserLoginLog> get loginLogs => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $6.PageResponse get pageResponse => $_getN(1);
+  @$pb.TagNumber(2)
+  set pageResponse($6.PageResponse v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPageResponse() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPageResponse() => clearField(2);
+  @$pb.TagNumber(2)
+  $6.PageResponse ensurePageResponse() => $_ensure(1);
 }
 

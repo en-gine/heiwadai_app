@@ -48,13 +48,13 @@ const BookResponse$json = const {
     const {'1': 'CheckInTime', '3': 7, '4': 1, '5': 9, '10': 'CheckInTime'},
     const {'1': 'TotalCost', '3': 8, '4': 1, '5': 13, '10': 'TotalCost'},
     const {'1': 'GuestData', '3': 9, '4': 1, '5': 11, '6': '.server.user.GuestData', '10': 'GuestData'},
-    const {'1': 'BookPlan', '3': 10, '4': 1, '5': 11, '6': '.server.user.Plan', '10': 'BookPlan'},
+    const {'1': 'BookPlan', '3': 10, '4': 1, '5': 11, '6': '.server.user.BookPlan', '10': 'BookPlan'},
     const {'1': 'Note', '3': 12, '4': 1, '5': 9, '10': 'Note'},
   ],
 };
 
 /// Descriptor for `BookResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List bookResponseDescriptor = $convert.base64Decode('CgxCb29rUmVzcG9uc2USDgoCSUQYASABKAlSAklEEjYKCFN0YXlGcm9tGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIIU3RheUZyb20SMgoGU3RheVRvGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIGU3RheVRvEhQKBUFkdWx0GAQgASgNUgVBZHVsdBIUCgVDaGlsZBgFIAEoDVIFQ2hpbGQSHAoJUm9vbUNvdW50GAYgASgNUglSb29tQ291bnQSIAoLQ2hlY2tJblRpbWUYByABKAlSC0NoZWNrSW5UaW1lEhwKCVRvdGFsQ29zdBgIIAEoDVIJVG90YWxDb3N0EjQKCUd1ZXN0RGF0YRgJIAEoCzIWLnNlcnZlci51c2VyLkd1ZXN0RGF0YVIJR3Vlc3REYXRhEi0KCEJvb2tQbGFuGAogASgLMhEuc2VydmVyLnVzZXIuUGxhblIIQm9va1BsYW4SEgoETm90ZRgMIAEoCVIETm90ZQ==');
+final $typed_data.Uint8List bookResponseDescriptor = $convert.base64Decode('CgxCb29rUmVzcG9uc2USDgoCSUQYASABKAlSAklEEjYKCFN0YXlGcm9tGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIIU3RheUZyb20SMgoGU3RheVRvGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIGU3RheVRvEhQKBUFkdWx0GAQgASgNUgVBZHVsdBIUCgVDaGlsZBgFIAEoDVIFQ2hpbGQSHAoJUm9vbUNvdW50GAYgASgNUglSb29tQ291bnQSIAoLQ2hlY2tJblRpbWUYByABKAlSC0NoZWNrSW5UaW1lEhwKCVRvdGFsQ29zdBgIIAEoDVIJVG90YWxDb3N0EjQKCUd1ZXN0RGF0YRgJIAEoCzIWLnNlcnZlci51c2VyLkd1ZXN0RGF0YVIJR3Vlc3REYXRhEjEKCEJvb2tQbGFuGAogASgLMhUuc2VydmVyLnVzZXIuQm9va1BsYW5SCEJvb2tQbGFuEhIKBE5vdGUYDCABKAlSBE5vdGU=');
 @$core.Deprecated('Use guestDataDescriptor instead')
 const GuestData$json = const {
   '1': 'GuestData',
@@ -101,6 +101,29 @@ const Plan$json = const {
 
 /// Descriptor for `Plan`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List planDescriptor = $convert.base64Decode('CgRQbGFuEg4KAklEGAEgASgJUgJJRBIUCgVUaXRsZRgCIAEoCVIFVGl0bGUSFAoFUHJpY2UYAyABKA1SBVByaWNlEhoKCEltYWdlVVJMGAQgASgJUghJbWFnZVVSTBIxCghSb29tVHlwZRgFIAEoDjIVLnNlcnZlci51c2VyLlJvb21UeXBlUghSb29tVHlwZRIxCghNZWFsVHlwZRgGIAEoCzIVLnNlcnZlci51c2VyLk1lYWxUeXBlUghNZWFsVHlwZRI0CglTbW9rZVR5cGUYByABKA4yFi5zZXJ2ZXIudXNlci5TbW9rZVR5cGVSCVNtb2tlVHlwZRIaCghPdmVyVmlldxgIIAEoCVIIT3ZlclZpZXcSGAoHU3RvcmVJRBgJIAEoCVIHU3RvcmVJRA==');
+@$core.Deprecated('Use bookPlanDescriptor instead')
+const BookPlan$json = const {
+  '1': 'BookPlan',
+  '2': const [
+    const {'1': 'ID', '3': 1, '4': 1, '5': 9, '10': 'ID'},
+    const {'1': 'Title', '3': 2, '4': 1, '5': 9, '10': 'Title'},
+    const {'1': 'Price', '3': 3, '4': 1, '5': 13, '10': 'Price'},
+    const {'1': 'ImageURL', '3': 4, '4': 1, '5': 9, '10': 'ImageURL'},
+    const {'1': 'RoomTypeName', '3': 5, '4': 1, '5': 9, '10': 'RoomTypeName'},
+    const {'1': 'MealTypeName', '3': 6, '4': 1, '5': 9, '10': 'MealTypeName'},
+    const {'1': 'SmokeTypeName', '3': 7, '4': 1, '5': 9, '10': 'SmokeTypeName'},
+    const {'1': 'OverView', '3': 8, '4': 1, '5': 9, '10': 'OverView'},
+    const {'1': 'StoreID', '3': 9, '4': 1, '5': 9, '10': 'StoreID'},
+    const {'1': 'StoreName', '3': 10, '4': 1, '5': 9, '10': 'StoreName'},
+    const {'1': 'StoreBranchName', '3': 11, '4': 1, '5': 9, '9': 0, '10': 'StoreBranchName', '17': true},
+  ],
+  '8': const [
+    const {'1': '_StoreBranchName'},
+  ],
+};
+
+/// Descriptor for `BookPlan`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List bookPlanDescriptor = $convert.base64Decode('CghCb29rUGxhbhIOCgJJRBgBIAEoCVICSUQSFAoFVGl0bGUYAiABKAlSBVRpdGxlEhQKBVByaWNlGAMgASgNUgVQcmljZRIaCghJbWFnZVVSTBgEIAEoCVIISW1hZ2VVUkwSIgoMUm9vbVR5cGVOYW1lGAUgASgJUgxSb29tVHlwZU5hbWUSIgoMTWVhbFR5cGVOYW1lGAYgASgJUgxNZWFsVHlwZU5hbWUSJAoNU21va2VUeXBlTmFtZRgHIAEoCVINU21va2VUeXBlTmFtZRIaCghPdmVyVmlldxgIIAEoCVIIT3ZlclZpZXcSGAoHU3RvcmVJRBgJIAEoCVIHU3RvcmVJRBIcCglTdG9yZU5hbWUYCiABKAlSCVN0b3JlTmFtZRItCg9TdG9yZUJyYW5jaE5hbWUYCyABKAlIAFIPU3RvcmVCcmFuY2hOYW1liAEBQhIKEF9TdG9yZUJyYW5jaE5hbWU=');
 @$core.Deprecated('Use mealTypeDescriptor instead')
 const MealType$json = const {
   '1': 'MealType',

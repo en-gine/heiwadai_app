@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:heiwadai_app/feature/auth.dart';
 
 import 'package:heiwadai_app/models/store.dart';
+import 'package:heiwadai_app/screens/login_screen.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MyDrawer extends StatelessWidget {
+import '../components/snack_bar.dart';
+
+class MyDrawer extends HookConsumerWidget {
   const MyDrawer(this.stores, {super.key});
 
   final List<Store> stores;
@@ -60,7 +65,7 @@ class MyDrawer extends StatelessWidget {
       );
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Drawer(
       child: SafeArea(
         child: ListView(
@@ -197,8 +202,20 @@ class MyDrawer extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(bottom: 10.w),
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
+                      onTap: () async {
+                        final awaitedContext = context;
+                        await AuthClient(ref).signOut();
+                        if (!context.mounted) return;
+                        Navigator.push(
+                          awaitedContext,
+                          MaterialPageRoute(
+                            builder: (awaitedContext) => const LoginScreen(),
+                          ),
+                        );
+                        showCustomSnackBar(
+                          context: awaitedContext,
+                          message: 'ログアウトしました',
+                        );
                       },
                       child: Text(
                         'ログアウト',

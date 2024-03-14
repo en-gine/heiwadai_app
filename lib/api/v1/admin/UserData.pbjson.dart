@@ -57,16 +57,16 @@ const UserListResponse$json = const {
 
 /// Descriptor for `UserListResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List userListResponseDescriptor = $convert.base64Decode('ChBVc2VyTGlzdFJlc3BvbnNlEjMKBVVzZXJzGAEgAygLMh0uc2VydmVyLmFkbWluLlVzZXJXaXRoQ2hlY2tJblIFVXNlcnMSPwoMUGFnZVJlc3BvbnNlGAMgASgLMhsuc2VydmVyLnNoYXJlZC5QYWdlUmVzcG9uc2VSDFBhZ2VSZXNwb25zZQ==');
-@$core.Deprecated('Use userGetIDRequestDescriptor instead')
-const UserGetIDRequest$json = const {
-  '1': 'UserGetIDRequest',
+@$core.Deprecated('Use userIDRequestDescriptor instead')
+const UserIDRequest$json = const {
+  '1': 'UserIDRequest',
   '2': const [
     const {'1': 'ID', '3': 1, '4': 1, '5': 9, '10': 'ID'},
   ],
 };
 
-/// Descriptor for `UserGetIDRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List userGetIDRequestDescriptor = $convert.base64Decode('ChBVc2VyR2V0SURSZXF1ZXN0Eg4KAklEGAEgASgJUgJJRA==');
+/// Descriptor for `UserIDRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userIDRequestDescriptor = $convert.base64Decode('Cg1Vc2VySURSZXF1ZXN0Eg4KAklEGAEgASgJUgJJRA==');
 @$core.Deprecated('Use userDeleteRequestDescriptor instead')
 const UserDeleteRequest$json = const {
   '1': 'UserDeleteRequest',
@@ -109,3 +109,38 @@ const UserListFilterRequest$json = const {
 
 /// Descriptor for `UserListFilterRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List userListFilterRequestDescriptor = $convert.base64Decode('ChVVc2VyTGlzdEZpbHRlclJlcXVlc3QSMgoGU2VhcmNoGAEgASgLMhouc2VydmVyLmFkbWluLlNlYXJjaEZpbHRlclIGU2VhcmNoEioKBVBhZ2VyGAIgASgLMhQuc2VydmVyLnNoYXJlZC5QYWdlclIFUGFnZXI=');
+@$core.Deprecated('Use userLoginLogDescriptor instead')
+const UserLoginLog$json = const {
+  '1': 'UserLoginLog',
+  '2': const [
+    const {'1': 'UserID', '3': 1, '4': 1, '5': 9, '10': 'UserID'},
+    const {'1': 'LoginAt', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'LoginAt'},
+    const {'1': 'IP', '3': 3, '4': 1, '5': 9, '10': 'IP'},
+    const {'1': 'UserAgent', '3': 4, '4': 1, '5': 9, '10': 'UserAgent'},
+  ],
+};
+
+/// Descriptor for `UserLoginLog`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userLoginLogDescriptor = $convert.base64Decode('CgxVc2VyTG9naW5Mb2cSFgoGVXNlcklEGAEgASgJUgZVc2VySUQSNAoHTG9naW5BdBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSB0xvZ2luQXQSDgoCSVAYAyABKAlSAklQEhwKCVVzZXJBZ2VudBgEIAEoCVIJVXNlckFnZW50');
+@$core.Deprecated('Use userLoginLogRequestDescriptor instead')
+const UserLoginLogRequest$json = const {
+  '1': 'UserLoginLogRequest',
+  '2': const [
+    const {'1': 'UserID', '3': 1, '4': 1, '5': 9, '10': 'UserID'},
+    const {'1': 'Pager', '3': 2, '4': 1, '5': 11, '6': '.server.shared.Pager', '10': 'Pager'},
+  ],
+};
+
+/// Descriptor for `UserLoginLogRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userLoginLogRequestDescriptor = $convert.base64Decode('ChNVc2VyTG9naW5Mb2dSZXF1ZXN0EhYKBlVzZXJJRBgBIAEoCVIGVXNlcklEEioKBVBhZ2VyGAIgASgLMhQuc2VydmVyLnNoYXJlZC5QYWdlclIFUGFnZXI=');
+@$core.Deprecated('Use userLoginLogListResponseDescriptor instead')
+const UserLoginLogListResponse$json = const {
+  '1': 'UserLoginLogListResponse',
+  '2': const [
+    const {'1': 'LoginLogs', '3': 1, '4': 3, '5': 11, '6': '.server.admin.UserLoginLog', '10': 'LoginLogs'},
+    const {'1': 'PageResponse', '3': 2, '4': 1, '5': 11, '6': '.server.shared.PageResponse', '10': 'PageResponse'},
+  ],
+};
+
+/// Descriptor for `UserLoginLogListResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userLoginLogListResponseDescriptor = $convert.base64Decode('ChhVc2VyTG9naW5Mb2dMaXN0UmVzcG9uc2USOAoJTG9naW5Mb2dzGAEgAygLMhouc2VydmVyLmFkbWluLlVzZXJMb2dpbkxvZ1IJTG9naW5Mb2dzEj8KDFBhZ2VSZXNwb25zZRgCIAEoCzIbLnNlcnZlci5zaGFyZWQuUGFnZVJlc3BvbnNlUgxQYWdlUmVzcG9uc2U=');

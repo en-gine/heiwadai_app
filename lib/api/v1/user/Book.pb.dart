@@ -27,7 +27,7 @@ class BookResponse extends $pb.GeneratedMessage {
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CheckInTime', protoName: 'CheckInTime')
     ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TotalCost', $pb.PbFieldType.OU3, protoName: 'TotalCost')
     ..aOM<GuestData>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'GuestData', protoName: 'GuestData', subBuilder: GuestData.create)
-    ..aOM<Plan>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'BookPlan', protoName: 'BookPlan', subBuilder: Plan.create)
+    ..aOM<BookPlan>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'BookPlan', protoName: 'BookPlan', subBuilder: BookPlan.create)
     ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Note', protoName: 'Note')
     ..hasRequiredFields = false
   ;
@@ -43,7 +43,7 @@ class BookResponse extends $pb.GeneratedMessage {
     $core.String? checkInTime,
     $core.int? totalCost,
     GuestData? guestData,
-    Plan? bookPlan,
+    BookPlan? bookPlan,
     $core.String? note,
   }) {
     final _result = create();
@@ -191,15 +191,15 @@ class BookResponse extends $pb.GeneratedMessage {
   GuestData ensureGuestData() => $_ensure(8);
 
   @$pb.TagNumber(10)
-  Plan get bookPlan => $_getN(9);
+  BookPlan get bookPlan => $_getN(9);
   @$pb.TagNumber(10)
-  set bookPlan(Plan v) { setField(10, v); }
+  set bookPlan(BookPlan v) { setField(10, v); }
   @$pb.TagNumber(10)
   $core.bool hasBookPlan() => $_has(9);
   @$pb.TagNumber(10)
   void clearBookPlan() => clearField(10);
   @$pb.TagNumber(10)
-  Plan ensureBookPlan() => $_ensure(9);
+  BookPlan ensureBookPlan() => $_ensure(9);
 
   @$pb.TagNumber(12)
   $core.String get note => $_getSZ(10);
@@ -557,6 +557,193 @@ class Plan extends $pb.GeneratedMessage {
   $core.bool hasStoreID() => $_has(8);
   @$pb.TagNumber(9)
   void clearStoreID() => clearField(9);
+}
+
+class BookPlan extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BookPlan', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Title', protoName: 'Title')
+    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Price', $pb.PbFieldType.OU3, protoName: 'Price')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ImageURL', protoName: 'ImageURL')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'RoomTypeName', protoName: 'RoomTypeName')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'MealTypeName', protoName: 'MealTypeName')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'SmokeTypeName', protoName: 'SmokeTypeName')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'OverView', protoName: 'OverView')
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StoreID', protoName: 'StoreID')
+    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StoreName', protoName: 'StoreName')
+    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'StoreBranchName', protoName: 'StoreBranchName')
+    ..hasRequiredFields = false
+  ;
+
+  BookPlan._() : super();
+  factory BookPlan({
+    $core.String? iD,
+    $core.String? title,
+    $core.int? price,
+    $core.String? imageURL,
+    $core.String? roomTypeName,
+    $core.String? mealTypeName,
+    $core.String? smokeTypeName,
+    $core.String? overView,
+    $core.String? storeID,
+    $core.String? storeName,
+    $core.String? storeBranchName,
+  }) {
+    final _result = create();
+    if (iD != null) {
+      _result.iD = iD;
+    }
+    if (title != null) {
+      _result.title = title;
+    }
+    if (price != null) {
+      _result.price = price;
+    }
+    if (imageURL != null) {
+      _result.imageURL = imageURL;
+    }
+    if (roomTypeName != null) {
+      _result.roomTypeName = roomTypeName;
+    }
+    if (mealTypeName != null) {
+      _result.mealTypeName = mealTypeName;
+    }
+    if (smokeTypeName != null) {
+      _result.smokeTypeName = smokeTypeName;
+    }
+    if (overView != null) {
+      _result.overView = overView;
+    }
+    if (storeID != null) {
+      _result.storeID = storeID;
+    }
+    if (storeName != null) {
+      _result.storeName = storeName;
+    }
+    if (storeBranchName != null) {
+      _result.storeBranchName = storeBranchName;
+    }
+    return _result;
+  }
+  factory BookPlan.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory BookPlan.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  BookPlan clone() => BookPlan()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  BookPlan copyWith(void Function(BookPlan) updates) => super.copyWith((message) => updates(message as BookPlan)) as BookPlan; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static BookPlan create() => BookPlan._();
+  BookPlan createEmptyInstance() => create();
+  static $pb.PbList<BookPlan> createRepeated() => $pb.PbList<BookPlan>();
+  @$core.pragma('dart2js:noInline')
+  static BookPlan getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BookPlan>(create);
+  static BookPlan? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get iD => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set iD($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasID() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearID() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get title => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set title($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasTitle() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTitle() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.int get price => $_getIZ(2);
+  @$pb.TagNumber(3)
+  set price($core.int v) { $_setUnsignedInt32(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPrice() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPrice() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get imageURL => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set imageURL($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasImageURL() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearImageURL() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get roomTypeName => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set roomTypeName($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasRoomTypeName() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearRoomTypeName() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get mealTypeName => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set mealTypeName($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasMealTypeName() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearMealTypeName() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get smokeTypeName => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set smokeTypeName($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasSmokeTypeName() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearSmokeTypeName() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get overView => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set overView($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasOverView() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearOverView() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.String get storeID => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set storeID($core.String v) { $_setString(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasStoreID() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearStoreID() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.String get storeName => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set storeName($core.String v) { $_setString(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasStoreName() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearStoreName() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.String get storeBranchName => $_getSZ(10);
+  @$pb.TagNumber(11)
+  set storeBranchName($core.String v) { $_setString(10, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasStoreBranchName() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearStoreBranchName() => clearField(11);
 }
 
 class MealType extends $pb.GeneratedMessage {

@@ -29,7 +29,9 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="heiwadai" />
+                <data
+                    android:scheme="com.example.heiwadaiApp"
+                    android:host="login" />
             </intent-filter>
 	    <!-- Deep Links　ここまで追加 -->
         </activity>

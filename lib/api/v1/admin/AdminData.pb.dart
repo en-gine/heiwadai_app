@@ -9,6 +9,9 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import '../../google/protobuf/timestamp.pb.dart' as $25;
+import '../shared/Pager.pb.dart' as $6;
+
 class AdminDataRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AdminDataRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
@@ -330,5 +333,216 @@ class AdminListResponse extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(1)
   $core.List<AdminDataResponse> get admins => $_getList(0);
+}
+
+class AdminLoginLog extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AdminLoginLog', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserID', protoName: 'UserID')
+    ..aOM<$25.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LoginAt', protoName: 'LoginAt', subBuilder: $25.Timestamp.create)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'IP', protoName: 'IP')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserAgent', protoName: 'UserAgent')
+    ..hasRequiredFields = false
+  ;
+
+  AdminLoginLog._() : super();
+  factory AdminLoginLog({
+    $core.String? userID,
+    $25.Timestamp? loginAt,
+    $core.String? iP,
+    $core.String? userAgent,
+  }) {
+    final _result = create();
+    if (userID != null) {
+      _result.userID = userID;
+    }
+    if (loginAt != null) {
+      _result.loginAt = loginAt;
+    }
+    if (iP != null) {
+      _result.iP = iP;
+    }
+    if (userAgent != null) {
+      _result.userAgent = userAgent;
+    }
+    return _result;
+  }
+  factory AdminLoginLog.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AdminLoginLog.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AdminLoginLog clone() => AdminLoginLog()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AdminLoginLog copyWith(void Function(AdminLoginLog) updates) => super.copyWith((message) => updates(message as AdminLoginLog)) as AdminLoginLog; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AdminLoginLog create() => AdminLoginLog._();
+  AdminLoginLog createEmptyInstance() => create();
+  static $pb.PbList<AdminLoginLog> createRepeated() => $pb.PbList<AdminLoginLog>();
+  @$core.pragma('dart2js:noInline')
+  static AdminLoginLog getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AdminLoginLog>(create);
+  static AdminLoginLog? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userID => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userID($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserID() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserID() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $25.Timestamp get loginAt => $_getN(1);
+  @$pb.TagNumber(2)
+  set loginAt($25.Timestamp v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLoginAt() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLoginAt() => clearField(2);
+  @$pb.TagNumber(2)
+  $25.Timestamp ensureLoginAt() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.String get iP => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set iP($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasIP() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIP() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get userAgent => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set userAgent($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasUserAgent() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearUserAgent() => clearField(4);
+}
+
+class AdminLoginLogRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AdminLoginLogRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UserID', protoName: 'UserID')
+    ..aOM<$6.Pager>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Pager', protoName: 'Pager', subBuilder: $6.Pager.create)
+    ..hasRequiredFields = false
+  ;
+
+  AdminLoginLogRequest._() : super();
+  factory AdminLoginLogRequest({
+    $core.String? userID,
+    $6.Pager? pager,
+  }) {
+    final _result = create();
+    if (userID != null) {
+      _result.userID = userID;
+    }
+    if (pager != null) {
+      _result.pager = pager;
+    }
+    return _result;
+  }
+  factory AdminLoginLogRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AdminLoginLogRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AdminLoginLogRequest clone() => AdminLoginLogRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AdminLoginLogRequest copyWith(void Function(AdminLoginLogRequest) updates) => super.copyWith((message) => updates(message as AdminLoginLogRequest)) as AdminLoginLogRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AdminLoginLogRequest create() => AdminLoginLogRequest._();
+  AdminLoginLogRequest createEmptyInstance() => create();
+  static $pb.PbList<AdminLoginLogRequest> createRepeated() => $pb.PbList<AdminLoginLogRequest>();
+  @$core.pragma('dart2js:noInline')
+  static AdminLoginLogRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AdminLoginLogRequest>(create);
+  static AdminLoginLogRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get userID => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set userID($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasUserID() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearUserID() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $6.Pager get pager => $_getN(1);
+  @$pb.TagNumber(2)
+  set pager($6.Pager v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPager() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPager() => clearField(2);
+  @$pb.TagNumber(2)
+  $6.Pager ensurePager() => $_ensure(1);
+}
+
+class AdminLoginLogListResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AdminLoginLogListResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.admin'), createEmptyInstance: create)
+    ..pc<AdminLoginLog>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'LoginLogs', $pb.PbFieldType.PM, protoName: 'LoginLogs', subBuilder: AdminLoginLog.create)
+    ..aOM<$6.PageResponse>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'PageResponse', protoName: 'PageResponse', subBuilder: $6.PageResponse.create)
+    ..hasRequiredFields = false
+  ;
+
+  AdminLoginLogListResponse._() : super();
+  factory AdminLoginLogListResponse({
+    $core.Iterable<AdminLoginLog>? loginLogs,
+    $6.PageResponse? pageResponse,
+  }) {
+    final _result = create();
+    if (loginLogs != null) {
+      _result.loginLogs.addAll(loginLogs);
+    }
+    if (pageResponse != null) {
+      _result.pageResponse = pageResponse;
+    }
+    return _result;
+  }
+  factory AdminLoginLogListResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AdminLoginLogListResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AdminLoginLogListResponse clone() => AdminLoginLogListResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AdminLoginLogListResponse copyWith(void Function(AdminLoginLogListResponse) updates) => super.copyWith((message) => updates(message as AdminLoginLogListResponse)) as AdminLoginLogListResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AdminLoginLogListResponse create() => AdminLoginLogListResponse._();
+  AdminLoginLogListResponse createEmptyInstance() => create();
+  static $pb.PbList<AdminLoginLogListResponse> createRepeated() => $pb.PbList<AdminLoginLogListResponse>();
+  @$core.pragma('dart2js:noInline')
+  static AdminLoginLogListResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AdminLoginLogListResponse>(create);
+  static AdminLoginLogListResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<AdminLoginLog> get loginLogs => $_getList(0);
+
+  @$pb.TagNumber(2)
+  $6.PageResponse get pageResponse => $_getN(1);
+  @$pb.TagNumber(2)
+  set pageResponse($6.PageResponse v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPageResponse() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPageResponse() => clearField(2);
+  @$pb.TagNumber(2)
+  $6.PageResponse ensurePageResponse() => $_ensure(1);
 }
 

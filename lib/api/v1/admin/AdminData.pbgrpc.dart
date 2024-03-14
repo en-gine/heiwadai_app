@@ -37,6 +37,12 @@ class AdminDataControllerClient extends $grpc.Client {
       '/server.admin.AdminDataController/Delete',
       ($0.AdminDataRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
+  static final _$getLoginLogList =
+      $grpc.ClientMethod<$0.AdminLoginLogRequest, $0.AdminLoginLogListResponse>(
+          '/server.admin.AdminDataController/GetLoginLogList',
+          ($0.AdminLoginLogRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.AdminLoginLogListResponse.fromBuffer(value));
 
   AdminDataControllerClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -63,6 +69,12 @@ class AdminDataControllerClient extends $grpc.Client {
   $grpc.ResponseFuture<$1.Empty> delete($0.AdminDataRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$delete, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.AdminLoginLogListResponse> getLoginLogList(
+      $0.AdminLoginLogRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$getLoginLogList, request, options: options);
   }
 }
 
@@ -100,6 +112,15 @@ abstract class AdminDataControllerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.AdminDataRequest.fromBuffer(value),
         ($1.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.AdminLoginLogRequest,
+            $0.AdminLoginLogListResponse>(
+        'GetLoginLogList',
+        getLoginLogList_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) =>
+            $0.AdminLoginLogRequest.fromBuffer(value),
+        ($0.AdminLoginLogListResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.AdminDataResponse> getByID_Pre($grpc.ServiceCall call,
@@ -122,6 +143,12 @@ abstract class AdminDataControllerServiceBase extends $grpc.Service {
     return delete(call, await request);
   }
 
+  $async.Future<$0.AdminLoginLogListResponse> getLoginLogList_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$0.AdminLoginLogRequest> request) async {
+    return getLoginLogList(call, await request);
+  }
+
   $async.Future<$0.AdminDataResponse> getByID(
       $grpc.ServiceCall call, $0.AdminDataRequest request);
   $async.Future<$0.AdminDataResponse> update(
@@ -130,4 +157,6 @@ abstract class AdminDataControllerServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.AdminListRequest request);
   $async.Future<$1.Empty> delete(
       $grpc.ServiceCall call, $0.AdminDataRequest request);
+  $async.Future<$0.AdminLoginLogListResponse> getLoginLogList(
+      $grpc.ServiceCall call, $0.AdminLoginLogRequest request);
 }

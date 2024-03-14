@@ -34,10 +34,10 @@ const AnonTokenResponse$json = const {
   '1': 'AnonTokenResponse',
   '2': const [
     const {'1': 'accessToken', '3': 1, '4': 1, '5': 9, '10': 'accessToken'},
-    const {'1': 'expiresIn', '3': 2, '4': 1, '5': 3, '10': 'expiresIn'},
-    const {'1': 'refreshToken', '3': 3, '4': 1, '5': 9, '10': 'refreshToken'},
+    const {'1': 'refreshToken', '3': 2, '4': 1, '5': 9, '10': 'refreshToken'},
+    const {'1': 'expiresIn', '3': 3, '4': 1, '5': 3, '10': 'expiresIn'},
   ],
 };
 
 /// Descriptor for `AnonTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List anonTokenResponseDescriptor = $convert.base64Decode('ChFBbm9uVG9rZW5SZXNwb25zZRIgCgthY2Nlc3NUb2tlbhgBIAEoCVILYWNjZXNzVG9rZW4SHAoJZXhwaXJlc0luGAIgASgDUglleHBpcmVzSW4SIgoMcmVmcmVzaFRva2VuGAMgASgJUgxyZWZyZXNoVG9rZW4=');
+final $typed_data.Uint8List anonTokenResponseDescriptor = $convert.base64Decode('ChFBbm9uVG9rZW5SZXNwb25zZRIgCgthY2Nlc3NUb2tlbhgBIAEoCVILYWNjZXNzVG9rZW4SIgoMcmVmcmVzaFRva2VuGAIgASgJUgxyZWZyZXNoVG9rZW4SHAoJZXhwaXJlc0luGAMgASgDUglleHBpcmVzSW4=');

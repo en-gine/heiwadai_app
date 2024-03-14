@@ -63,3 +63,38 @@ const AdminListResponse$json = const {
 
 /// Descriptor for `AdminListResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List adminListResponseDescriptor = $convert.base64Decode('ChFBZG1pbkxpc3RSZXNwb25zZRI3CgZBZG1pbnMYASADKAsyHy5zZXJ2ZXIuYWRtaW4uQWRtaW5EYXRhUmVzcG9uc2VSBkFkbWlucw==');
+@$core.Deprecated('Use adminLoginLogDescriptor instead')
+const AdminLoginLog$json = const {
+  '1': 'AdminLoginLog',
+  '2': const [
+    const {'1': 'UserID', '3': 1, '4': 1, '5': 9, '10': 'UserID'},
+    const {'1': 'LoginAt', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'LoginAt'},
+    const {'1': 'IP', '3': 3, '4': 1, '5': 9, '10': 'IP'},
+    const {'1': 'UserAgent', '3': 4, '4': 1, '5': 9, '10': 'UserAgent'},
+  ],
+};
+
+/// Descriptor for `AdminLoginLog`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List adminLoginLogDescriptor = $convert.base64Decode('Cg1BZG1pbkxvZ2luTG9nEhYKBlVzZXJJRBgBIAEoCVIGVXNlcklEEjQKB0xvZ2luQXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgdMb2dpbkF0Eg4KAklQGAMgASgJUgJJUBIcCglVc2VyQWdlbnQYBCABKAlSCVVzZXJBZ2VudA==');
+@$core.Deprecated('Use adminLoginLogRequestDescriptor instead')
+const AdminLoginLogRequest$json = const {
+  '1': 'AdminLoginLogRequest',
+  '2': const [
+    const {'1': 'UserID', '3': 1, '4': 1, '5': 9, '10': 'UserID'},
+    const {'1': 'Pager', '3': 2, '4': 1, '5': 11, '6': '.server.shared.Pager', '10': 'Pager'},
+  ],
+};
+
+/// Descriptor for `AdminLoginLogRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List adminLoginLogRequestDescriptor = $convert.base64Decode('ChRBZG1pbkxvZ2luTG9nUmVxdWVzdBIWCgZVc2VySUQYASABKAlSBlVzZXJJRBIqCgVQYWdlchgCIAEoCzIULnNlcnZlci5zaGFyZWQuUGFnZXJSBVBhZ2Vy');
+@$core.Deprecated('Use adminLoginLogListResponseDescriptor instead')
+const AdminLoginLogListResponse$json = const {
+  '1': 'AdminLoginLogListResponse',
+  '2': const [
+    const {'1': 'LoginLogs', '3': 1, '4': 3, '5': 11, '6': '.server.admin.AdminLoginLog', '10': 'LoginLogs'},
+    const {'1': 'PageResponse', '3': 2, '4': 1, '5': 11, '6': '.server.shared.PageResponse', '10': 'PageResponse'},
+  ],
+};
+
+/// Descriptor for `AdminLoginLogListResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List adminLoginLogListResponseDescriptor = $convert.base64Decode('ChlBZG1pbkxvZ2luTG9nTGlzdFJlc3BvbnNlEjkKCUxvZ2luTG9ncxgBIAMoCzIbLnNlcnZlci5hZG1pbi5BZG1pbkxvZ2luTG9nUglMb2dpbkxvZ3MSPwoMUGFnZVJlc3BvbnNlGAIgASgLMhsuc2VydmVyLnNoYXJlZC5QYWdlUmVzcG9uc2VSDFBhZ2VSZXNwb25zZQ==');

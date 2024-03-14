@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:heiwadai_app/provider/token_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:heiwadai_app/screens/login_screen.dart';
@@ -16,8 +17,7 @@ import 'package:heiwadai_app/screens/voucher_list_screen.dart';
 import 'package:heiwadai_app/screens/voucher_details_screen.dart';
 import 'package:heiwadai_app/screens/news_list_screen.dart';
 import 'package:heiwadai_app/screens/news_details_screen.dart';
-
-import 'package:heiwadai_app/provider/grpc_client.dart';
+// import 'package:heiwadai_app/provider/grpc_client.dart';
 // import 'package:heiwadai_app/provider/rest_client.dart';
 
 
@@ -86,13 +86,13 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: 'news_list',
             builder: (context, state) => const NewsListScreen(),
           ),
-          GoRoute(
-            path: 'news_details/:id',
-            builder: (context, state) {
-              if (state.pathParameters['id'] == null) return const HomeScreen();
-              return NewsDetailsScreen(id: state.pathParameters['id']!);
-            },
-          ),
+          // GoRoute(
+          //   path: 'news_details/:id',
+          //   builder: (context, state) {
+          //     if (state.pathParameters['id'] == null) return const HomeScreen();
+          //     return NewsDetailsScreen(id: state.pathParameters['id']!);
+          //   },
+          // ),
         ],
       ),
       GoRoute(

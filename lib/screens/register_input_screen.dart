@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:grpc/grpc.dart';
+import 'package:heiwadai_app/provider/rest_client.dart';
 
 import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,7 +25,9 @@ import 'package:heiwadai_app/api/google/protobuf/timestamp.pb.dart';
 import 'package:heiwadai_app/feature/anon_auth.dart';
 
 // import 'package:heiwadai_app/models/user.dart';
+import 'package:http/http.dart' as http;
 
+import '../widgets/components/dialog.dart';
 class RegisterInputScreen extends HookConsumerWidget {
   const RegisterInputScreen({super.key, this.title});
   final String? title;
@@ -37,6 +43,7 @@ class RegisterInputScreen extends HookConsumerWidget {
     final zipCodeInput = useState("");
     final prefectureInput = useState(Prefecture.Unspecified.toString());
     final cityInput = useState("");
+    final cityController = useTextEditingController();
     final addressInput = useState("");
     final telInput = useState("");
     final mailInput = useState("");
@@ -98,6 +105,11 @@ class RegisterInputScreen extends HookConsumerWidget {
     // final isChecked = useState<bool>(false);
 
     final formKey = useMemoized(() => GlobalKey<FormState>());
+
+    useEffect(() {
+      cityController.text = cityInput.value;
+      return null;
+    }, [cityInput.value]);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -268,10 +280,24 @@ class RegisterInputScreen extends HookConsumerWidget {
                             SizedBox(height: 10.w),
                             TextInputField(
                               '郵便番号',
-                              type: FormType.text,
+                              type: FormType.number,
                               hint: '1230000',
-                              onChanged: (value) {
-                                zipCodeInput.value = value;
+                              onChanged: (value) async {
+                                zipCodeInput.value = value.replaceAll("-", "");
+
+                                if (value.length != 7) {
+                                  return;
+                                }
+                                final url = Uri.https('zipcloud.ibsnet.co.jp', '/api/search', {'zipcode':value});
+                                http.get(url).then((result) {
+                                  Map<String, dynamic> address = jsonDecode(result.body)['results'][0];
+                                  final prefindex = prefectures.indexWhere((pref) => pref == address['address1']);
+                                  var pref = Prefecture.values[prefindex];
+                                  prefectureInput.value = pref.name;
+                                  cityInput.value = '${address['address2']}${address['address3']}';
+                                }).catchError((error) {
+                                  debugPrint(error);
+                                });
                               },
                             ),
                             SizedBox(height: 28.w),
@@ -291,6 +317,7 @@ class RegisterInputScreen extends HookConsumerWidget {
                               ),
                               child: DropdownButton(
                                 isExpanded: true,
+                                padding: EdgeInsets.symmetric(vertical: 10.w),
                                 underline: Container(),
                                 style: TextStyle(
                                   fontSize: 16.sp,
@@ -310,8 +337,9 @@ class RegisterInputScreen extends HookConsumerWidget {
                                   '選択してください',
                                   style: TextStyle(color: Color(0xffb3b3b3)),
                                 ),
-                                onChanged: (value) =>
-                                    prefectureInput.value = value as String,
+                                onChanged: (value) {
+                                  prefectureInput.value = value as String;
+                                }
                               ),
                             ),
                             SizedBox(height: 28.w),
@@ -321,6 +349,7 @@ class RegisterInputScreen extends HookConsumerWidget {
                               '市区町村',
                               type: FormType.text,
                               hint: '例：福岡市中央区',
+                              controller: cityController,
                               onChanged: (value) {
                                 cityInput.value = value;
                               },
@@ -373,6 +402,17 @@ class RegisterInputScreen extends HookConsumerWidget {
                               'メールアドレス',
                               type: FormType.email,
                               hint: '例：email@example.com',
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'メールアドレスを入力してください';
+                                }
+                                if (!RegExp(
+                                        r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+                                    .hasMatch(value)) {
+                                  return '正しいメールアドレスを入力してください';
+                                }
+                                return null;
+                              },
                               onChanged: (value) {
                                 mailInput.value = value;
                               },
@@ -467,9 +507,37 @@ class RegisterInputScreen extends HookConsumerWidget {
                       Container(
                         margin: EdgeInsets.only(bottom: 40.w),
                         child: FilledButton(
-                          onPressed: () {
-                            register(
-                              ref,
+                          onPressed: () async {
+                            final asyncContext = context;
+                            if (prefectureInput.value == '') {
+                              modalDialog(
+                                asyncContext,
+                                'エラー',
+                                '都道府県を選択してください。',
+                                yesText: 'OK',
+                              );
+                              return;
+                            }
+                            if (!formKey.currentState!.validate()) {
+                              modalDialog(
+                                asyncContext,
+                                'エラー',
+                                '入力内容が不十分か誤りがあります。',
+                                yesText: 'OK',
+                              );
+                              return;
+                            }
+                            if (!acceptTermInput.value) {
+                              modalDialog(
+                                asyncContext,
+                                'エラー',
+                                '利用規約とプライバシーポリシーに同意してください。',
+                                yesText: 'OK',
+                              );
+                              return;
+                            }
+
+                            await AnonAuthClient(ref).register(
                               UserRegisterRequest(
                                 firstName: firstNameInput.value,
                                 lastName: lastNameInput.value,
@@ -498,11 +566,37 @@ class RegisterInputScreen extends HookConsumerWidget {
                               context,
                             ).then((result) {
                               context.push('/register_done');
-                            }).catchError((error) {
-                              const SnackBar(
-                                content: Text('登録に失敗しました。'),
+                            }).catchError((error, stack) {
+                              // サーバーからのエラーをハンドリング
+                              String modalMessage = '';
+                              switch (error.statusCode) {
+                                case StatusCode.unauthenticated:
+                                case StatusCode.invalidArgument:
+                                  modalMessage = '${error.message}';
+                                  break;
+                                default:
+                                  modalMessage = '通信エラーなどにより登録が出来ませんでした。';
+                                  debugPrint('Sign in failed: $error');
+                                  debugPrint('Stack Trace: $stack');
+                                  break;
+                              }
+                              modalDialog(
+                                asyncContext,
+                                'エラー',
+                                modalMessage,
+                                yesText: 'OK',
                               );
-                            });
+                            }, test: (error) => error is ServerException)
+                            .catchError((e, s) {
+                              debugPrint('Sign in failed: $e');
+                              debugPrint('StackTrace: $s');
+                              modalDialog(
+                                asyncContext,
+                                'エラー',
+                                '不明な内部／通信エラーなどにより登録出来ませんでした。',
+                                yesText: 'OK',
+                              );
+                            }, test: (error) => error is Exception);
                           },
                           style: ButtonStyle(
                             minimumSize: MaterialStateProperty.all<Size>(

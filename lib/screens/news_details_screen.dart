@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heiwadai_app/api/v1/user/Post.pb.dart';
 
 import "package:intl/intl.dart";
 import 'package:collection/collection.dart';
@@ -15,13 +16,12 @@ import 'package:heiwadai_app/data/stores.dart';
 import 'package:heiwadai_app/data/posts.dart';
 
 class NewsDetailsScreen extends StatelessWidget {
-  const NewsDetailsScreen({super.key, required this.id});
-  final String id;
+  const NewsDetailsScreen({super.key, required this.post});
+  final PostResponse post;
 
   @override
   Widget build(BuildContext context) {
     DateFormat dateFormat = DateFormat('yyyy.MM.dd', "ja_JP");
-    final post = posts.firstWhereOrNull((user) => user.id == id);
 
     if (post == null) {
       return const Scaffold(
@@ -60,7 +60,7 @@ class NewsDetailsScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              dateFormat.format(post.postDate.toLocal()),
+                              dateFormat.format(post.postDate.toDateTime()),
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 height: 20.sp / 16.sp,
@@ -78,6 +78,7 @@ class NewsDetailsScreen extends StatelessWidget {
                                   margin: Margins.zero,
                                   padding: HtmlPaddings.zero,
                                 ),
+
                               },
                             ),
                           ],

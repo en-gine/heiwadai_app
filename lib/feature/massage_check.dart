@@ -9,8 +9,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:heiwadai_app/api/v1/user/Messages.pb.dart';
 import 'package:heiwadai_app/provider/rest_client.dart';
 
-import 'dart:developer';
+import 'base_feature.dart';
 
+class MessageClient extends BaseClient{
+  MessageClient(super.ref): super(controller: 'MessageController');
+
+  Future<MessagesResponse> getMessagesAfter(
+      String? readUid
+      ) async {
+    final request = MessageRequest(iD: readUid);
+    var response = await client.call('$controller/GetMessagesAfter', request: request);
+    return MessagesResponse.create()..mergeFromProto3Json(response);
+  }
+}
 
 Future messageCheck(context, WidgetRef ref) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -19,20 +30,13 @@ Future messageCheck(context, WidgetRef ref) async {
   try {
 
     final String? readUid = prefs.getString('last_uid');
-    final request = MessageRequest(iD: readUid);
-    inspect(request);
-    final client = ref.watch(httpClientProvider);
-    var response = await client.call('MessageController/GetMessagesAfter', message: request);
-    inspect(response);
+    final data = await MessageClient(ref).getMessagesAfter(readUid);
 
-    final MessagesResponse data = MessagesResponse.fromJson(response.body);
     final List<MessageResponse> messages = data.messages;
-    inspect(data);
     await prefs.setString('lastUid', messages[0].iD);
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('メッセージの取得に失敗しました。')),
-    );
+  } catch (e, s) {
+    debugPrint('Message fetch Error: $e');
+    debugPrint('Stack Trace: $s');
     return false;
   }
   showDialog(

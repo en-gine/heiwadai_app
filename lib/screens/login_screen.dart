@@ -7,15 +7,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
-import 'package:heiwadai_app/api/v1/user/AnonAuth.pb.dart';
 import 'package:heiwadai_app/api/v1/user/Auth.pb.dart';
+import 'package:heiwadai_app/env.dart';
+import 'package:heiwadai_app/feature/anon_auth.dart';
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/footer_overview.dart';
 import 'package:heiwadai_app/widgets/components/form/text_input_field.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../provider/grpc_client.dart';
+import '../feature/auth.dart';
+import '../provider/rest_client.dart';
+import '../provider/token_provider.dart';
 import '../widgets/components/dialog.dart';
+import '../widgets/components/snack_bar.dart';
 
 class LoginScreen extends HookConsumerWidget {
   const LoginScreen({super.key, this.title});
@@ -35,13 +39,13 @@ class LoginScreen extends HookConsumerWidget {
 
     useEffect(() => () async {
       // 保持されたトークンが有効であれば、HOMEにリダイレクトする
-      final authController = ref.read(authControllerProvider);
       final token = await ref.read(tokenProvider.notifier).loadTokenState();
       if (token?.accessToken == null || token?.refreshToken == null) return;
       final awaitedContext = context;
-      authController.refresh(RefreshTokenRequest(accessToken:token?.accessToken, refreshToken: token?.refreshToken)).then((p0) =>
+      await AuthClient(ref).refresh(token!.accessToken!,  token.refreshToken!).then((p0) =>
           awaitedContext.push('/')
       );
+
     }, const []);
 
     return Scaffold(
@@ -177,32 +181,18 @@ class LoginScreen extends HookConsumerWidget {
                           onPressed: (!isMail.value || !isPass.value)
                               ? null
                               : () async {
-                            final anonAuthController = ref.read(anonAuthControllerProvider);
-                            // ここでsignInメソッドを呼び出す
-                            final signInRequest = UserAuthRequest(
-                              email: mailInput.value,
-                              password: passInput.value,
-                            );
                             final BuildContext asyncContext = context; // contextをローカル変数に保存
                             try {
-                              final signInResponse = await anonAuthController.signIn(signInRequest);
-                              debugPrint(signInResponse.toString());
+                              await AnonAuthClient(ref).signIn( mailInput.value, passInput.value);
+                              // await AnonAuthClient(ref).signIn( Env.testEmail, Env.testPass);
                               if (!context.mounted) return; // ここでウィジェットがまだマウントされているかチェック
                               // 結果を表示する
-                              ScaffoldMessenger.of(asyncContext).showSnackBar(
-                                const SnackBar(content: Text('サインインしました。')),
-                              );
-                              // トークンを更新する
-                              ref.read(tokenProvider.notifier).state = TokenState(
-                                accessToken: signInResponse.accessToken,
-                                refreshToken: signInResponse.refreshToken,
-                                expireIn: signInResponse.expiresIn.toInt(),
-                              );
+                              showCustomSnackBar(context: asyncContext, message: 'サインインしました。');
                               asyncContext.push('/');
-                            } on GrpcError catch (e, s) {
+                            } on ServerException catch (e, s) {
                               // エラーを表示する
                               String modalMessage = '';
-                              switch (e.code) {
+                              switch (e.statusCode) {
                                 case StatusCode.unauthenticated:
                                 case StatusCode.invalidArgument:
                                   modalMessage = 'メールアドレスまたはパスワードが間違っています。';
@@ -219,13 +209,14 @@ class LoginScreen extends HookConsumerWidget {
                                 modalMessage,
                                 yesText: 'OK',
                               );
-                            } catch (e) {
+                            } catch (e, s) {
                               // エラーを表示する
                               debugPrint('Sign in failed: $e');
+                              debugPrint('StackTrace: $s');
                               modalDialog(
                                 asyncContext,
                                 'エラー',
-                                '不明な通信エラーなどによりサインイン出来ませんでした。',
+                                '不明な内部／通信エラーなどによりサインイン出来ませんでした。',
                                 yesText: 'OK',
                               );
                             }

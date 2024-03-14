@@ -67,16 +67,23 @@ class TextInputField extends HookWidget {
   const TextInputField(
     this.label, {
     super.key,
+    this.controller,
+    this.initialValue,
     this.hint,
     this.errorText,
     this.type = FormType.text,
     this.onChanged,
     this.onSaved,
+    this.validator,
   });
   final String label;
   final String? hint;
+  final TextEditingController? controller;
+  final String? initialValue;
   final String? errorText;
   final FormType type;
+  final String? Function(String?)? validator;
+
   final void Function(String)? onChanged;
   final void Function(String?)? onSaved;
 
@@ -86,7 +93,8 @@ class TextInputField extends HookWidget {
   Widget build(BuildContext context) {
     final isObscure = useState(true);
     // final TextEditingController controller = TextEditingController();
-    final controller = useTextEditingController();
+    final localController = useTextEditingController(text: initialValue);
+    final effectiveController = controller ?? localController;
 
     Map<FormType, Widget?> suffix = {
       FormType.text: null,
@@ -110,7 +118,8 @@ class TextInputField extends HookWidget {
 
     return TextFormField(
       readOnly: (type == FormType.date),
-      controller: controller,
+      validator: validator,
+      controller: effectiveController,
       // key: _fieldKey,
       obscureText: (type == FormType.password) ? isObscure.value : false,
       keyboardType: _keyboard[type],
@@ -155,7 +164,7 @@ class TextInputField extends HookWidget {
                     formatedDate = DateFormat('yyyy/MM/dd').format(date);
                   } catch (_) {}
                   if (formatedDate != null) {
-                    controller.text = formatedDate;
+                    controller?.text = formatedDate;
                     onChanged?.call(formatedDate);
                   }
                 },

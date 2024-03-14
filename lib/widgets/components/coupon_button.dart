@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:heiwadai_app/api/v1/shared/Coupon.pb.dart';
 
 import "package:intl/intl.dart";
 import 'package:go_router/go_router.dart';
-
-import 'package:heiwadai_app/models/coupon_item.dart';
 
 class CouponButton extends StatelessWidget {
   const CouponButton({
@@ -52,7 +51,7 @@ class CouponButton extends StatelessWidget {
                   children: [
                     Text(
                       name,
-                      style: (type == CouponType.standard)
+                      style: (type == CouponType.COUPON_STANDARD)
                           ? TextStyle(
                               fontSize: 20.sp,
                               fontWeight: FontWeight.bold,
@@ -65,7 +64,7 @@ class CouponButton extends StatelessWidget {
                             ),
                     ),
                     Text(
-                      (type == CouponType.standard) ? "割引クーポン" : "クーポン",
+                      (type == CouponType.COUPON_STANDARD) ? "割引クーポン" : "クーポン",
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
