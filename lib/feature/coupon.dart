@@ -1,17 +1,17 @@
 
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:heiwadai_app/api/v1/shared/Coupon.pb.dart';
 import 'package:heiwadai_app/api/v1/user/MyCoupon.pb.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 
+import '../provider/rest_client.dart';
 import 'base_feature.dart';
 
-class CouponClient extends BaseClient{
-  CouponClient(super.ref): super(controller: 'MyCouponController');
+class CouponClient extends BaseClient {
+  CouponClient(super.client) : super(controller: 'MyCouponController');
 
-  Future<MyCouponsResponse> getList() async {
-    final res = await client.call(
-        '$controller/GetList');
+  Future<MyCouponsResponse> getList({bool? useCache = true}) async {
+    final res = await client.call('$controller/GetList', useCache: useCache, cacheable: true);
     return MyCouponsResponse.create()..mergeFromProto3Json(res);
   }
 
@@ -25,6 +25,9 @@ class CouponClient extends BaseClient{
     final req = CouponIDRequest(iD: couponId);
     await client.call('$controller/Use', request: req);
   }
-
 }
 
+final couponClientProvider = Provider<CouponClient>((ref) {
+  final customRestClient = ref.watch(httpClientProvider);
+  return CouponClient(customRestClient);
+});

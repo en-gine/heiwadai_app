@@ -73,16 +73,16 @@ const StayableInfo$json = const {
 
 /// Descriptor for `StayableInfo`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List stayableInfoDescriptor = $convert.base64Decode('CgxTdGF5YWJsZUluZm8SGAoHUGFya2luZxgBIAEoCVIHUGFya2luZxIaCghMYXRpdHVkZRgCIAEoAVIITGF0aXR1ZGUSHAoJTG9uZ2l0dWRlGAMgASgBUglMb25naXR1ZGUSHgoKQWNjZXNzSW5mbxgEIAEoCVIKQWNjZXNzSW5mbxIeCgpSZXN0QVBJVVJMGAUgASgJUgpSZXN0QVBJVVJMEigKD0Jvb2tpbmdTeXN0ZW1JRBgGIAEoCVIPQm9va2luZ1N5c3RlbUlE');
-@$core.Deprecated('Use soreIDRequestDescriptor instead')
-const SoreIDRequest$json = const {
-  '1': 'SoreIDRequest',
+@$core.Deprecated('Use storeIDRequestDescriptor instead')
+const StoreIDRequest$json = const {
+  '1': 'StoreIDRequest',
   '2': const [
     const {'1': 'ID', '3': 1, '4': 1, '5': 9, '10': 'ID'},
   ],
 };
 
-/// Descriptor for `SoreIDRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List soreIDRequestDescriptor = $convert.base64Decode('Cg1Tb3JlSURSZXF1ZXN0Eg4KAklEGAEgASgJUgJJRA==');
+/// Descriptor for `StoreIDRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List storeIDRequestDescriptor = $convert.base64Decode('Cg5TdG9yZUlEUmVxdWVzdBIOCgJJRBgBIAEoCVICSUQ=');
 @$core.Deprecated('Use qRResponseDescriptor instead')
 const QRResponse$json = const {
   '1': 'QRResponse',

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:heiwadai_app/provider/token_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -16,9 +17,7 @@ import 'package:heiwadai_app/screens/plan_detail/my_booking_screen.dart';
 import 'package:heiwadai_app/screens/voucher_list_screen.dart';
 import 'package:heiwadai_app/screens/voucher_details_screen.dart';
 import 'package:heiwadai_app/screens/news_list_screen.dart';
-import 'package:heiwadai_app/screens/news_details_screen.dart';
-// import 'package:heiwadai_app/provider/grpc_client.dart';
-// import 'package:heiwadai_app/provider/rest_client.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 final routerProvider = Provider<GoRouter>((ref) {
@@ -75,13 +74,13 @@ final routerProvider = Provider<GoRouter>((ref) {
             path: 'voucher_list',
             builder: (context, state) => const VoucherListScreen(),
           ),
-          GoRoute(
-            path: 'voucher_details/:id',
-            builder: (context, state) {
-              if (state.pathParameters['id'] == null) return const HomeScreen();
-              return VoucherDetailsScreen(id: state.pathParameters['id']!);
-            },
-          ),
+          // GoRoute(
+          //   path: 'voucher_details/:id',
+          //   builder: (context, state) {
+          //     if (state.pathParameters['id'] == null) return const HomeScreen();
+          //     return VoucherDetailsScreen(id: state.pathParameters['id']!);
+          //   },
+          // ),
           GoRoute(
             path: 'news_list',
             builder: (context, state) => const NewsListScreen(),
@@ -112,19 +111,39 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const RegisterDoneScreen(),
       ),
       GoRoute(
-        path: '/register_pass/:id',
+        path: '/register_pass',
         builder: (context, state) {
-          if (state.pathParameters['id'] == null) return const LoginScreen();
-          return RegisterPassScreen(id: state.pathParameters['id']!);
+          final extra = state.extra as Map<String, dynamic>?;
+          final accessToken = extra?['accessToken'] as String?;
+          final refreshToken = extra?['refreshToken'] as String?;
+          final hasConfirmError = extra?['hasConfirmError'] as bool? ?? false;
+          return RegisterPassScreen(
+            accessToken: accessToken,
+            refreshToken: refreshToken,
+            hasConfirmError: hasConfirmError,
+          );
         },
       ),
       GoRoute(
         path: '/terms',
-        builder: (context, state) => const LoginScreen(), // 規約,未作成
+        builder: (context, state) => const LoginScreen(),
+        redirect: (context, state) async{
+          await launchUrl(Uri.parse('https://heiwadai-hotel.app/term/'));
+        }
       ),
       GoRoute(
         path: '/policy',
-        builder: (context, state) => const LoginScreen(), // プライバシーポリシー,未作成
+        builder: (context, state) => const LoginScreen(),
+        redirect: (context, state) async{
+          await launchUrl(Uri.parse('https://www.heiwadai-hotel.co.jp/privacy-policy/'));
+        }
+      ),
+      GoRoute(
+          path: '/company',
+          builder: (context, state) => const LoginScreen(),
+          redirect: (context, state) async{
+            await launchUrl(Uri.parse('https://www.heiwadai-hotel.co.jp/company/'));
+          }
       ),
     ],
   );

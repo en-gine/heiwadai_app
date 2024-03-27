@@ -3,16 +3,18 @@ import 'package:heiwadai_app/api/v1/admin/Coupon.pb.dart';
 import 'package:heiwadai_app/api/v1/user/Book.pb.dart';
 import 'package:heiwadai_app/api/v1/user/Checkin.pb.dart';
 import 'package:heiwadai_app/api/v1/user/Post.pb.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 
+import '../provider/rest_client.dart';
 import 'base_feature.dart';
 
 class PostClient extends BaseClient{
-  PostClient(super.ref): super(controller: 'PostController');
+  PostClient(super.client): super(controller: 'PostController');
 
-  Future<PostsResponse> getPosts() async {
+  Future<PostsResponse> getPosts({bool? useCache = true }) async {
     final res = await client.call(
-        '$controller/GetPosts');
+        '$controller/GetPosts',useCache: useCache, cacheable: true);
     return PostsResponse.create()..mergeFromProto3Json(res);
   }
 
@@ -29,3 +31,8 @@ class PostClient extends BaseClient{
   }
 
 }
+
+final postClientProvider = Provider<PostClient>((ref) {
+  final customRestClient = ref.watch(httpClientProvider);
+  return PostClient(customRestClient);
+});

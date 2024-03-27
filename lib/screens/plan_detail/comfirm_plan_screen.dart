@@ -35,7 +35,7 @@ class ComfirmPlanScreen extends HookWidget {
       extendBody: true,
       appBar: MyAppBar(
           title: 'ホテル予約（確認）', style: AppBarStyle.basic, menu: MenuMode.none),
-      endDrawer: MyDrawer(stores),
+      endDrawer: const MyDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(

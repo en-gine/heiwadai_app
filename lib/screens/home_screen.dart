@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:heiwadai_app/api/v1/shared/Coupon.pb.dart';
+import 'package:heiwadai_app/api/v1/shared/Store.pb.dart';
 import 'package:heiwadai_app/api/v1/user/Banner.pbgrpc.dart';
 import 'package:heiwadai_app/api/v1/user/Book.pb.dart';
 import 'package:heiwadai_app/api/v1/user/Checkin.pb.dart';
@@ -11,10 +11,9 @@ import 'package:heiwadai_app/api/v1/user/Post.pb.dart';
 import 'package:heiwadai_app/feature/book.dart';
 import 'package:heiwadai_app/feature/checkin.dart';
 import 'package:heiwadai_app/feature/post.dart';
+import 'package:heiwadai_app/screens/voucher_details_screen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:heiwadai_app/feature/massage_check.dart';
-import 'package:heiwadai_app/feature/update_check.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:go_router/go_router.dart';
 import "package:intl/intl.dart";
@@ -32,6 +31,8 @@ import 'package:heiwadai_app/data/sliders.dart';
 
 import '../feature/banner.dart';
 import '../feature/coupon.dart';
+import '../feature/store.dart';
+import '../widgets/components/until_coupon_text.dart';
 import 'news_details_screen.dart';
 
 class ControlledSlider extends ConsumerStatefulWidget {
@@ -150,18 +151,18 @@ class HomeScreen extends HookConsumerWidget {
     final stamps = useState<StampCardResponse?>(null);
     final coupons = useState<MyCouponsResponse?>(null);
     final books = useState<BooksResponse?>(null);
-    const MAX_STAMP_COUNT = 5;
-
+    final stores = useState<Stores?>(null);
 
     useEffect(() {
       Future.microtask(() async {
         try {
           await Future.wait([
-            PostClient(ref).getPosts().then((value) => posts.value = value),
-            BannerClient(ref).getBanner().then((value) =>  banners.value = value),
-            CheckinClient(ref).getStampCard().then((value) => stamps.value = value),
-            CouponClient(ref).getList().then((value) => coupons.value = value),
-            BookClient(ref).getMyBook().then((value) => books.value = value),
+            ref.watch(postClientProvider).getPosts().then((value) => posts.value = value),
+            ref.watch(bannerClientProvider).getBanner().then((value) =>  banners.value = value),
+            ref.watch(checkinClientProvider).getStampCard().then((value) => stamps.value = value),
+            ref.watch(couponClientProvider).getList().then((value) => coupons.value = value),
+            ref.watch(bookClientProvider).getMyBook().then((value) => books.value = value),
+            ref.watch(storeClientProvider).getAll().then((value) => stores.value = value),
           ]);
 
         } catch (error, stack) {
@@ -188,12 +189,21 @@ class HomeScreen extends HookConsumerWidget {
               padding: EdgeInsets.only(bottom: 5.w),
               child: const Heading("使えるクーポン"),
             ),
-            for (final coupon in coupons.value!.coupons)
+            for (final coupon in coupons.value!.coupons.sublist(0, 3))
               CouponButton(
                 id: coupon.iD,
                 name: coupon.name,
                 expire: coupon.expireAt.toDateTime(),
                 type: coupon.couponType,
+                onPressed: () {
+                  if( stores.value == null) return;
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VoucherDetailsScreen(coupon: coupon, stores: stores.value!),
+                    ),
+                  );
+                },
               ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -294,7 +304,7 @@ class HomeScreen extends HookConsumerWidget {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: MyAppBar(style: AppBarStyle.logo),
-      endDrawer: MyDrawer(stores),
+      endDrawer: const MyDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -323,32 +333,7 @@ class HomeScreen extends HookConsumerWidget {
                         imageUrl: book.bookPlan.imageURL,
                       ),
                   ],
-                  RichText(
-                    text: TextSpan(
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        letterSpacing: 1.4,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      children: [
-                        const TextSpan(text: "クーポン獲得まであと"),
-                        TextSpan(
-                          text: '${() {
-                            if (stamps.value == null) {
-                              return MAX_STAMP_COUNT;
-                            }
-                            return MAX_STAMP_COUNT - stamps.value!.stamps.length;
-                          }()}',
-                          style: TextStyle(
-                            fontSize: 30.sp,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const TextSpan(text: "回スタンプ"),
-                      ],
-                    ),
-                  ),
+                  // UntilCouponText(stamps.value?.stamps.length),
                   ContentsArea(
                     widgets: [
                       couponList,

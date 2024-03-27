@@ -57,11 +57,15 @@
 				<string>Editor</string>
 				<key>CFBundleURLSchemes</key>
 				<array>
-					<string>com.example.heiwadaiApp</string>
+					<string>app.heiwadai-hotel</string>
 				</array>
 			</dict>
 		</array>
 		<!-- Deep Links　ここまで追加 -->
+		<!-- Cameraパーミッション　ここから -->
+        <key>NSCameraUsageDescription</key>
+        <string>camera</string>
+		<!-- Cameraパーミッション　ここまで -->
 		<key>UIStatusBarHidden</key>
 		<false/>
 	</dict>

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:heiwadai_app/feature/auth.dart';
+import 'package:heiwadai_app/feature/store.dart';
 
-import 'package:heiwadai_app/models/store.dart';
 import 'package:heiwadai_app/screens/login_screen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../api/v1/shared/Store.pb.dart';
 import '../components/snack_bar.dart';
 
 class MyDrawer extends HookConsumerWidget {
-  const MyDrawer(this.stores, {super.key});
-
-  final List<Store> stores;
+  const MyDrawer({super.key});
 
   Widget _drawerHeading(text, [icon]) => Container(
         height: 35.w,
@@ -66,6 +66,22 @@ class MyDrawer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final stores = useState<Stores?>(null);;
+    useEffect(() {
+      Future.microtask(() async {
+        try {
+          await Future.wait([
+            ref.watch(storeClientProvider).getAll(useCache: true).then((value) => stores.value = value),
+          ]);
+
+        } catch (error, stack) {
+          debugPrint('Error: $error');
+          debugPrint('Stack Trace: $stack');
+        }
+      });
+
+      return null;
+    }, []);
     return Drawer(
       child: SafeArea(
         child: ListView(
@@ -113,8 +129,8 @@ class MyDrawer extends HookConsumerWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   _drawerHeading('クーポン対象店舗'),
-                  if (stores.isNotEmpty)
-                    for (final store in stores)
+                  if (stores.value?.stores != null)
+                    for (final store in stores.value!.stores)
                       _drawerListItem(store.name, () {
                         Navigator.pop(context);
                       }),
@@ -204,7 +220,7 @@ class MyDrawer extends HookConsumerWidget {
                     child: GestureDetector(
                       onTap: () async {
                         final awaitedContext = context;
-                        await AuthClient(ref).signOut();
+                        await ref.watch(authClientProvider).signOut();
                         if (!context.mounted) return;
                         Navigator.push(
                           awaitedContext,

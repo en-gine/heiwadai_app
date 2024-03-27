@@ -1,8 +1,14 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:heiwadai_app/api/v1/shared/Store.pb.dart';
+import 'package:heiwadai_app/feature/store.dart';
+import 'package:heiwadai_app/screens/voucher_details_screen.dart';
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
 import 'package:heiwadai_app/widgets/menu/drawer.dart';
@@ -11,15 +17,15 @@ import 'package:heiwadai_app/widgets/components/coupon_button.dart';
 import 'package:heiwadai_app/widgets/components/contents_area.dart';
 import 'package:heiwadai_app/widgets/components/heading.dart';
 
-import 'package:heiwadai_app/data/coupons.dart';
-import 'package:heiwadai_app/data/stores.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../api/v1/user/Checkin.pb.dart';
 import '../api/v1/user/MyCoupon.pb.dart';
 import '../feature/checkin.dart';
 import '../feature/coupon.dart';
+import '../widgets/components/until_coupon_text.dart';
 
 Widget stamp(String image, String date, {double fontSize = 10,double offset = 10}) {
   return Container(
@@ -53,17 +59,30 @@ class VoucherListScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final stamps = useState<StampCardResponse?>(null);
     final coupons = useState<MyCouponsResponse?>(null);
+    final stores = useState<Stores?>(null);
 
-    useEffect(() => () async {
-      stamps.value = await CheckinClient(ref).getStampCard();
-      coupons.value = await CouponClient(ref).getList();
-    }, const []);
+    useEffect(() {
+      Future.microtask(() async {
+        try {
+          await Future.wait([
+            ref.watch(checkinClientProvider).getStampCard().then((value) => stamps.value = value),
+            ref.watch(couponClientProvider).getList().then((value) => coupons.value = value),
+            ref.watch(storeClientProvider).getAll().then((value) => stores.value = value),
+          ]);
+
+        } catch (error, stack) {
+          debugPrint('Error: $error');
+          debugPrint('Stack Trace: $stack');
+        }
+      });
+      return null;
+    }, []);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: MyAppBar(title: 'クーポン', style: AppBarStyle.basic),
-      endDrawer: MyDrawer(stores),
+      endDrawer: const MyDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -135,26 +154,7 @@ class VoucherListScreen extends HookConsumerWidget {
                     ),
                   ),
                   SizedBox(height: 10.w),
-                  RichText(
-                    text: TextSpan(
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          letterSpacing: 1.4,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        children: [
-                          const TextSpan(text: "クーポン獲得まであと"),
-                          TextSpan(
-                            text: '3',
-                            style: TextStyle(
-                              fontSize: 30.sp,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const TextSpan(text: "回スタンプ"),
-                        ]),
-                  ),
+                  UntilCouponText(stamps.value?.stamps.length),
                   ContentsArea(
                     widgets: [
                       Container(
@@ -174,6 +174,15 @@ class VoucherListScreen extends HookConsumerWidget {
                                 name: coupon.name,
                                 expire: coupon.expireAt.toDateTime(),
                                 type: coupon.couponType,
+                                onPressed: () {
+                                  if (stores.value == null) return;
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => VoucherDetailsScreen(coupon: coupon, stores: stores.value!),
+                                    ),
+                                  );
+                                },
                               ),
                           ],
                         ),
@@ -192,7 +201,7 @@ class VoucherListScreen extends HookConsumerWidget {
                             ListView.builder(
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
-                              itemCount: stores.length,
+                              itemCount: stores.value?.stores.length ?? 0,
                               itemBuilder: (context, index) {
                                 return Container(
                                     margin: EdgeInsets.only(bottom: 5.w),
@@ -202,7 +211,7 @@ class VoucherListScreen extends HookConsumerWidget {
                                     ),
                                     child: Row(
                                       children: [
-                                        Text(stores[index].name),
+                                        Text(stores.value!.stores[index].name+stores.value!.stores[index].branchName),
                                         const Spacer(),
                                         SizedBox(
                                           width: 25.w,
@@ -211,7 +220,9 @@ class VoucherListScreen extends HookConsumerWidget {
                                             iconSize: 20.w,
                                             padding: EdgeInsets.zero,
                                             constraints: const BoxConstraints(),
-                                            onPressed: () {},
+                                            onPressed: () async {
+                                              await launchUrl(Uri.parse('https://www.google.com/maps/search/?api=1&query=${stores.value!.stores[index].name+stores.value!.stores[index].branchName}'));
+                                            },
                                             icon: SvgPicture.asset(
                                               'assets/icons/map.svg',
                                             ),

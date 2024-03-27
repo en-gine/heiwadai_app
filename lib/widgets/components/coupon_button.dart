@@ -13,12 +13,13 @@ class CouponButton extends StatelessWidget {
     required this.name,
     required this.expire,
     required this.type,
+    required this.onPressed,
   });
   final String id;
   final String name;
   final DateTime expire;
   final CouponType type;
-
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     DateFormat dateFormat = DateFormat('yyyy年MM月dd日', "ja_JP");
@@ -39,7 +40,7 @@ class CouponButton extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: ()  => context.push('/voucher_details/$id'),
+        onPressed: onPressed,
         child: Row(
           children: [
             Column(

@@ -22,7 +22,7 @@ class PlanThanksScreen extends StatelessWidget {
       extendBody: true,
       appBar: MyAppBar(
           title: 'ホテル予約（完了）', style: AppBarStyle.basic, menu: MenuMode.none),
-      endDrawer: MyDrawer(stores),
+      endDrawer: const MyDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(

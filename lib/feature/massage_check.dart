@@ -12,7 +12,7 @@ import 'package:heiwadai_app/provider/rest_client.dart';
 import 'base_feature.dart';
 
 class MessageClient extends BaseClient{
-  MessageClient(super.ref): super(controller: 'MessageController');
+  MessageClient(super.client): super(controller: 'MessageController');
 
   Future<MessagesResponse> getMessagesAfter(
       String? readUid
@@ -23,6 +23,11 @@ class MessageClient extends BaseClient{
   }
 }
 
+final messageClientProvider = Provider<MessageClient>((ref) {
+  final customRestClient = ref.watch(httpClientProvider);
+  return MessageClient(customRestClient);
+});
+
 Future messageCheck(context, WidgetRef ref) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   List<MessageResponse> messages = [];
@@ -30,7 +35,7 @@ Future messageCheck(context, WidgetRef ref) async {
   try {
 
     final String? readUid = prefs.getString('last_uid');
-    final data = await MessageClient(ref).getMessagesAfter(readUid);
+    final data = await ref.read(messageClientProvider).getMessagesAfter(readUid);
 
     final List<MessageResponse> messages = data.messages;
     await prefs.setString('lastUid', messages[0].iD);

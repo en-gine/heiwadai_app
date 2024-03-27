@@ -23,6 +23,9 @@ class Env {
   static String? _testPass;
   static String get testPass => _testPass ?? "";
 
+  static String? _maxStampCount;
+  static String get maxStampCount => _maxStampCount ?? "";
+
   static Future<void> loadEnv() async {
     await dotenv.load(fileName: ".env");
     _apiBaseUrl = dotenv.env['API_BASE_URL'];
@@ -31,6 +34,7 @@ class Env {
     _encrypt_key =  dotenv.env['ENCRYPT_KEY'];
     _testEmail = dotenv.env['TEST_EMAIL'];
     _testPass = dotenv.env['TEST_PASS'];
+    _maxStampCount = dotenv.env['MAX_STAMP_COUNT'];
 
   }
 }

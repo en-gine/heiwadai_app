@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'package:collection/collection.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:heiwadai_app/api/v1/shared/Coupon.pb.dart';
+import 'package:heiwadai_app/feature/coupon.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import "package:intl/intl.dart";
 
 import 'package:heiwadai_app/widgets/menu/appbar.dart';
@@ -10,16 +14,16 @@ import 'package:heiwadai_app/widgets/menu/drawer.dart';
 import 'package:heiwadai_app/widgets/components/contents_area.dart';
 import 'package:heiwadai_app/widgets/components/heading.dart';
 import 'package:heiwadai_app/widgets/components/dialog.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import 'package:heiwadai_app/data/stores.dart';
-import 'package:heiwadai_app/data/coupons.dart';
+import '../api/v1/shared/Store.pb.dart';
+import '../feature/store.dart';
+import '../provider/rest_client.dart';
 
-import 'package:heiwadai_app/models/coupon_item.dart';
-
-Widget activateCoupon(BuildContext context, String id) {
+Widget activateCoupon(BuildContext context, WidgetRef ref, String id) {
   return Container(
     height: 122.w,
-    padding: EdgeInsets.only(top: 10.w, right: 20.w, bottom: 20.w, left: 20.w),
+    padding: EdgeInsets.only(top: 10.w, right: 20.w, bottom: 10.w, left: 20.w),
     alignment: Alignment.topCenter,
     decoration: const BoxDecoration(
       color: Colors.white,
@@ -43,8 +47,46 @@ Widget activateCoupon(BuildContext context, String id) {
               '使用する際はスタッフに画面を提示してください。\n\nこの処理はキャンセルできません。\n宜しいですか？',
               noText: 'キャンセル',
               yesText: '使用済にする',
-              onPressed: () {
-                print('使用済');
+              onPressed: () async {
+                try{
+                  await ref.watch(couponClientProvider).use(id);
+                  if (!context.mounted) return;
+                  Navigator.pop(context);
+                } on ServerException catch (e, s) {
+                  // エラーを表示する
+                  String modalMessage = '';
+                  switch (e.statusCode) {
+                    case ServerErrorStatusCode.permissionDenied:
+                      modalMessage = e.message;
+                      break;
+                    case ServerErrorStatusCode.unauthenticated:
+                      modalMessage = 'ログインの有効期限が切れました。もう一度ログインしてください。';
+                      break;
+                    default:
+                      modalMessage = '通信エラーなどによりサインインが出来ませんでした。';
+                      debugPrint('Sign in failed: $e');
+                      debugPrint('Stack Trace: $s');
+                      break;
+                  }
+                  if (!context.mounted) return;
+                  modalDialog(
+                    context,
+                    'エラー',
+                    modalMessage,
+                    yesText: 'OK',
+                  );
+                } catch (e, s) {
+                  // エラーを表示する
+                  debugPrint('Sign in failed: $e');
+                  debugPrint('StackTrace: $s');
+                  if (!context.mounted) return;
+                  modalDialog(
+                    context,
+                    'エラー',
+                    '不明な内部／通信エラーなどにより登録出来ませんでした。\n時間をおいて再度お試しくか、お問合せよりご連絡ください。',
+                    yesText: 'OK',
+                  );
+                }
               },
             );
           },
@@ -70,28 +112,19 @@ Widget activateCoupon(BuildContext context, String id) {
   );
 }
 
-class VoucherDetailsScreen extends StatelessWidget {
-  const VoucherDetailsScreen({super.key, required this.id});
-  final String id;
-
+class VoucherDetailsScreen extends HookConsumerWidget {
+  const VoucherDetailsScreen({super.key, required this.coupon, required this.stores});
+  final Stores stores;
+  final Coupon coupon;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     DateFormat dateFormat = DateFormat('yyyy年MM月dd日', "ja_JP");
-    final coupon = coupons.firstWhereOrNull((user) => user.id == id);
-
-    if (coupon == null) {
-      return const Scaffold(
-        body: Center(
-          child: Text('クーポンが見つかりませんでした'),
-        ),
-      );
-    }
 
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: MyAppBar(style: AppBarStyle.none, menu: MenuMode.close),
-      endDrawer: MyDrawer(stores),
+      endDrawer: const MyDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -144,7 +177,7 @@ class VoucherDetailsScreen extends StatelessWidget {
                                   text: coupon.name,
                                   style: TextStyle(
                                     fontSize: (coupon.couponType ==
-                                            CouponType.standard)
+                                            CouponType.COUPON_STANDARD)
                                         ? 40.sp
                                         : 35.sp,
                                     height: 40.sp / 40.sp,
@@ -152,7 +185,7 @@ class VoucherDetailsScreen extends StatelessWidget {
                                 ),
                                 TextSpan(
                                     text: (coupon.couponType ==
-                                            CouponType.standard)
+                                            CouponType.COUPON_STANDARD)
                                         ? "割引クーポン"
                                         : "クーポン"),
                               ],
@@ -163,10 +196,11 @@ class VoucherDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10.w),
+                  if (coupon.expireAt != null)
                   SizedBox(
                     width: 220.w,
                     child: Text(
-                      "有効期限：${dateFormat.format(coupon.expire.toLocal())}",
+                      "有効期限：${dateFormat.format(coupon.expireAt.toDateTime().toLocal())}",
                       style: TextStyle(
                         height: 28.sp / 16.sp,
                         letterSpacing: 16.sp * 0.1,
@@ -217,17 +251,19 @@ class VoucherDetailsScreen extends StatelessWidget {
                                   ]),
                             ),
                             SizedBox(height: 15.w),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("※",
-                                    style: TextStyle(height: 28.sp / 16.sp)),
-                                Expanded(
-                                  child: Text("平和台ホテル大手門店のランチではご使用頂けません。",
+                            if(coupon.notices != null && coupon.notices.isNotEmpty)
+                            for(final note in coupon.notices)
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("※",
                                       style: TextStyle(height: 28.sp / 16.sp)),
-                                ),
-                              ],
-                            ),
+                                  Expanded(
+                                    child: Text(note,
+                                        style: TextStyle(height: 28.sp / 16.sp)),
+                                  ),
+                                ],
+                              ),
                             SizedBox(height: 10.w),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -257,7 +293,7 @@ class VoucherDetailsScreen extends StatelessWidget {
                             ListView.builder(
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
-                              itemCount: stores.length,
+                              itemCount: stores.stores.length,
                               itemBuilder: (context, index) {
                                 return Container(
                                     margin: EdgeInsets.only(bottom: 5.w),
@@ -267,7 +303,8 @@ class VoucherDetailsScreen extends StatelessWidget {
                                     ),
                                     child: Row(
                                       children: [
-                                        Text(stores[index].name),
+                                        if(stores.stores != null && stores.stores.isNotEmpty)
+                                        Text(stores.stores[index].name+stores.stores[index].branchName),
                                         const Spacer(),
                                         SizedBox(
                                           width: 25.w,
@@ -276,7 +313,9 @@ class VoucherDetailsScreen extends StatelessWidget {
                                             iconSize: 20.w,
                                             padding: EdgeInsets.zero,
                                             constraints: const BoxConstraints(),
-                                            onPressed: () {},
+                                            onPressed: () async{
+                                              await launchUrl(Uri.parse('https://www.google.com/maps/search/?api=1&query=${stores.stores[index].name+stores.stores[index].branchName}'));
+                                            },
                                             icon: SvgPicture.asset(
                                               'assets/icons/map.svg',
                                             ),
@@ -312,7 +351,7 @@ class VoucherDetailsScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: activateCoupon(context, id),
+      bottomNavigationBar: activateCoupon(context, ref, coupon.iD),
     );
   }
 }

@@ -22,7 +22,7 @@ class NewsListScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: MyAppBar(title: 'お知らせ', style: AppBarStyle.basic),
-      endDrawer: MyDrawer(stores),
+      endDrawer: const MyDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(

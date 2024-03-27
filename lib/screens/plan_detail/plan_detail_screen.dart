@@ -94,7 +94,7 @@ class PlanDetailScreen extends ConsumerWidget {
       extendBody: true,
       appBar: MyAppBar(
           title: storeName, style: AppBarStyle.basic, menu: MenuMode.none),
-      endDrawer: MyDrawer(stores),
+      endDrawer: const MyDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(

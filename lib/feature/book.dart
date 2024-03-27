@@ -3,9 +3,10 @@ import 'package:heiwadai_app/api/v1/user/Book.pb.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../provider/rest_client.dart';
 import 'base_feature.dart';
 class BookClient extends BaseClient {
-  BookClient(super.ref) : super(controller: 'BookController');
+  BookClient(super.client) : super(controller: 'BookController');
 
   Future<BooksResponse> getMyBook() async {
     final res = await client.call(
@@ -28,3 +29,7 @@ class BookClient extends BaseClient {
   }
 
 }
+final bookClientProvider = Provider<BookClient>((ref) {
+  final customRestClient = ref.watch(httpClientProvider);
+  return BookClient(customRestClient);
+});

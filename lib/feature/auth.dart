@@ -9,7 +9,8 @@ import '../provider/token_provider.dart';
 import 'base_feature.dart';
 
 class AuthClient extends BaseClient {
-  AuthClient(super.ref) : super(controller: 'AuthController');
+  final Ref ref;
+  AuthClient(super.client, this.ref) : super(controller: 'AuthController');
 
   Future<void> signOut() async {
     await client.call(
@@ -22,12 +23,10 @@ class AuthClient extends BaseClient {
       refreshToken: refreshToken
     );
 
-    var response = await client.call('$controller/Refresh', request: body);
+    final response = await client.call('$controller/Refresh', request: body);
     final token = UserAuthTokenResponse.create()
       ..mergeFromProto3Json(response);
-    ref
-        .read(tokenProvider.notifier)
-        .state = TokenState(
+    ref.read(tokenProvider.notifier).state = TokenState(
       accessToken: token.accessToken,
       refreshToken: token.refreshToken,
       expireIn: token.expiresIn.toInt(),
@@ -43,5 +42,9 @@ class AuthClient extends BaseClient {
     final body = UpdateEmailRequest(email: email);
     await client.call('$controller/UpdateEmail', request: body);
   }
-
 }
+
+final authClientProvider = Provider<AuthClient>((ref) {
+  final customRestClient = ref.watch(httpClientProvider);
+  return AuthClient(customRestClient, ref);
+});

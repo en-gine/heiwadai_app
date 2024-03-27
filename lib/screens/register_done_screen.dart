@@ -80,7 +80,7 @@ class RegisterDoneScreen extends HookWidget {
                               children: const [
                                 TextSpan(
                                   text:
-                                      '平和台ホテル（xxxx@xxxxx.com）からのメールをご確認ください。メールに記載された',
+                                      '平和台ホテル（no-reply@heiwadai-hotel.app）からのメールをご確認ください。メールに記載された',
                                 ),
                                 TextSpan(
                                   text: '認証URLをクリックしてパスワードを設定',
@@ -104,7 +104,7 @@ class RegisterDoneScreen extends HookWidget {
                                   text: 'なお、認証メールの',
                                 ),
                                 TextSpan(
-                                  text: '有効期限は〇時間',
+                                  text: '有効期限は1時間',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 TextSpan(

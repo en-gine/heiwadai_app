@@ -26,6 +26,7 @@ import 'package:heiwadai_app/feature/anon_auth.dart';
 
 // import 'package:heiwadai_app/models/user.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/components/dialog.dart';
 class RegisterInputScreen extends HookConsumerWidget {
@@ -105,6 +106,7 @@ class RegisterInputScreen extends HookConsumerWidget {
     // final isChecked = useState<bool>(false);
 
     final formKey = useMemoized(() => GlobalKey<FormState>());
+    final ScrollController _scrollController = ScrollController();
 
     useEffect(() {
       cityController.text = cityInput.value;
@@ -115,6 +117,7 @@ class RegisterInputScreen extends HookConsumerWidget {
       extendBodyBehindAppBar: true,
       appBar: MyAppBar(style: AppBarStyle.none, menu: MenuMode.close),
       body: SingleChildScrollView(
+        controller: _scrollController,
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -172,6 +175,12 @@ class RegisterInputScreen extends HookConsumerWidget {
                               onChanged: (value) {
                                 lastNameInput.value = value;
                               },
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return '姓を入力してください';
+                                }
+                                return null;
+                              },
                             ),
                             SizedBox(height: 10.w),
                             TextInputField(
@@ -180,6 +189,12 @@ class RegisterInputScreen extends HookConsumerWidget {
                               hint: '例：太郎',
                               onChanged: (value) {
                                 firstNameInput.value = value;
+                              },
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return '名を入力してください';
+                                }
+                                return null;
                               },
                             ),
                             SizedBox(height: 20.w),
@@ -192,6 +207,12 @@ class RegisterInputScreen extends HookConsumerWidget {
                               onChanged: (value) {
                                 lastNameKanaInput.value = value;
                               },
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return '姓のふりがなを入力してください';
+                                }
+                                return null;
+                              },
                             ),
                             SizedBox(height: 10.w),
                             TextInputField(
@@ -200,6 +221,12 @@ class RegisterInputScreen extends HookConsumerWidget {
                               hint: '例：たろう',
                               onChanged: (value) {
                                 firstNameKanaInput.value = value;
+                              },
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return '名のふりがなを入力してください';
+                                }
+                                return null;
                               },
                             ),
                             SizedBox(height: 20.w),
@@ -494,7 +521,7 @@ class RegisterInputScreen extends HookConsumerWidget {
                                       decoration: TextDecoration.underline,
                                     ),
                                     recognizer: TapGestureRecognizer()
-                                      ..onTap = () => context.push('/policy'),
+                                      ..onTap = () => context.push('/privacy'),
                                   ),
                                   const TextSpan(text: 'に同意する'),
                                 ],
@@ -516,6 +543,10 @@ class RegisterInputScreen extends HookConsumerWidget {
                                 '都道府県を選択してください。',
                                 yesText: 'OK',
                               );
+                              _scrollController.animateTo(
+                                  0,
+                                  duration: const Duration(milliseconds: 1),
+                                  curve: Curves.linear);
                               return;
                             }
                             if (!formKey.currentState!.validate()) {
@@ -525,6 +556,10 @@ class RegisterInputScreen extends HookConsumerWidget {
                                 '入力内容が不十分か誤りがあります。',
                                 yesText: 'OK',
                               );
+                              _scrollController.animateTo(
+                                  0,
+                                  duration: const Duration(milliseconds: 1),
+                                  curve: Curves.linear);
                               return;
                             }
                             if (!acceptTermInput.value) {
@@ -537,7 +572,7 @@ class RegisterInputScreen extends HookConsumerWidget {
                               return;
                             }
 
-                            await AnonAuthClient(ref).register(
+                            await ref.watch(anonAuthClientProvider).register(
                               UserRegisterRequest(
                                 firstName: firstNameInput.value,
                                 lastName: lastNameInput.value,
@@ -570,8 +605,9 @@ class RegisterInputScreen extends HookConsumerWidget {
                               // サーバーからのエラーをハンドリング
                               String modalMessage = '';
                               switch (error.statusCode) {
-                                case StatusCode.unauthenticated:
-                                case StatusCode.invalidArgument:
+                                case ServerErrorStatusCode.alreadyExists:
+                                case ServerErrorStatusCode.invalidArgument:
+                                case ServerErrorStatusCode.permissionDenied:
                                   modalMessage = '${error.message}';
                                   break;
                                 default:
@@ -593,7 +629,7 @@ class RegisterInputScreen extends HookConsumerWidget {
                               modalDialog(
                                 asyncContext,
                                 'エラー',
-                                '不明な内部／通信エラーなどにより登録出来ませんでした。',
+                                '不明な内部／通信エラーなどにより登録出来ませんでした。\n時間をおいて再度お試しくかお問合せよりご連絡ください。',
                                 yesText: 'OK',
                               );
                             }, test: (error) => error is Exception);

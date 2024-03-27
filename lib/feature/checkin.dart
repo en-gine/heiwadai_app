@@ -2,9 +2,12 @@
 import 'package:heiwadai_app/api/v1/user/Book.pb.dart';
 import 'package:heiwadai_app/api/v1/user/Checkin.pb.dart';
 import 'package:heiwadai_app/feature/base_feature.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../provider/rest_client.dart';
 
 class CheckinClient extends BaseClient{
-  CheckinClient(super.ref): super(controller: 'CheckinController');
+  CheckinClient(super.client): super(controller: 'CheckinController');
 
   Future<StampCardResponse> getStampCard() async {
     final res = await client.call('$controller/GetStampCard');
@@ -19,4 +22,7 @@ class CheckinClient extends BaseClient{
 
 }
 
-
+final checkinClientProvider = Provider<CheckinClient>((ref) {
+  final customRestClient = ref.watch(httpClientProvider);
+  return CheckinClient(customRestClient);
+});

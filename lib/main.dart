@@ -1,14 +1,17 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:go_router/go_router.dart';
 import 'env.dart';
 import 'firebase_options.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
+import 'package:uni_links/uni_links.dart';
+import 'package:flutter/services.dart';
 import 'package:heiwadai_app/router.dart';
 
 void main() async {
@@ -18,9 +21,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // Pass all uncaught "fatal" errors from the framework to Crashlytics
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -38,6 +39,8 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
+    handleDeepLink(router);
+
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
@@ -83,5 +86,45 @@ class MyApp extends ConsumerWidget {
         routerConfig: router,
       ),
     );
+  }
+  void handleDeepLink(GoRouter router) async {
+    // アプリが起動時にディープリンクを処理する
+    final initialLink = await getInitialUri();
+    if (initialLink != null) {
+      _processDeepLink(router, initialLink);
+    }
+
+    // アプリが起動中にディープリンクを処理する
+    linkStream.listen((String? link) {
+      if (link != null) {
+        _processDeepLink(router, Uri.parse(link));
+      }
+    }, onError: (err) {
+      debugPrint('Failed to get latest link: $err');
+    });
+  }
+
+  void _processDeepLink(GoRouter router, Uri uri) {
+    final host = uri.host;
+    final fragment = uri.fragment;
+
+    final params = <String, String>{};
+    fragment.split('&').forEach((element) {
+      final keyValue = element.split('=');
+      if (keyValue.length == 2) {
+        params[keyValue[0]] = keyValue[1];
+      }
+    });
+    if (params.containsKey('error')) {
+        debugPrint(params['error']);
+    }
+    // パスとクエリパラメーターに基づいて適切な画面に遷移するなどの処理を行う
+    if (host == '/register_pass') {
+      router.go('/register_pass', extra: {
+        'accessToken': params['accessToken'],
+        'refreshToken':  params['refreshToken'],
+        'hasConfirmError':  params.containsKey('error'),
+      });
+    }
   }
 }

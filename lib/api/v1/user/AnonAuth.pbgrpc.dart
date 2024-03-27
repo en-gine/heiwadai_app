@@ -32,9 +32,25 @@ class AnonAuthControllerClient extends $grpc.Client {
           ($core.List<$core.int> value) =>
               $15.AnonTokenResponse.fromBuffer(value));
   static final _$resetPasswordMail =
-      $grpc.ClientMethod<$15.ResetPasswordRequest, $1.Empty>(
+      $grpc.ClientMethod<$15.UserMailRequest, $1.Empty>(
           '/server.user.AnonAuthController/ResetPasswordMail',
-          ($15.ResetPasswordRequest value) => value.writeToBuffer(),
+          ($15.UserMailRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
+  static final _$isUnderRegister =
+      $grpc.ClientMethod<$15.UserMailRequest, $15.IsUnderRegisterResponse>(
+          '/server.user.AnonAuthController/IsUnderRegister',
+          ($15.UserMailRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $15.IsUnderRegisterResponse.fromBuffer(value));
+  static final _$resendInviteMail =
+      $grpc.ClientMethod<$15.UserMailRequest, $1.Empty>(
+          '/server.user.AnonAuthController/ResendInviteMail',
+          ($15.UserMailRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
+  static final _$deleteUnderRegisterUser =
+      $grpc.ClientMethod<$15.UserMailRequest, $1.Empty>(
+          '/server.user.AnonAuthController/DeleteUnderRegisterUser',
+          ($15.UserMailRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $1.Empty.fromBuffer(value));
 
   AnonAuthControllerClient($grpc.ClientChannel channel,
@@ -58,10 +74,27 @@ class AnonAuthControllerClient extends $grpc.Client {
     return $createUnaryCall(_$signIn, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.Empty> resetPasswordMail(
-      $15.ResetPasswordRequest request,
+  $grpc.ResponseFuture<$1.Empty> resetPasswordMail($15.UserMailRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$resetPasswordMail, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$15.IsUnderRegisterResponse> isUnderRegister(
+      $15.UserMailRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$isUnderRegister, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.Empty> resendInviteMail($15.UserMailRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$resendInviteMail, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.Empty> deleteUnderRegisterUser(
+      $15.UserMailRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$deleteUnderRegisterUser, request,
+        options: options);
   }
 }
 
@@ -91,13 +124,35 @@ abstract class AnonAuthControllerServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $15.UserAuthRequest.fromBuffer(value),
         ($15.AnonTokenResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$15.ResetPasswordRequest, $1.Empty>(
+    $addMethod($grpc.ServiceMethod<$15.UserMailRequest, $1.Empty>(
         'ResetPasswordMail',
         resetPasswordMail_Pre,
         false,
         false,
-        ($core.List<$core.int> value) =>
-            $15.ResetPasswordRequest.fromBuffer(value),
+        ($core.List<$core.int> value) => $15.UserMailRequest.fromBuffer(value),
+        ($1.Empty value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$15.UserMailRequest, $15.IsUnderRegisterResponse>(
+            'IsUnderRegister',
+            isUnderRegister_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $15.UserMailRequest.fromBuffer(value),
+            ($15.IsUnderRegisterResponse value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$15.UserMailRequest, $1.Empty>(
+        'ResendInviteMail',
+        resendInviteMail_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $15.UserMailRequest.fromBuffer(value),
+        ($1.Empty value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$15.UserMailRequest, $1.Empty>(
+        'DeleteUnderRegisterUser',
+        deleteUnderRegisterUser_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $15.UserMailRequest.fromBuffer(value),
         ($1.Empty value) => value.writeToBuffer()));
   }
 
@@ -117,8 +172,24 @@ abstract class AnonAuthControllerServiceBase extends $grpc.Service {
   }
 
   $async.Future<$1.Empty> resetPasswordMail_Pre($grpc.ServiceCall call,
-      $async.Future<$15.ResetPasswordRequest> request) async {
+      $async.Future<$15.UserMailRequest> request) async {
     return resetPasswordMail(call, await request);
+  }
+
+  $async.Future<$15.IsUnderRegisterResponse> isUnderRegister_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$15.UserMailRequest> request) async {
+    return isUnderRegister(call, await request);
+  }
+
+  $async.Future<$1.Empty> resendInviteMail_Pre($grpc.ServiceCall call,
+      $async.Future<$15.UserMailRequest> request) async {
+    return resendInviteMail(call, await request);
+  }
+
+  $async.Future<$1.Empty> deleteUnderRegisterUser_Pre($grpc.ServiceCall call,
+      $async.Future<$15.UserMailRequest> request) async {
+    return deleteUnderRegisterUser(call, await request);
   }
 
   $async.Future<$1.Empty> register(
@@ -128,5 +199,11 @@ abstract class AnonAuthControllerServiceBase extends $grpc.Service {
   $async.Future<$15.AnonTokenResponse> signIn(
       $grpc.ServiceCall call, $15.UserAuthRequest request);
   $async.Future<$1.Empty> resetPasswordMail(
-      $grpc.ServiceCall call, $15.ResetPasswordRequest request);
+      $grpc.ServiceCall call, $15.UserMailRequest request);
+  $async.Future<$15.IsUnderRegisterResponse> isUnderRegister(
+      $grpc.ServiceCall call, $15.UserMailRequest request);
+  $async.Future<$1.Empty> resendInviteMail(
+      $grpc.ServiceCall call, $15.UserMailRequest request);
+  $async.Future<$1.Empty> deleteUnderRegisterUser(
+      $grpc.ServiceCall call, $15.UserMailRequest request);
 }

@@ -43,7 +43,10 @@ void modalDialog(BuildContext context, String title, String message,
             context,
             yesText ?? "OK",
             halfButton: (noText != null),
-            onPressed: onPressed,
+            onPressed: () {
+              Navigator.pop(context);
+              if (onPressed != null) onPressed();
+            },
           ),
         ],
       );

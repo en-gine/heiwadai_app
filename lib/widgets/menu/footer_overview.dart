@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FooterOverview extends StatelessWidget {
@@ -14,8 +15,8 @@ class FooterOverview extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           GestureDetector(
-            onTap: () async {
-              await launchUrl(Uri.parse('https://www.heiwadai-hotel.co.jp/company/'));
+            onTap: () {
+              context.push('/company');
             },
             child:Text(
               '運営会社',
@@ -27,8 +28,8 @@ class FooterOverview extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () async {
-              await launchUrl(Uri.parse('https://heiwadai-hotel.app/term/'));
+            onTap: () {
+              context.push('/terms');
             },
             child: Text(
               '利用規約',
@@ -40,8 +41,8 @@ class FooterOverview extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () async {
-              await launchUrl(Uri.parse('https://www.heiwadai-hotel.co.jp/privacy-policy/'));
+            onTap: () {
+              context.push('/policy');
             },
             child: Text(
               'プライバシーポリシー',

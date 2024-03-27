@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:heiwadai_app/feature/anon_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -102,8 +103,12 @@ class ForgetPassScreen extends HookConsumerWidget {
                             margin: EdgeInsets.only(top: 30.w),
                             alignment: Alignment.center,
                             child: FilledButton(
-                              onPressed: () {
-                                // signUp(ref, mailInput.value, passInput.value);
+                              onPressed: () async {
+                                try{
+                                  await ref.watch(anonAuthClientProvider).resetPassword(mailInput.value);
+                                }catch(e){
+                                  debugPrint(e.toString());
+                                }
                               },
                               style: ButtonStyle(
                                 minimumSize: MaterialStateProperty.all<Size>(

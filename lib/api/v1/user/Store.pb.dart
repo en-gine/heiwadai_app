@@ -9,14 +9,14 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class SoreIDRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SoreIDRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
+class StoreIDRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'StoreIDRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.user'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', protoName: 'ID')
     ..hasRequiredFields = false
   ;
 
-  SoreIDRequest._() : super();
-  factory SoreIDRequest({
+  StoreIDRequest._() : super();
+  factory StoreIDRequest({
     $core.String? iD,
   }) {
     final _result = create();
@@ -25,26 +25,26 @@ class SoreIDRequest extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory SoreIDRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SoreIDRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory StoreIDRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory StoreIDRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  SoreIDRequest clone() => SoreIDRequest()..mergeFromMessage(this);
+  StoreIDRequest clone() => StoreIDRequest()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  SoreIDRequest copyWith(void Function(SoreIDRequest) updates) => super.copyWith((message) => updates(message as SoreIDRequest)) as SoreIDRequest; // ignore: deprecated_member_use
+  StoreIDRequest copyWith(void Function(StoreIDRequest) updates) => super.copyWith((message) => updates(message as StoreIDRequest)) as StoreIDRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static SoreIDRequest create() => SoreIDRequest._();
-  SoreIDRequest createEmptyInstance() => create();
-  static $pb.PbList<SoreIDRequest> createRepeated() => $pb.PbList<SoreIDRequest>();
+  static StoreIDRequest create() => StoreIDRequest._();
+  StoreIDRequest createEmptyInstance() => create();
+  static $pb.PbList<StoreIDRequest> createRepeated() => $pb.PbList<StoreIDRequest>();
   @$core.pragma('dart2js:noInline')
-  static SoreIDRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SoreIDRequest>(create);
-  static SoreIDRequest? _defaultInstance;
+  static StoreIDRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StoreIDRequest>(create);
+  static StoreIDRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get iD => $_getSZ(0);

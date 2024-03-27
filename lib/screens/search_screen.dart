@@ -152,7 +152,7 @@ class SearchScreen extends ConsumerWidget {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: MyAppBar(title: '空室検索', style: AppBarStyle.basic),
-      endDrawer: MyDrawer(stores),
+      endDrawer: const MyDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(

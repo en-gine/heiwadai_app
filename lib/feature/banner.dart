@@ -6,12 +6,17 @@ import '../api/v1/user/Banner.pb.dart';
 import 'base_feature.dart';
 
 class BannerClient extends BaseClient {
-  BannerClient(super.ref) : super(controller: 'BannerController');
+  BannerClient(super.client) : super(controller: 'BannerController');
 
-  Future<BannerResponse> getBanner() async {
+  Future<BannerResponse> getBanner({bool? useCache = true }) async {
     final res = await client.call(
-        '$controller/GetBanner');
+        '$controller/GetBanner',useCache: useCache, cacheable: true);
     return BannerResponse.create()
       ..mergeFromProto3Json(res);
   }
 }
+final bannerClientProvider = Provider<BannerClient>((ref) {
+  final customRestClient = ref.watch(httpClientProvider);
+  return BannerClient(customRestClient);
+});
+

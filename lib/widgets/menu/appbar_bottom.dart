@@ -45,7 +45,7 @@ class MyBottomNavi extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () => context.push('/'),
+                  onPressed: () => context.push('/my_booking'),
                   padding: EdgeInsets.zero,
                   icon: SvgPicture.asset(
                     'assets/icons/bottom_menu_3.svg',
